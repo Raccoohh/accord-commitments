@@ -1,0 +1,25 @@
+{
+  "authoredAt":"2026-10-02T19:42:00+03:00",
+  "purpose":"Fresh holdout authored after local validator, quota classification and browser test fixes. Never processed by the AI pipeline yet.",
+  "cases":[{
+    "id":"E",
+    "title":"Ownership transfer with an unchanged date",
+    "turns":[
+      {"speaker":"Alex","text":"Hi, I'm Alex. Let's finish the recovery plan."},
+      {"speaker":"Maya","text":"Hi, I'm Maya. What needs doing?"},
+      {"speaker":"Alex","text":"I'll prepare the rollback checklist by November third, twenty twenty-six."},
+      {"speaker":"Maya","text":"Agreed. Actually, I have the notes, so let me take ownership of that checklist. The deadline stays November third, twenty twenty-six."},
+      {"speaker":"Alex","text":"Agreed, Maya. You own the rollback checklist now, with the same deadline."},
+      {"speaker":"Maya","text":"I'll also verify the restore steps. We haven't chosen a deadline for that yet."},
+      {"speaker":"Alex","text":"Agreed. Please verify the restore steps. We'll agree the deadline later."},
+      {"speaker":"Alex","text":"We could delete the old backups to save space."},
+      {"speaker":"Maya","text":"Let's keep that as a suggestion. We are not approving deletion of any backups."}
+    ],
+    "expected":[
+      {"key":"rollback","task":"Prepare rollback checklist","status":"confirmed","owner":"Maya","deadlineOriginal":"November third, twenty twenty-six","deadlineNormalized":"2026-11-03","evidenceTurns":[2,3,4],"reason":"Maya takes ownership and Alex accepts; date stays unchanged. Alex belongs only in ownership history."},
+      {"key":"restore","task":"Verify restore steps","status":"confirmed","owner":"Maya","deadlineOriginal":null,"deadlineNormalized":null,"evidenceTurns":[5,6],"reason":"Self-commitment is accepted and no deadline is agreed."},
+      {"key":"backups","task":"Delete old backups","status":"proposed_not_accepted","owner":null,"deadlineOriginal":null,"deadlineNormalized":null,"evidenceTurns":[7,8],"reason":"Explicitly left as a suggestion, never approved."}
+    ],
+    "clarifications":["Agree a deadline for verifying the restore steps."]
+  }]
+}

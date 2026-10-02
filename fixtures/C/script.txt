@@ -1,0 +1,12 @@
+C: Relative date and unassigned owner
+SYNTHETIC FICTIONAL DIALOGUE
+
+Alex: Hi, I'm Alex. Let's discuss the usability test.
+
+Maya: I'm Maya. I think we should run the usability test by next Friday.
+
+Alex: Agreed. The usability test is confirmed for next Friday. Could you own it?
+
+Maya: I can't commit to owning it. We need to ask someone else, but nobody has accepted responsibility yet.
+
+Alex: Understood. The test and deadline are agreed, but the owner is still unassigned.

@@ -1,0 +1,26 @@
+✔ exhausted credit balance is quota, not a transient rate limit; no automatic retry (18.0096ms)
+✔ transcription request contains only audio and fixed ASR options (1.1402ms)
+✔ analysis uses structured schema, nonstored response, and untrusted transcript data only (0.5926ms)
+✔ timeout errors are understandable and do not retry (0.3121ms)
+✔ empty provider response fails instead of fabricating output (0.3565ms)
+✔ model refusal and truncated responses fail clearly (0.5331ms)
+✔ exact quotes get authoritative segment timestamps, not invented word alignment (1.1265ms)
+✔ unverified evidence demotes a confirmed task and withholds quotes (0.5904ms)
+✔ a proposal-only citation cannot establish confirmed acceptance (0.1781ms)
+✔ speaker names must be supported by self-introduction on the same speaker (0.3606ms)
+✔ next Friday never receives a date from upload or system time (0.8702ms)
+✔ impossible dates are rejected even if a quoted year exists (0.2382ms)
+✔ unassigned owner and deadline create system clarifications, not invented participant quotes (0.1552ms)
+✔ strict schema rejects extra properties, missing fields and wrong types (0.1901ms)
+✔ invalid, duplicate and out-of-bounds ASR segments are rejected (0.2389ms)
+✔ WAV validator checks actual bytes, format and duration (3.4701ms)
+✔ silence returns unusable without making a provider request (6.1973ms)
+✔ cost includes measured token usage and labels unknown failed request charges (0.1981ms)
+ℹ tests 18
+ℹ suites 0
+ℹ pass 18
+ℹ fail 0
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 92.3404

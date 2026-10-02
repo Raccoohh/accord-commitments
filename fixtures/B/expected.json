@@ -1,0 +1,82 @@
+{
+  "caseId": "B",
+  "source": "Independent expectations frozen in commit 32b67be; expanded without changes.",
+  "items": [
+    {
+      "key": "dark_mode",
+      "task": "Add dashboard dark mode",
+      "status": "proposed_not_accepted",
+      "owner": null,
+      "deadlineOriginal": null,
+      "deadlineNormalized": null,
+      "evidenceTurns": [
+        2,
+        3
+      ],
+      "reason": "Explicitly left as an unapproved idea."
+    },
+    {
+      "key": "wireframes",
+      "task": "Send wireframes",
+      "status": "confirmed",
+      "owner": "Alex",
+      "deadlineOriginal": "October ninth, twenty twenty-six",
+      "deadlineNormalized": "2026-10-09",
+      "evidenceTurns": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "reason": "Self-assignment accepted, then the replacement deadline accepted. October 6 belongs only in history."
+    },
+    {
+      "key": "announcement",
+      "task": "Write launch announcement",
+      "status": "cancelled",
+      "owner": "Maya",
+      "deadlineOriginal": null,
+      "deadlineNormalized": null,
+      "evidenceTurns": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "reason": "Accepted task explicitly cancelled later; marketing is context, not a newly accepted assignment."
+    },
+    {
+      "key": "audit",
+      "task": "Run accessibility audit",
+      "status": "confirmed",
+      "owner": null,
+      "deadlineOriginal": null,
+      "deadlineNormalized": null,
+      "evidenceTurns": [
+        12,
+        13
+      ],
+      "reason": "Explicitly confirmed without owner or agreed deadline. Before release is the proposal, and the later reply explicitly says no deadline is agreed."
+    },
+    {
+      "key": "analytics",
+      "task": "Choose analytics provider",
+      "status": "unresolved",
+      "owner": null,
+      "deadlineOriginal": null,
+      "deadlineNormalized": null,
+      "source": "participant_question",
+      "evidenceTurns": [
+        14,
+        15
+      ],
+      "reason": "Question explicitly remains open."
+    }
+  ],
+  "clarifications": [
+    "Assign an owner to the accessibility audit.",
+    "Agree an accessibility audit deadline."
+  ],
+  "outcome": "complete",
+  "reason": "Only the final wireframe deadline and its evidence content change; timestamp shifts are immaterial. All other expected fields inherit A."
+}

@@ -1,0 +1,67 @@
+{
+  "caseId": "D",
+  "job": {
+    "id": "c35d4071-3c23-4540-a60a-ad9c4a2dc550",
+    "status": "done",
+    "createdAt": 1790959177230,
+    "metrics": {
+      "id": "c35d4071-3c23-4540-a60a-ad9c4a2dc550",
+      "startedAt": "2026-10-02T16:39:37.230Z",
+      "provider": "OpenAI",
+      "models": {
+        "asr": "gpt-4o-transcribe-diarize",
+        "extraction": "gpt-4.1-mini-2025-04-14"
+      },
+      "audioSeconds": 8,
+      "uploadMs": 2,
+      "stages": {
+        "validationMs": 4
+      },
+      "calls": [],
+      "retries": 0,
+      "outcome": "unusable",
+      "processingMs": 4,
+      "totalServerMs": 6,
+      "cost": {
+        "currency": "USD",
+        "estimatedKnownUsd": 0,
+        "measuredTokenCost": 0,
+        "measuredAsrTokenCost": 0,
+        "estimatedAsrCost": 0,
+        "totalVariableOperationUsd": 0,
+        "costPerAudioMinute": 0,
+        "unknownChargesPossible": false,
+        "basis": "Measured token usage where returned; ASR duration fallback uses an explicitly assumed rate. Not a provider invoice.",
+        "rates": {
+          "checkedOn": "2026-10-02",
+          "asrPerMinute": 0.006,
+          "asrMinuteRateStatus": "assumption: estimate for related gpt-4o-transcribe; diarize page publishes token rates only",
+          "asrInputPerMillion": 2.5,
+          "asrOutputPerMillion": 10,
+          "inputPerMillion": 0.4,
+          "cachedInputPerMillion": 0.1,
+          "outputPerMillion": 1.6
+        },
+        "ttsApiCost": 0,
+        "paidIntermediaries": 0,
+        "separateDiarizationCost": 0,
+        "hosting": "Local compute/electricity and machine/OS costs excluded"
+      }
+    },
+    "result": {
+      "outcome": "unusable",
+      "message": "No audible speech was detected. Please upload a new recording with two clearly audible speakers.",
+      "items": [],
+      "speakers": [],
+      "segments": [],
+      "warnings": [],
+      "clarifications": [],
+      "timingPrecision": "segment"
+    },
+    "completedAt": 1790959177235
+  },
+  "clientMetrics": {
+    "preparationMs": 16,
+    "uploadToUsefulResultMs": 33
+  }
+}

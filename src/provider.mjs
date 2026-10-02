@@ -19,8 +19,16 @@ async function request(path,init,trace,stage){
     const data=await response.json().catch(()=>null);
     if(!response.ok){
       const code=data?.error?.code;
+      call.errorCode=code??null;
+      // Error metadata only; never persist a provider message or request content.
+      call.errorType=data?.error?.type??null;
+      call.retryAfter=response.headers.get('retry-after');
+      const message=String(data?.error?.message??'');
+      call.zeroLimit=/limit\s*:?\s*0\b/i.test(message);
+      call.quotaRelated=/quota|billing|credits|balance/i.test(message);
       if(response.status===401)throw new ProviderError('The server API key was rejected. Check the local server configuration.','authentication');
-      if(code==='insufficient_quota')throw new ProviderError('The API project has no available quota. Enable API billing or add credits, then try again.','quota');
+      if(code==='insufficient_quota'||call.quotaRelated)throw new ProviderError('The API project has no available quota. Check API billing and project limits, then try again.','quota');
+      if(call.zeroLimit)throw new ProviderError('The API project has a zero limit for this model. Check the project model permissions and rate limits.','zero_model_limit');
       if(response.status===429)throw new ProviderError('The audio service is rate limited. Wait a moment and try again.','rate_limit');
       throw new ProviderError(`The ${stage==='asr'?'transcription':'analysis'} service failed (HTTP ${response.status}). Try again later.`,'upstream');
     }

@@ -1,0 +1,46 @@
+{
+  "kind": "Offline browser contract tests; mocked result is not ASR evaluation",
+  "checks": [
+    {
+      "name": "Unsupported extension rejected in browser",
+      "passed": true
+    },
+    {
+      "name": "Over-three-minute audio rejected before upload",
+      "passed": true
+    },
+    {
+      "name": "Corrupt audio rejected before upload",
+      "passed": true
+    },
+    {
+      "name": "Real drag-and-drop silence upload returns unusable, no tasks and zero API calls",
+      "passed": true
+    },
+    {
+      "name": "Clear removes completed result from server",
+      "passed": true
+    },
+    {
+      "name": "UI contract: only confirmed in active list; unknown fields, open questions and inactive states separated",
+      "passed": true
+    },
+    {
+      "name": "Transcript and task text render as escaped text",
+      "passed": true
+    },
+    {
+      "name": "UI contract: evidence seeks original audio and automatically stops at excerpt end",
+      "passed": true
+    },
+    {
+      "name": "390px mobile layout has no horizontal overflow",
+      "passed": true
+    },
+    {
+      "name": "No uncaught browser JavaScript errors",
+      "passed": true
+    }
+  ],
+  "errors": []
+}

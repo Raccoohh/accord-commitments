@@ -1,0 +1,34 @@
+B: One controlled deadline change
+SYNTHETIC FICTIONAL DIALOGUE
+
+Alex: Hi, I'm Alex. Let's settle the launch work today.
+
+Maya: Hi Alex, I'm Maya. Yes, let's go through it.
+
+Alex: We could add a dark mode to the dashboard.
+
+Maya: Maybe, but let's leave that as an idea. We are not approving dark mode today.
+
+Alex: I'll send the wireframes by October sixth, twenty twenty-six.
+
+Maya: Agreed. Please send those wireframes.
+
+Alex: Actually, I need until October ninth, twenty twenty-six, for the wireframes. Can we change the deadline?
+
+Maya: Yes, agreed. Use that later date instead of the original wireframe deadline.
+
+Maya: I will write the launch announcement. Let's make that a task for me.
+
+Alex: Agreed, Maya. Please write the launch announcement.
+
+Maya: Wait, marketing is handling the announcement. Cancel my task to write it.
+
+Alex: Agreed. That announcement task is cancelled.
+
+Alex: We also need to run an accessibility audit before release.
+
+Maya: Agreed. The accessibility audit is a confirmed task, but we have not assigned anyone and have not agreed a deadline.
+
+Alex: Which analytics provider should we use?
+
+Maya: We have not decided. That provider question is still open.

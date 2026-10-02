@@ -1,0 +1,31 @@
+{
+  "caseId": "C",
+  "source": "Independent expectations frozen in commit 32b67be; expanded without changes.",
+  "items": [
+    {
+      "key": "usability",
+      "task": "Run usability test",
+      "status": "confirmed",
+      "owner": null,
+      "deadlineOriginal": "next Friday",
+      "deadlineNormalized": null,
+      "evidenceTurns": [
+        1,
+        2,
+        3,
+        4
+      ],
+      "reason": "Task and relative deadline are accepted. Maya explicitly declines ownership; no calendar anchor exists.",
+      "uncertainties": [
+        "missing_date_context",
+        "owner_unassigned"
+      ]
+    }
+  ],
+  "clarifications": [
+    "Assign an owner to the usability test.",
+    "Clarify the calendar date intended by next Friday."
+  ],
+  "outcome": "complete",
+  "reason": null
+}

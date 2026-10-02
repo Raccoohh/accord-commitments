@@ -38,6 +38,7 @@ export function validateExtraction(raw,segments){
       item.evidence=validateRefs(item.evidence);
       item.history=item.history.map(h=>({...h,evidence:validateRefs(h.evidence)}));
       if(item.source!=='clarification'&&!item.evidence.length)throw Error('Missing evidence.');
+      if(item.status==='confirmed'&&item.source!=='commitment')throw Error('Only commitments may be confirmed.');
       if(item.status==='confirmed'&&!item.evidence.some(e=>e.role==='acceptance'))throw Error('Missing acceptance evidence.');
       if(item.status==='cancelled'&&!item.evidence.some(e=>e.role==='cancellation'))throw Error('Missing cancellation evidence.');
     }catch{invalid=true;item.evidence=[];item.history=[];}
@@ -67,7 +68,7 @@ export function validateExtraction(raw,segments){
     ...(i.uncertainties.includes('missing_date_context')?[{itemId:i.id,text:`Which calendar date does “${i.deadlineOriginal}” refer to for: ${i.task}?`,source:'system_clarification'}]:[])
   ]);
   if(new Set(segments.map(s=>s.speakerId)).size!==2)issues.push('Expected two distinct speakers. Speaker attribution needs review.');
-  if(result.outcome==='unusable')result.items=[];
+  if(result.outcome==='unusable'){result.items=[];result.clarifications=[];}
   if(issues.length&&result.outcome!=='unusable')result.outcome='partial';
   result.warnings=[...new Set([...result.warnings,...issues])];
   return result;
