@@ -1,0 +1,14 @@
+{
+  "name": "final-commitments",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": { "node": ">=24.0.0 <25" },
+  "scripts": {
+    "start": "node --env-file-if-exists=.env.local src/server.mjs",
+    "test": "node --test tests/*.test.mjs",
+    "evaluate": "node scripts/evaluate.mjs"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

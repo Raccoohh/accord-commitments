@@ -1,0 +1,138 @@
+{
+  "synthetic": true,
+  "engine": "Windows System.Speech",
+  "duration": 88.6,
+  "sha256": "baa9551345aad7265878abd25aa7ec28c273359eae0fea3f561301dba0e81c3d",
+  "timing": [
+    {
+      "turn": 0,
+      "speaker": "Alex",
+      "text": "Hi, I'm Alex. Let's settle the launch work today.",
+      "voice": "Microsoft David Desktop",
+      "start": 0,
+      "end": 4.775
+    },
+    {
+      "turn": 1,
+      "speaker": "Maya",
+      "text": "Hi Alex, I'm Maya. Yes, let's go through it.",
+      "voice": "Microsoft Zira Desktop",
+      "start": 5.125,
+      "end": 10.184999999999999
+    },
+    {
+      "turn": 2,
+      "speaker": "Alex",
+      "text": "We could add a dark mode to the dashboard.",
+      "voice": "Microsoft David Desktop",
+      "start": 10.535,
+      "end": 13.43
+    },
+    {
+      "turn": 3,
+      "speaker": "Maya",
+      "text": "Maybe, but let's leave that as an idea. We are not approving dark mode today.",
+      "voice": "Microsoft Zira Desktop",
+      "start": 13.780000000000001,
+      "end": 19.795
+    },
+    {
+      "turn": 4,
+      "speaker": "Alex",
+      "text": "I'll send the wireframes by October sixth, twenty twenty-six.",
+      "voice": "Microsoft David Desktop",
+      "start": 20.145,
+      "end": 25.369999999999997
+    },
+    {
+      "turn": 5,
+      "speaker": "Maya",
+      "text": "Agreed. Please send those wireframes.",
+      "voice": "Microsoft Zira Desktop",
+      "start": 25.72,
+      "end": 29.63
+    },
+    {
+      "turn": 6,
+      "speaker": "Alex",
+      "text": "Actually, I need until October ninth, twenty twenty-six, for the wireframes. Can we change the deadline?",
+      "voice": "Microsoft David Desktop",
+      "start": 29.979999999999997,
+      "end": 39.169999999999995
+    },
+    {
+      "turn": 7,
+      "speaker": "Maya",
+      "text": "Yes, agreed. Use that later date instead of the original wireframe deadline.",
+      "voice": "Microsoft Zira Desktop",
+      "start": 39.519999999999996,
+      "end": 45.839999999999996
+    },
+    {
+      "turn": 8,
+      "speaker": "Maya",
+      "text": "I will write the launch announcement. Let's make that a task for me.",
+      "voice": "Microsoft Zira Desktop",
+      "start": 46.19,
+      "end": 51.05
+    },
+    {
+      "turn": 9,
+      "speaker": "Alex",
+      "text": "Agreed, Maya. Please write the launch announcement.",
+      "voice": "Microsoft David Desktop",
+      "start": 51.4,
+      "end": 56.085
+    },
+    {
+      "turn": 10,
+      "speaker": "Maya",
+      "text": "Wait, marketing is handling the announcement. Cancel my task to write it.",
+      "voice": "Microsoft Zira Desktop",
+      "start": 56.434999999999995,
+      "end": 62.35999999999999
+    },
+    {
+      "turn": 11,
+      "speaker": "Alex",
+      "text": "Agreed. That announcement task is cancelled.",
+      "voice": "Microsoft David Desktop",
+      "start": 62.709999999999994,
+      "end": 66.80999999999999
+    },
+    {
+      "turn": 12,
+      "speaker": "Alex",
+      "text": "We also need to run an accessibility audit before release.",
+      "voice": "Microsoft David Desktop",
+      "start": 67.16,
+      "end": 71.28
+    },
+    {
+      "turn": 13,
+      "speaker": "Maya",
+      "text": "Agreed. The accessibility audit is a confirmed task, but we have not assigned anyone and have not agreed a deadline.",
+      "voice": "Microsoft Zira Desktop",
+      "start": 71.63,
+      "end": 79.74499999999999
+    },
+    {
+      "turn": 14,
+      "speaker": "Alex",
+      "text": "Which analytics provider should we use?",
+      "voice": "Microsoft David Desktop",
+      "start": 80.095,
+      "end": 83.105
+    },
+    {
+      "turn": 15,
+      "speaker": "Maya",
+      "text": "We have not decided. That provider question is still open.",
+      "voice": "Microsoft Zira Desktop",
+      "start": 83.455,
+      "end": 88.25
+    }
+  ],
+  "scriptFidelityListening": "pending",
+  "evidenceListening": "pending"
+}

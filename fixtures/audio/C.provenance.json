@@ -1,0 +1,50 @@
+{
+  "synthetic": true,
+  "engine": "Windows System.Speech",
+  "duration": 32.69,
+  "sha256": "d63b89f3992204c846607080877393527f5e0c116224c4f593a566cbd031c91c",
+  "timing": [
+    {
+      "turn": 0,
+      "speaker": "Alex",
+      "text": "Hi, I'm Alex. Let's discuss the usability test.",
+      "voice": "Microsoft David Desktop",
+      "start": 0,
+      "end": 5.085
+    },
+    {
+      "turn": 1,
+      "speaker": "Maya",
+      "text": "I'm Maya. I think we should run the usability test by next Friday.",
+      "voice": "Microsoft Zira Desktop",
+      "start": 5.435,
+      "end": 10.84
+    },
+    {
+      "turn": 2,
+      "speaker": "Alex",
+      "text": "Agreed. The usability test is confirmed for next Friday. Could you own it?",
+      "voice": "Microsoft David Desktop",
+      "start": 11.19,
+      "end": 17.744999999999997
+    },
+    {
+      "turn": 3,
+      "speaker": "Maya",
+      "text": "I can't commit to owning it. We need to ask someone else, but nobody has accepted responsibility yet.",
+      "voice": "Microsoft Zira Desktop",
+      "start": 18.095,
+      "end": 25.71
+    },
+    {
+      "turn": 4,
+      "speaker": "Alex",
+      "text": "Understood. The test and deadline are agreed, but the owner is still unassigned.",
+      "voice": "Microsoft David Desktop",
+      "start": 26.06,
+      "end": 32.339999999999996
+    }
+  ],
+  "scriptFidelityListening": "pending",
+  "evidenceListening": "pending"
+}
