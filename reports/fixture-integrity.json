@@ -1,0 +1,57 @@
+{
+  "fixtures": [
+    {
+      "id": "A",
+      "durationSeconds": 88.46,
+      "bytes": 2830764,
+      "sha256": "90e608bfb8463c8ce03eaa06e23c800c375de1ef81515d01c50fe02a6c6f5def",
+      "peak": 0.946044921875,
+      "synthetic": true,
+      "acousticReview": "pending"
+    },
+    {
+      "id": "B",
+      "durationSeconds": 88.6,
+      "bytes": 2835244,
+      "sha256": "baa9551345aad7265878abd25aa7ec28c273359eae0fea3f561301dba0e81c3d",
+      "peak": 0.946044921875,
+      "synthetic": true,
+      "acousticReview": "pending"
+    },
+    {
+      "id": "C",
+      "durationSeconds": 32.69,
+      "bytes": 1046124,
+      "sha256": "d63b89f3992204c846607080877393527f5e0c116224c4f593a566cbd031c91c",
+      "peak": 0.946044921875,
+      "synthetic": true,
+      "acousticReview": "pending"
+    },
+    {
+      "id": "D",
+      "durationSeconds": 8,
+      "bytes": 256044,
+      "sha256": "190415015d40eef0cd797e1b59ffe00846b01873050b12d44b3a216de3faa2a9",
+      "peak": 0,
+      "synthetic": true,
+      "acousticReview": "pending"
+    },
+    {
+      "id": "E",
+      "durationSeconds": 56.36,
+      "bytes": 1803564,
+      "sha256": "1684a4e530c229b1f029e35032c9dd297e78f228a188bdcab978f18add7cc8a0",
+      "peak": 0.946044921875,
+      "synthetic": true,
+      "acousticReview": "pending"
+    }
+  ],
+  "controlledDifference": {
+    "changedTurnIndices": [
+      6
+    ],
+    "expectedField": "wireframes.deadline",
+    "actualOutputInvariance": "not evaluated"
+  },
+  "note": "Byte integrity, duration and controlled script difference only; not a listening audit."
+}

@@ -1,5 +1,58 @@
 {
   "caseId": "A",
   "error": "The audio service is rate limited. Wait a moment and try again.",
-  "job": null
+  "job": null,
+  "recoveredMetrics": {
+    "id": "edbf26c8-4615-4f89-98bc-c635648d54df",
+    "startedAt": "2026-10-02T16:25:19.751Z",
+    "provider": "OpenAI",
+    "models": {
+      "asr": "gpt-4o-transcribe-diarize",
+      "extraction": "gpt-4.1-mini-2025-04-14"
+    },
+    "audioSeconds": 88.46,
+    "uploadMs": 26,
+    "stages": {
+      "validationMs": 15
+    },
+    "calls": [
+      {
+        "stage": "asr",
+        "model": "gpt-4o-transcribe-diarize",
+        "attempt": 1,
+        "startedAt": "2026-10-02T16:25:19.767Z",
+        "usage": null,
+        "status": 429,
+        "requestId": "req_b74c4586790f45428a99f1d9f80e7861",
+        "ms": 1368
+      }
+    ],
+    "retries": 0,
+    "outcome": "error",
+    "errorCode": "rate_limit",
+    "processingMs": 1385,
+    "totalServerMs": 1411,
+    "cost": {
+      "currency": "USD",
+      "estimatedKnownUsd": 0,
+      "measuredTokenCost": 0,
+      "estimatedAsrCost": 0,
+      "totalVariableOperationUsd": null,
+      "costPerAudioMinute": null,
+      "unknownChargesPossible": true,
+      "basis": "ASR duration estimate plus measured extraction token usage; not a provider invoice",
+      "rates": {
+        "checkedOn": "2026-10-02",
+        "asrPerMinute": 0.006,
+        "inputPerMillion": 0.4,
+        "cachedInputPerMillion": 0.1,
+        "outputPerMillion": 1.6
+      },
+      "ttsApiCost": 0,
+      "paidIntermediaries": 0,
+      "separateDiarizationCost": 0,
+      "hosting": "Local compute/electricity and machine/OS costs excluded"
+    }
+  },
+  "recoveryNote": "Metrics recovered from the original server log; no result or transcript was produced. Original UI wording was a generic rate-limit message, corrected after the separate diagnostic."
 }

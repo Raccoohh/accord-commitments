@@ -1,0 +1,51 @@
+{
+  "caseId": "E",
+  "source": "Independent expectations from fixtures/holdout.json; frozen before analysis and expanded without content changes.",
+  "items": [
+    {
+      "key": "rollback",
+      "task": "Prepare rollback checklist",
+      "status": "confirmed",
+      "owner": "Maya",
+      "deadlineOriginal": "November third, twenty twenty-six",
+      "deadlineNormalized": "2026-11-03",
+      "evidenceTurns": [
+        2,
+        3,
+        4
+      ],
+      "reason": "Maya takes ownership and Alex accepts; date stays unchanged. Alex belongs only in ownership history."
+    },
+    {
+      "key": "restore",
+      "task": "Verify restore steps",
+      "status": "confirmed",
+      "owner": "Maya",
+      "deadlineOriginal": null,
+      "deadlineNormalized": null,
+      "evidenceTurns": [
+        5,
+        6
+      ],
+      "reason": "Self-commitment is accepted and no deadline is agreed."
+    },
+    {
+      "key": "backups",
+      "task": "Delete old backups",
+      "status": "proposed_not_accepted",
+      "owner": null,
+      "deadlineOriginal": null,
+      "deadlineNormalized": null,
+      "evidenceTurns": [
+        7,
+        8
+      ],
+      "reason": "Explicitly left as a suggestion, never approved."
+    }
+  ],
+  "clarifications": [
+    "Agree a deadline for verifying the restore steps."
+  ],
+  "outcome": "complete",
+  "reason": null
+}

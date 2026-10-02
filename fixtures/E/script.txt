@@ -1,0 +1,20 @@
+E: Ownership transfer with an unchanged date
+SYNTHETIC FICTIONAL DIALOGUE
+
+Alex: Hi, I'm Alex. Let's finish the recovery plan.
+
+Maya: Hi, I'm Maya. What needs doing?
+
+Alex: I'll prepare the rollback checklist by November third, twenty twenty-six.
+
+Maya: Agreed. Actually, I have the notes, so let me take ownership of that checklist. The deadline stays November third, twenty twenty-six.
+
+Alex: Agreed, Maya. You own the rollback checklist now, with the same deadline.
+
+Maya: I'll also verify the restore steps. We haven't chosen a deadline for that yet.
+
+Alex: Agreed. Please verify the restore steps. We'll agree the deadline later.
+
+Alex: We could delete the old backups to save space.
+
+Maya: Let's keep that as a suggestion. We are not approving deletion of any backups.

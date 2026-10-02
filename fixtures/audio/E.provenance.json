@@ -1,0 +1,82 @@
+{
+  "synthetic": true,
+  "engine": "Windows System.Speech",
+  "duration": 56.36,
+  "sha256": "1684a4e530c229b1f029e35032c9dd297e78f228a188bdcab978f18add7cc8a0",
+  "timing": [
+    {
+      "turn": 0,
+      "speaker": "Alex",
+      "text": "Hi, I'm Alex. Let's finish the recovery plan.",
+      "voice": "Microsoft David Desktop",
+      "start": 0,
+      "end": 4.895
+    },
+    {
+      "turn": 1,
+      "speaker": "Maya",
+      "text": "Hi, I'm Maya. What needs doing?",
+      "voice": "Microsoft Zira Desktop",
+      "start": 5.244999999999999,
+      "end": 9.079999999999998
+    },
+    {
+      "turn": 2,
+      "speaker": "Alex",
+      "text": "I'll prepare the rollback checklist by November third, twenty twenty-six.",
+      "voice": "Microsoft David Desktop",
+      "start": 9.43,
+      "end": 14.765
+    },
+    {
+      "turn": 3,
+      "speaker": "Maya",
+      "text": "Agreed. Actually, I have the notes, so let me take ownership of that checklist. The deadline stays November third, twenty twenty-six.",
+      "voice": "Microsoft Zira Desktop",
+      "start": 15.114999999999998,
+      "end": 26.185
+    },
+    {
+      "turn": 4,
+      "speaker": "Alex",
+      "text": "Agreed, Maya. You own the rollback checklist now, with the same deadline.",
+      "voice": "Microsoft David Desktop",
+      "start": 26.534999999999997,
+      "end": 32.92999999999999
+    },
+    {
+      "turn": 5,
+      "speaker": "Maya",
+      "text": "I'll also verify the restore steps. We haven't chosen a deadline for that yet.",
+      "voice": "Microsoft Zira Desktop",
+      "start": 33.279999999999994,
+      "end": 39.19
+    },
+    {
+      "turn": 6,
+      "speaker": "Alex",
+      "text": "Agreed. Please verify the restore steps. We'll agree the deadline later.",
+      "voice": "Microsoft David Desktop",
+      "start": 39.53999999999999,
+      "end": 46.06499999999999
+    },
+    {
+      "turn": 7,
+      "speaker": "Alex",
+      "text": "We could delete the old backups to save space.",
+      "voice": "Microsoft David Desktop",
+      "start": 46.41499999999999,
+      "end": 49.80499999999999
+    },
+    {
+      "turn": 8,
+      "speaker": "Maya",
+      "text": "Let's keep that as a suggestion. We are not approving deletion of any backups.",
+      "voice": "Microsoft Zira Desktop",
+      "start": 50.154999999999994,
+      "end": 56.00999999999999
+    }
+  ],
+  "scriptFidelityListening": "pending",
+  "evidenceListening": "pending"
+}

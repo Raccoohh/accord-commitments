@@ -1,0 +1,7 @@
+{
+  "node": "v24.19.0",
+  "playwright": "1.62.1",
+  "browser": "154.0.4258.48",
+  "browserChannel": "msedge",
+  "platform": "win32"
+}

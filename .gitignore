@@ -7,3 +7,4 @@ logs/
 test-results/
 fixtures/.parts/
 *.log
+/delivery/

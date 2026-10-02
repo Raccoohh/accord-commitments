@@ -1,5 +1,5 @@
 {
-  "authoredAt":"2026-10-02T19:42:00+03:00",
+  "frozenBeforeFirstAnalysis":true,
   "purpose":"Fresh holdout authored after local validator, quota classification and browser test fixes. Never processed by the AI pipeline yet.",
   "cases":[{
     "id":"E",

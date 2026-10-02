@@ -1,0 +1,42 @@
+{
+  "sourceDirectory": "reports/live",
+  "warning": "Task detection TP/FP/FN are separate from field accuracy; no live speech accuracy claim without completed runs and human evidence review.",
+  "cases": [
+    {
+      "id": "A",
+      "status": "not_evaluated",
+      "TP": null,
+      "FP": null,
+      "FN": null
+    },
+    {
+      "id": "B",
+      "status": "not_evaluated",
+      "TP": null,
+      "FP": null,
+      "FN": null
+    },
+    {
+      "id": "C",
+      "status": "not_evaluated",
+      "TP": null,
+      "FP": null,
+      "FN": null
+    },
+    {
+      "id": "D",
+      "status": "passed",
+      "TP": 0,
+      "FP": 0,
+      "FN": 0,
+      "note": "Negative case only; no positive-task accuracy evidence."
+    },
+    {
+      "id": "E",
+      "status": "not_evaluated",
+      "TP": null,
+      "FP": null,
+      "FN": null
+    }
+  ]
+}
