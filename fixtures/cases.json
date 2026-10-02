@@ -1,0 +1,68 @@
+{
+  "version": 1,
+  "authoredBeforeAnalyzerRuns": true,
+  "cases": [
+    {
+      "id": "A",
+      "title": "Project launch decisions",
+      "turns": [
+        {"speaker":"Alex","text":"Hi, I'm Alex. Let's settle the launch work today."},
+        {"speaker":"Maya","text":"Hi Alex, I'm Maya. Yes, let's go through it."},
+        {"speaker":"Alex","text":"We could add a dark mode to the dashboard."},
+        {"speaker":"Maya","text":"Maybe, but let's leave that as an idea. We are not approving dark mode today."},
+        {"speaker":"Alex","text":"I'll send the wireframes by October sixth, twenty twenty-six."},
+        {"speaker":"Maya","text":"Agreed. Please send those wireframes."},
+        {"speaker":"Alex","text":"Actually, I need until October eighth, twenty twenty-six, for the wireframes. Can we change the deadline?"},
+        {"speaker":"Maya","text":"Yes, agreed. Use that later date instead of the original wireframe deadline."},
+        {"speaker":"Maya","text":"I will write the launch announcement. Let's make that a task for me."},
+        {"speaker":"Alex","text":"Agreed, Maya. Please write the launch announcement."},
+        {"speaker":"Maya","text":"Wait, marketing is handling the announcement. Cancel my task to write it."},
+        {"speaker":"Alex","text":"Agreed. That announcement task is cancelled."},
+        {"speaker":"Alex","text":"We also need to run an accessibility audit before release."},
+        {"speaker":"Maya","text":"Agreed. The accessibility audit is a confirmed task, but we have not assigned anyone and have not agreed a deadline."},
+        {"speaker":"Alex","text":"Which analytics provider should we use?"},
+        {"speaker":"Maya","text":"We have not decided. That provider question is still open."}
+      ],
+      "expected": [
+        {"key":"dark_mode","task":"Add dashboard dark mode","status":"proposed_not_accepted","owner":null,"deadlineOriginal":null,"deadlineNormalized":null,"evidenceTurns":[2,3],"reason":"Explicitly left as an unapproved idea."},
+        {"key":"wireframes","task":"Send wireframes","status":"confirmed","owner":"Alex","deadlineOriginal":"October eighth, twenty twenty-six","deadlineNormalized":"2026-10-08","evidenceTurns":[4,5,6,7],"reason":"Self-assignment accepted, then the replacement deadline accepted. October 6 belongs only in history."},
+        {"key":"announcement","task":"Write launch announcement","status":"cancelled","owner":"Maya","deadlineOriginal":null,"deadlineNormalized":null,"evidenceTurns":[8,9,10,11],"reason":"Accepted task explicitly cancelled later; marketing is context, not a newly accepted assignment."},
+        {"key":"audit","task":"Run accessibility audit","status":"confirmed","owner":null,"deadlineOriginal":null,"deadlineNormalized":null,"evidenceTurns":[12,13],"reason":"Explicitly confirmed without owner or agreed deadline. Before release is the proposal, and the later reply explicitly says no deadline is agreed."},
+        {"key":"analytics","task":"Choose analytics provider","status":"unresolved","owner":null,"deadlineOriginal":null,"deadlineNormalized":null,"source":"participant_question","evidenceTurns":[14,15],"reason":"Question explicitly remains open."}
+      ],
+      "clarifications":["Assign an owner to the accessibility audit.","Agree an accessibility audit deadline."]
+    },
+    {
+      "id":"B",
+      "title":"One controlled deadline change",
+      "baseCase":"A",
+      "replaceTurn":{"index":6,"text":"Actually, I need until October ninth, twenty twenty-six, for the wireframes. Can we change the deadline?"},
+      "expectedOverride":{"key":"wireframes","deadlineOriginal":"October ninth, twenty twenty-six","deadlineNormalized":"2026-10-09"},
+      "reason":"Only the final wireframe deadline and its evidence content change; timestamp shifts are immaterial. All other expected fields inherit A."
+    },
+    {
+      "id":"C",
+      "title":"Relative date and unassigned owner",
+      "turns":[
+        {"speaker":"Alex","text":"Hi, I'm Alex. Let's discuss the usability test."},
+        {"speaker":"Maya","text":"I'm Maya. I think we should run the usability test by next Friday."},
+        {"speaker":"Alex","text":"Agreed. The usability test is confirmed for next Friday. Could you own it?"},
+        {"speaker":"Maya","text":"I can't commit to owning it. We need to ask someone else, but nobody has accepted responsibility yet."},
+        {"speaker":"Alex","text":"Understood. The test and deadline are agreed, but the owner is still unassigned."}
+      ],
+      "expected":[
+        {"key":"usability","task":"Run usability test","status":"confirmed","owner":null,"deadlineOriginal":"next Friday","deadlineNormalized":null,"evidenceTurns":[1,2,3,4],"reason":"Task and relative deadline are accepted. Maya explicitly declines ownership; no calendar anchor exists.","uncertainties":["missing_date_context","owner_unassigned"]}
+      ],
+      "clarifications":["Assign an owner to the usability test.","Clarify the calendar date intended by next Friday."]
+    },
+    {
+      "id":"D",
+      "title":"Unusable audio",
+      "silenceSeconds":8,
+      "turns":[],
+      "expected":[],
+      "expectedOutcome":"unusable",
+      "reason":"Digital silence contains no reliable speech. Request a new recording and return no invented commitments."
+    }
+  ]
+}
