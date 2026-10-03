@@ -2,7 +2,7 @@
 
 The gold A–D fixture content was frozen in commit `32b67be`, before the first analyzer attempt. The first implementation and audio were committed in `d90a247`. Fresh E was frozen in `0281e15` after local fixes and before any analysis of E. Do not rewrite expected outcomes to match model mistakes.
 
-Only audio enters the application. `scripts/browser-check.mjs` uploads each WAV in a real Edge browser and saves the complete response, browser latency, screenshot and playback state. This is a **paid live test** for speech recordings. It must be run only after API balance is available and the user authorizes resuming paid requests. D can run without a provider call because the app detects digital silence locally.
+Only audio enters the application. `scripts/browser-check.mjs` uploads each WAV in a real Edge browser and saves the complete response, browser latency, screenshot and playback state. The active application now uses **local inference with no paid API calls**. D skips inference because the app detects digital silence locally. Historical failed cloud runs remain in `reports/initial/`; first local results are retained in `reports/local-initial/` and final regression results in `reports/live/`.
 
 For every returned task, manually match its meaning to the independent expected key. Inspect status, owner and deadline separately. A matching title is not enough. Check the full evidence chain: proposed work, acceptance, correction/cancellation, later acceptance. Verify that each quoted statement is audibly present in the excerpt and that voice-to-name mapping follows self-introduction. Record uncertainty and every discrepancy.
 

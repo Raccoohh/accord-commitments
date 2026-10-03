@@ -1,51 +1,39 @@
 {
   "caseId": "D",
   "job": {
-    "id": "c35d4071-3c23-4540-a60a-ad9c4a2dc550",
+    "id": "6161fe5c-c8d6-46b7-8555-ba7f76037b36",
     "status": "done",
-    "createdAt": 1790959177230,
+    "createdAt": 1790979217804,
     "metrics": {
-      "id": "c35d4071-3c23-4540-a60a-ad9c4a2dc550",
-      "startedAt": "2026-10-02T16:39:37.230Z",
-      "provider": "OpenAI",
+      "id": "6161fe5c-c8d6-46b7-8555-ba7f76037b36",
+      "startedAt": "2026-10-02T22:13:37.804Z",
+      "provider": "local",
       "models": {
-        "asr": "gpt-4o-transcribe-diarize",
-        "extraction": "gpt-4.1-mini-2025-04-14"
+        "asr": "Systran/faster-whisper-small.en",
+        "diarization": "pyannote/speaker-diarization-community-1",
+        "extraction": "qwen2.5:7b"
       },
       "audioSeconds": 8,
       "uploadMs": 2,
       "stages": {
-        "validationMs": 4
+        "validationMs": 5
       },
       "calls": [],
       "retries": 0,
       "outcome": "unusable",
-      "processingMs": 4,
-      "totalServerMs": 6,
+      "processingMs": 6,
+      "totalServerMs": 8,
       "cost": {
         "currency": "USD",
-        "estimatedKnownUsd": 0,
-        "measuredTokenCost": 0,
-        "measuredAsrTokenCost": 0,
-        "estimatedAsrCost": 0,
         "totalVariableOperationUsd": 0,
         "costPerAudioMinute": 0,
+        "apiChargesUsd": 0,
+        "basis": "Local inference: no metered API calls. Electricity, hardware and local compute costs are not measured and are excluded.",
         "unknownChargesPossible": false,
-        "basis": "Measured token usage where returned; ASR duration fallback uses an explicitly assumed rate. Not a provider invoice.",
-        "rates": {
-          "checkedOn": "2026-10-02",
-          "asrPerMinute": 0.006,
-          "asrMinuteRateStatus": "assumption: estimate for related gpt-4o-transcribe; diarize page publishes token rates only",
-          "asrInputPerMillion": 2.5,
-          "asrOutputPerMillion": 10,
-          "inputPerMillion": 0.4,
-          "cachedInputPerMillion": 0.1,
-          "outputPerMillion": 1.6
-        },
+        "localComputeCostUsd": null,
+        "hosting": "Local Windows computer",
         "ttsApiCost": 0,
-        "paidIntermediaries": 0,
-        "separateDiarizationCost": 0,
-        "hosting": "Local compute/electricity and machine/OS costs excluded"
+        "paidIntermediaries": 0
       }
     },
     "result": {
@@ -58,10 +46,10 @@
       "clarifications": [],
       "timingPrecision": "segment"
     },
-    "completedAt": 1790959177235
+    "completedAt": 1790979217810
   },
   "clientMetrics": {
     "preparationMs": 16,
-    "uploadToUsefulResultMs": 33
+    "uploadToUsefulResultMs": 39
   }
 }

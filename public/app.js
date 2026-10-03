@@ -89,4 +89,4 @@ document.addEventListener('click',async event=>{
 audio.addEventListener('timeupdate',()=>{if(clipEnd!==null&&audio.currentTime>=clipEnd){audio.pause();stopClip();$('playback-state').textContent='Evidence playback complete.';}});
 audio.addEventListener('pause',()=>{if(clipEnd!==null&&audio.currentTime<clipEnd){stopClip();$('playback-state').textContent='Playback paused.';}});
 audio.addEventListener('ratechange',()=>{if(clipEnd!==null){clearTimeout(clipTimer);clipTimer=setTimeout(()=>{audio.pause();stopClip();},Math.max(0,(clipEnd-audio.currentTime)/audio.playbackRate*1000));}});
-fetch('/api/health').then(r=>r.json()).then(h=>{if(!h.ready)error('The local server needs an API key before audio analysis is available.');}).catch(()=>error('The local server is unavailable. Restart it and reload this page.'));
+fetch('/api/health').then(r=>r.json()).then(h=>{if(!h.ready)error('Local speech models and Ollama must finish setup before audio analysis is available.');}).catch(()=>error('The local server is unavailable. Restart it and reload this page.'));

@@ -7,16 +7,17 @@
     "Malformed audio fails before any provider call"
   ],
   "malformedAudioJob": {
-    "id": "a120d0b1-2731-47dc-81a7-19ec727d98a5",
+    "id": "f0b60331-3275-468a-8547-be9f5cb3d534",
     "status": "error",
-    "createdAt": 1790959179429,
+    "createdAt": 1790979220161,
     "metrics": {
-      "id": "a120d0b1-2731-47dc-81a7-19ec727d98a5",
-      "startedAt": "2026-10-02T16:39:39.429Z",
-      "provider": "OpenAI",
+      "id": "f0b60331-3275-468a-8547-be9f5cb3d534",
+      "startedAt": "2026-10-02T22:13:40.161Z",
+      "provider": "local",
       "models": {
-        "asr": "gpt-4o-transcribe-diarize",
-        "extraction": "gpt-4.1-mini-2025-04-14"
+        "asr": "Systran/faster-whisper-small.en",
+        "diarization": "pyannote/speaker-diarization-community-1",
+        "extraction": "qwen2.5:7b"
       },
       "audioSeconds": null,
       "uploadMs": 0,
@@ -30,6 +31,6 @@
       "cost": null
     },
     "error": "Upload a valid PCM WAV recording.",
-    "completedAt": 1790959179430
+    "completedAt": 1790979220161
   }
 }

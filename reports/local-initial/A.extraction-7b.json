@@ -1,0 +1,959 @@
+{
+  "kind": "extraction-only replay",
+  "source": "reports/local-initial/A.actual.json",
+  "raw": {
+    "outcome": "complete",
+    "message": "",
+    "speakers": [
+      {
+        "speakerId": "SPEAKER_01",
+        "name": "Alex",
+        "confidence": "supported",
+        "evidence": [
+          {
+            "segmentId": "s0",
+            "quote": "Hi, I'm Alex.",
+            "role": "identity"
+          },
+          {
+            "segmentId": "s7",
+            "quote": "I'll send the wireframes by October 6th, 2026.",
+            "role": "proposal"
+          },
+          {
+            "segmentId": "s10",
+            "quote": "Actually, I need until October 8, 2026, for the wireframes.",
+            "role": "proposal"
+          },
+          {
+            "segmentId": "s11",
+            "quote": "Can we change the deadline?",
+            "role": "proposal"
+          },
+          {
+            "segmentId": "s16",
+            "quote": "Please write the launch announcement.",
+            "role": "proposal"
+          },
+          {
+            "segmentId": "s23",
+            "quote": "We also need to run an accessibility audit before release.",
+            "role": "proposal"
+          },
+          {
+            "segmentId": "s26",
+            "quote": "Which analytics provider should we use?",
+            "role": "proposal"
+          }
+        ]
+      },
+      {
+        "speakerId": "SPEAKER_00",
+        "name": "Maya",
+        "confidence": "supported",
+        "evidence": [
+          {
+            "segmentId": "s2",
+            "quote": "Hi Alex, I'm Maya.",
+            "role": "identity"
+          },
+          {
+            "segmentId": "s3",
+            "quote": "Yes, let's go through it.",
+            "role": "acceptance"
+          },
+          {
+            "segmentId": "s4",
+            "quote": "We could add a dark mode to the dashboard.",
+            "role": "proposal"
+          },
+          {
+            "segmentId": "s5",
+            "quote": "Maybe, but let's leave that as an idea.",
+            "role": "acceptance"
+          },
+          {
+            "segmentId": "s6",
+            "quote": "We are not approving dark mode today.",
+            "role": "acceptance"
+          },
+          {
+            "segmentId": "s8",
+            "quote": "Agreed.",
+            "role": "acceptance"
+          },
+          {
+            "segmentId": "s9",
+            "quote": "Please send those wireframes.",
+            "role": "acceptance"
+          },
+          {
+            "segmentId": "s12",
+            "quote": "Yes, agreed.",
+            "role": "acceptance"
+          },
+          {
+            "segmentId": "s13",
+            "quote": "Use that later date instead of the original wireframe deadline.",
+            "role": "acceptance"
+          },
+          {
+            "segmentId": "s14",
+            "quote": "I will write the launch announcement.",
+            "role": "proposal"
+          },
+          {
+            "segmentId": "s15",
+            "quote": "Let's make that a task for me.",
+            "role": "proposal"
+          },
+          {
+            "segmentId": "s16",
+            "quote": "Agreed, Maya.",
+            "role": "acceptance"
+          },
+          {
+            "segmentId": "s17",
+            "quote": "Please write the launch announcement.",
+            "role": "acceptance"
+          },
+          {
+            "segmentId": "s18",
+            "quote": "Wait,",
+            "role": "question"
+          },
+          {
+            "segmentId": "s19",
+            "quote": "is handling the announcement.",
+            "role": "question"
+          },
+          {
+            "segmentId": "s20",
+            "quote": "Cancel my task to write it.",
+            "role": "cancellation"
+          },
+          {
+            "segmentId": "s21",
+            "quote": "Agreed.",
+            "role": "acceptance"
+          },
+          {
+            "segmentId": "s22",
+            "quote": "That announcement task is cancelled.",
+            "role": "cancellation"
+          },
+          {
+            "segmentId": "s24",
+            "quote": "Agreed.",
+            "role": "acceptance"
+          },
+          {
+            "segmentId": "s25",
+            "quote": "The accessibility audit is a confirmed task, but we have not assigned anyone and have not agreed a deadline.",
+            "role": "context"
+          },
+          {
+            "segmentId": "s27",
+            "quote": "We have not decided.",
+            "role": "context"
+          },
+          {
+            "segmentId": "s28",
+            "quote": "That provider question is still open.",
+            "role": "context"
+          }
+        ]
+      }
+    ],
+    "items": [
+      {
+        "id": "task_01",
+        "task": "send wireframes",
+        "status": "confirmed",
+        "source": "commitment",
+        "reason": "Alex proposed and Maya accepted the deadline change.",
+        "owner": null,
+        "ownerSpeakerId": null,
+        "deadlineOriginal": "October 6th, 2026",
+        "deadlineNormalized": "2026-10-06",
+        "dateContextQuote": "I'll send the wireframes by October 6th, 2026.",
+        "uncertainties": [],
+        "evidence": [
+          {
+            "segmentId": "s7",
+            "quote": "I'll send the wireframes by October 6th, 2026.",
+            "role": "proposal"
+          },
+          {
+            "segmentId": "s8",
+            "quote": "Agreed.",
+            "role": "acceptance"
+          },
+          {
+            "segmentId": "s10",
+            "quote": "Actually, I need until October 8, 2026, for the wireframes.",
+            "role": "change"
+          },
+          {
+            "segmentId": "s12",
+            "quote": "Yes, agreed.",
+            "role": "acceptance"
+          },
+          {
+            "segmentId": "s13",
+            "quote": "Use that later date instead of the original wireframe deadline.",
+            "role": "change"
+          }
+        ],
+        "history": [
+          {
+            "field": "deadline",
+            "previousValue": "October 6th, 2026",
+            "replacementValue": "October 8, 2026",
+            "evidence": [
+              {
+                "segmentId": "s10",
+                "quote": "Actually, I need until October 8, 2026, for the wireframes.",
+                "role": "change"
+              },
+              {
+                "segmentId": "s12",
+                "quote": "Yes, agreed.",
+                "role": "acceptance"
+              },
+              {
+                "segmentId": "s13",
+                "quote": "Use that later date instead of the original wireframe deadline.",
+                "role": "change"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "task_02",
+        "task": "write launch announcement",
+        "status": "cancelled",
+        "source": "commitment",
+        "reason": "Maya proposed and Alex agreed to cancel the task.",
+        "owner": null,
+        "ownerSpeakerId": null,
+        "deadlineOriginal": null,
+        "deadlineNormalized": null,
+        "dateContextQuote": null,
+        "uncertainties": [],
+        "evidence": [
+          {
+            "segmentId": "s14",
+            "quote": "I will write the launch announcement.",
+            "role": "proposal"
+          },
+          {
+            "segmentId": "s15",
+            "quote": "Let's make that a task for me.",
+            "role": "proposal"
+          },
+          {
+            "segmentId": "s16",
+            "quote": "Agreed, Maya.",
+            "role": "acceptance"
+          },
+          {
+            "segmentId": "s17",
+            "quote": "Please write the launch announcement.",
+            "role": "acceptance"
+          },
+          {
+            "segmentId": "s18",
+            "quote": "Wait,",
+            "role": "question"
+          },
+          {
+            "segmentId": "s19",
+            "quote": "is handling the announcement.",
+            "role": "question"
+          },
+          {
+            "segmentId": "s20",
+            "quote": "Cancel my task to write it.",
+            "role": "cancellation"
+          },
+          {
+            "segmentId": "s21",
+            "quote": "Agreed.",
+            "role": "acceptance"
+          },
+          {
+            "segmentId": "s22",
+            "quote": "That announcement task is cancelled.",
+            "role": "cancellation"
+          }
+        ],
+        "history": [
+          {
+            "field": "status",
+            "previousValue": "confirmed",
+            "replacementValue": "cancelled",
+            "evidence": [
+              {
+                "segmentId": "s20",
+                "quote": "Cancel my task to write it.",
+                "role": "cancellation"
+              },
+              {
+                "segmentId": "s21",
+                "quote": "Agreed.",
+                "role": "acceptance"
+              },
+              {
+                "segmentId": "s22",
+                "quote": "That announcement task is cancelled.",
+                "role": "cancellation"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "task_03",
+        "task": "run accessibility audit",
+        "status": "confirmed",
+        "source": "commitment",
+        "reason": "Alex proposed and Maya agreed.",
+        "owner": null,
+        "ownerSpeakerId": null,
+        "deadlineOriginal": null,
+        "deadlineNormalized": null,
+        "dateContextQuote": "We also need to run an accessibility audit before release.",
+        "uncertainties": [],
+        "evidence": [
+          {
+            "segmentId": "s23",
+            "quote": "We also need to run an accessibility audit before release.",
+            "role": "proposal"
+          },
+          {
+            "segmentId": "s24",
+            "quote": "Agreed.",
+            "role": "acceptance"
+          }
+        ],
+        "history": []
+      },
+      {
+        "id": "task_04",
+        "task": "decide analytics provider",
+        "status": "unresolved",
+        "source": "commitment",
+        "reason": "Alex proposed and Maya stated they have not decided.",
+        "owner": null,
+        "ownerSpeakerId": null,
+        "deadlineOriginal": null,
+        "deadlineNormalized": null,
+        "dateContextQuote": "Which analytics provider should we use?",
+        "uncertainties": [
+          "no deadline agreed",
+          "no owner assigned"
+        ],
+        "evidence": [
+          {
+            "segmentId": "s26",
+            "quote": "Which analytics provider should we use?",
+            "role": "proposal"
+          },
+          {
+            "segmentId": "s27",
+            "quote": "We have not decided.",
+            "role": "context"
+          },
+          {
+            "segmentId": "s28",
+            "quote": "That provider question is still open.",
+            "role": "context"
+          }
+        ],
+        "history": []
+      }
+    ],
+    "warnings": []
+  },
+  "result": {
+    "outcome": "partial",
+    "message": "",
+    "speakers": [
+      {
+        "speakerId": "SPEAKER_01",
+        "name": null,
+        "confidence": "uncertain",
+        "evidence": []
+      },
+      {
+        "speakerId": "SPEAKER_00",
+        "name": "Maya",
+        "confidence": "supported",
+        "evidence": [
+          {
+            "segmentId": "s2",
+            "quote": "Hi Alex, I'm Maya.",
+            "role": "identity",
+            "speakerId": "SPEAKER_00",
+            "start": 5.28,
+            "end": 6.74,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s3",
+            "quote": "Yes, let's go through it.",
+            "role": "acceptance",
+            "speakerId": "SPEAKER_00",
+            "start": 7.66,
+            "end": 9.56,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s4",
+            "quote": "We could add a dark mode to the dashboard.",
+            "role": "proposal",
+            "speakerId": "SPEAKER_01",
+            "start": 10.5,
+            "end": 12.48,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s5",
+            "quote": "Maybe, but let's leave that as an idea.",
+            "role": "acceptance",
+            "speakerId": "SPEAKER_00",
+            "start": 13.86,
+            "end": 16.1,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s6",
+            "quote": "We are not approving dark mode today.",
+            "role": "acceptance",
+            "speakerId": "SPEAKER_00",
+            "start": 17.04,
+            "end": 18.98,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s8",
+            "quote": "Agreed.",
+            "role": "acceptance",
+            "speakerId": "SPEAKER_00",
+            "start": 25.58,
+            "end": 26.2,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s9",
+            "quote": "Please send those wireframes.",
+            "role": "acceptance",
+            "speakerId": "SPEAKER_00",
+            "start": 27.22,
+            "end": 28.66,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s12",
+            "quote": "Yes, agreed.",
+            "role": "acceptance",
+            "speakerId": "SPEAKER_00",
+            "start": 39.42,
+            "end": 40.62,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s13",
+            "quote": "Use that later date instead of the original wireframe deadline.",
+            "role": "acceptance",
+            "speakerId": "SPEAKER_00",
+            "start": 41.48,
+            "end": 44.78,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s14",
+            "quote": "I will write the launch announcement.",
+            "role": "proposal",
+            "speakerId": "SPEAKER_00",
+            "start": 46.1,
+            "end": 47.6,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s15",
+            "quote": "Let's make that a task for me.",
+            "role": "proposal",
+            "speakerId": "SPEAKER_00",
+            "start": 48.54,
+            "end": 50.3,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s16",
+            "quote": "Agreed, Maya.",
+            "role": "acceptance",
+            "speakerId": "SPEAKER_01",
+            "start": 51.38,
+            "end": 52.5,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s17",
+            "quote": "Please write the launch announcement.",
+            "role": "acceptance",
+            "speakerId": "SPEAKER_01",
+            "start": 53.52,
+            "end": 55.06,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s18",
+            "quote": "Wait,",
+            "role": "question",
+            "speakerId": "SPEAKER_00",
+            "start": 55.94,
+            "end": 56.62,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s19",
+            "quote": "is handling the announcement.",
+            "role": "question",
+            "speakerId": "SPEAKER_00",
+            "start": 57.48,
+            "end": 58.9,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s20",
+            "quote": "Cancel my task to write it.",
+            "role": "cancellation",
+            "speakerId": "SPEAKER_00",
+            "start": 60.04,
+            "end": 61.9,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s21",
+            "quote": "Agreed.",
+            "role": "acceptance",
+            "speakerId": "SPEAKER_01",
+            "start": 62.74,
+            "end": 63.06,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s22",
+            "quote": "That announcement task is cancelled.",
+            "role": "cancellation",
+            "speakerId": "SPEAKER_01",
+            "start": 64,
+            "end": 65.76,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s24",
+            "quote": "Agreed.",
+            "role": "acceptance",
+            "speakerId": "SPEAKER_00",
+            "start": 71.46,
+            "end": 72.04,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s25",
+            "quote": "The accessibility audit is a confirmed task, but we have not assigned anyone and have not agreed a deadline.",
+            "role": "context",
+            "speakerId": "SPEAKER_00",
+            "start": 72.96,
+            "end": 78.66,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s27",
+            "quote": "We have not decided.",
+            "role": "context",
+            "speakerId": "SPEAKER_00",
+            "start": 82.82,
+            "end": 84.44,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s28",
+            "quote": "That provider question is still open.",
+            "role": "context",
+            "speakerId": "SPEAKER_00",
+            "start": 85.34,
+            "end": 87.24,
+            "validation": "transcript_match"
+          }
+        ]
+      }
+    ],
+    "items": [
+      {
+        "id": "task_01",
+        "task": "send wireframes",
+        "status": "confirmed",
+        "source": "commitment",
+        "reason": "Alex proposed and Maya accepted the deadline change.",
+        "owner": null,
+        "ownerSpeakerId": null,
+        "deadlineOriginal": null,
+        "deadlineNormalized": null,
+        "dateContextQuote": "I'll send the wireframes by October 6th, 2026.",
+        "uncertainties": [
+          "deadline_history_conflict",
+          "owner_unassigned",
+          "deadline_not_agreed"
+        ],
+        "evidence": [
+          {
+            "segmentId": "s7",
+            "quote": "I'll send the wireframes by October 6th, 2026.",
+            "role": "proposal",
+            "speakerId": "SPEAKER_01",
+            "start": 20.08,
+            "end": 24.44,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s8",
+            "quote": "Agreed.",
+            "role": "acceptance",
+            "speakerId": "SPEAKER_00",
+            "start": 25.58,
+            "end": 26.2,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s10",
+            "quote": "Actually, I need until October 8, 2026, for the wireframes.",
+            "role": "change",
+            "speakerId": "SPEAKER_01",
+            "start": 30,
+            "end": 35.74,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s12",
+            "quote": "Yes, agreed.",
+            "role": "acceptance",
+            "speakerId": "SPEAKER_00",
+            "start": 39.42,
+            "end": 40.62,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s13",
+            "quote": "Use that later date instead of the original wireframe deadline.",
+            "role": "change",
+            "speakerId": "SPEAKER_00",
+            "start": 41.48,
+            "end": 44.78,
+            "validation": "transcript_match"
+          }
+        ],
+        "history": [
+          {
+            "field": "deadline",
+            "previousValue": "October 6th, 2026",
+            "replacementValue": "October 8, 2026",
+            "evidence": [
+              {
+                "segmentId": "s10",
+                "quote": "Actually, I need until October 8, 2026, for the wireframes.",
+                "role": "change",
+                "speakerId": "SPEAKER_01",
+                "start": 30,
+                "end": 35.74,
+                "validation": "transcript_match"
+              },
+              {
+                "segmentId": "s12",
+                "quote": "Yes, agreed.",
+                "role": "acceptance",
+                "speakerId": "SPEAKER_00",
+                "start": 39.42,
+                "end": 40.62,
+                "validation": "transcript_match"
+              },
+              {
+                "segmentId": "s13",
+                "quote": "Use that later date instead of the original wireframe deadline.",
+                "role": "change",
+                "speakerId": "SPEAKER_00",
+                "start": 41.48,
+                "end": 44.78,
+                "validation": "transcript_match"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "task_02",
+        "task": "write launch announcement",
+        "status": "cancelled",
+        "source": "commitment",
+        "reason": "Maya proposed and Alex agreed to cancel the task.",
+        "owner": null,
+        "ownerSpeakerId": null,
+        "deadlineOriginal": null,
+        "deadlineNormalized": null,
+        "dateContextQuote": null,
+        "uncertainties": [],
+        "evidence": [
+          {
+            "segmentId": "s14",
+            "quote": "I will write the launch announcement.",
+            "role": "proposal",
+            "speakerId": "SPEAKER_00",
+            "start": 46.1,
+            "end": 47.6,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s15",
+            "quote": "Let's make that a task for me.",
+            "role": "proposal",
+            "speakerId": "SPEAKER_00",
+            "start": 48.54,
+            "end": 50.3,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s16",
+            "quote": "Agreed, Maya.",
+            "role": "acceptance",
+            "speakerId": "SPEAKER_01",
+            "start": 51.38,
+            "end": 52.5,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s17",
+            "quote": "Please write the launch announcement.",
+            "role": "acceptance",
+            "speakerId": "SPEAKER_01",
+            "start": 53.52,
+            "end": 55.06,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s18",
+            "quote": "Wait,",
+            "role": "question",
+            "speakerId": "SPEAKER_00",
+            "start": 55.94,
+            "end": 56.62,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s19",
+            "quote": "is handling the announcement.",
+            "role": "question",
+            "speakerId": "SPEAKER_00",
+            "start": 57.48,
+            "end": 58.9,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s20",
+            "quote": "Cancel my task to write it.",
+            "role": "cancellation",
+            "speakerId": "SPEAKER_00",
+            "start": 60.04,
+            "end": 61.9,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s21",
+            "quote": "Agreed.",
+            "role": "acceptance",
+            "speakerId": "SPEAKER_01",
+            "start": 62.74,
+            "end": 63.06,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s22",
+            "quote": "That announcement task is cancelled.",
+            "role": "cancellation",
+            "speakerId": "SPEAKER_01",
+            "start": 64,
+            "end": 65.76,
+            "validation": "transcript_match"
+          }
+        ],
+        "history": [
+          {
+            "field": "status",
+            "previousValue": "confirmed",
+            "replacementValue": "cancelled",
+            "evidence": [
+              {
+                "segmentId": "s20",
+                "quote": "Cancel my task to write it.",
+                "role": "cancellation",
+                "speakerId": "SPEAKER_00",
+                "start": 60.04,
+                "end": 61.9,
+                "validation": "transcript_match"
+              },
+              {
+                "segmentId": "s21",
+                "quote": "Agreed.",
+                "role": "acceptance",
+                "speakerId": "SPEAKER_01",
+                "start": 62.74,
+                "end": 63.06,
+                "validation": "transcript_match"
+              },
+              {
+                "segmentId": "s22",
+                "quote": "That announcement task is cancelled.",
+                "role": "cancellation",
+                "speakerId": "SPEAKER_01",
+                "start": 64,
+                "end": 65.76,
+                "validation": "transcript_match"
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "id": "task_03",
+        "task": "run accessibility audit",
+        "status": "confirmed",
+        "source": "commitment",
+        "reason": "Alex proposed and Maya agreed.",
+        "owner": null,
+        "ownerSpeakerId": null,
+        "deadlineOriginal": null,
+        "deadlineNormalized": null,
+        "dateContextQuote": "We also need to run an accessibility audit before release.",
+        "uncertainties": [
+          "owner_unassigned",
+          "deadline_not_agreed"
+        ],
+        "evidence": [
+          {
+            "segmentId": "s23",
+            "quote": "We also need to run an accessibility audit before release.",
+            "role": "proposal",
+            "speakerId": "SPEAKER_01",
+            "start": 67.04,
+            "end": 70.22,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s24",
+            "quote": "Agreed.",
+            "role": "acceptance",
+            "speakerId": "SPEAKER_00",
+            "start": 71.46,
+            "end": 72.04,
+            "validation": "transcript_match"
+          }
+        ],
+        "history": []
+      },
+      {
+        "id": "task_04",
+        "task": "decide analytics provider",
+        "status": "unresolved",
+        "source": "commitment",
+        "reason": "Alex proposed and Maya stated they have not decided.",
+        "owner": null,
+        "ownerSpeakerId": null,
+        "deadlineOriginal": null,
+        "deadlineNormalized": null,
+        "dateContextQuote": "Which analytics provider should we use?",
+        "uncertainties": [
+          "no deadline agreed",
+          "no owner assigned"
+        ],
+        "evidence": [
+          {
+            "segmentId": "s26",
+            "quote": "Which analytics provider should we use?",
+            "role": "proposal",
+            "speakerId": "SPEAKER_01",
+            "start": 79.94,
+            "end": 82.1,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s27",
+            "quote": "We have not decided.",
+            "role": "context",
+            "speakerId": "SPEAKER_00",
+            "start": 82.82,
+            "end": 84.44,
+            "validation": "transcript_match"
+          },
+          {
+            "segmentId": "s28",
+            "quote": "That provider question is still open.",
+            "role": "context",
+            "speakerId": "SPEAKER_00",
+            "start": 85.34,
+            "end": 87.24,
+            "validation": "transcript_match"
+          }
+        ],
+        "history": []
+      }
+    ],
+    "warnings": [
+      "A speaker name could not be verified from a self-introduction.",
+      "Final deadline conflicts with the change history for: send wireframes"
+    ],
+    "clarifications": [
+      {
+        "itemId": "task_01",
+        "text": "Who will own: send wireframes?",
+        "source": "system_clarification"
+      },
+      {
+        "itemId": "task_01",
+        "text": "What is the agreed deadline for: send wireframes?",
+        "source": "system_clarification"
+      },
+      {
+        "itemId": "task_03",
+        "text": "Who will own: run accessibility audit?",
+        "source": "system_clarification"
+      },
+      {
+        "itemId": "task_03",
+        "text": "What is the agreed deadline for: run accessibility audit?",
+        "source": "system_clarification"
+      }
+    ]
+  },
+  "trace": {
+    "calls": [
+      {
+        "stage": "extraction",
+        "provider": "local",
+        "model": "qwen2.5:7b",
+        "attempt": 1,
+        "usage": {
+          "input_tokens": 2766,
+          "output_tokens": 2216,
+          "loadDurationNs": 12200081500,
+          "promptEvalDurationNs": 11155412000,
+          "evalDurationNs": 126858874000
+        },
+        "status": 200,
+        "ms": 150264
+      }
+    ]
+  }
+}

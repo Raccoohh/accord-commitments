@@ -2,22 +2,21 @@
 
 An audio-first local browser prototype that extracts final accepted project tasks, owners, deadlines and open questions, with timestamped quotes and original-audio playback.
 
-**Current status: implemented and locally tested, not yet validated for submission.** Live ASR attempts were rejected with `credit_balance_exhausted`. The user requested no further paid API calls. Real A–C/E interpretation, listening review and public deployment remain incomplete. There are no hardcoded demo answers in the app. Offline UI mocks exist only in a clearly labelled test file.
+**Current status: local inference implemented; real audio validation in progress.** The active pipeline uses faster-whisper, pyannote Community-1 and Ollama Qwen2.5 7B on this computer. No paid API calls or automatic cloud fallback are used. Historical OpenAI attempts failed due to exhausted credit and are preserved in reports. There are no hardcoded demo answers in the app. Offline UI mocks exist only in a clearly labelled test file.
 
 Submission deadline: **5 October 2026**. [Delivery notes](docs/DELIVERY-NOTES.md) · [Quality report](docs/QUALITY-REPORT.md) · [Requirement checklist](docs/REQUIREMENTS.md).
 
 ## Run locally
 
-Requires Node.js 24 (developed on **24.19.0**). No runtime npm packages, package installation or build step is required. `package-lock.json` records the empty dependency graph. A modern browser with Web Audio is required; Edge was tested.
+Requires Node.js 24 (developed on **24.19.0**), Python 3.12, the local speech dependencies and portable Ollama. There are no runtime npm packages or frontend build steps. A modern browser with Web Audio is required; Edge was tested. Follow [local model setup](docs/LOCAL-SETUP.md) once before starting.
 
 From the project folder:
 
 ```powershell
-node --version
-node --env-file-if-exists=.env.local src/server.mjs
+powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start-local.ps1
 ```
 
-Open [http://127.0.0.1:3000](http://127.0.0.1:3000). Keep the terminal running. Stop with Ctrl+C. If `node` is not on your PATH, use the Node executable supplied by your development environment or install Node 24 from [nodejs.org](https://nodejs.org/).
+Open [http://127.0.0.1:3000](http://127.0.0.1:3000). The launcher starts hidden local processes. If `node` is not on your PATH, use the Node executable supplied by your development environment or install Node 24 from [nodejs.org](https://nodejs.org/).
 
 The current workspace already has a securely configured `.env.local`. Do not overwrite it. For a fresh checkout only:
 
@@ -25,14 +24,14 @@ The current workspace already has a securely configured `.env.local`. Do not ove
 Copy-Item .env.example .env.local
 ```
 
-Add your own project API key to `OPENAI_API_KEY` using a local editor or the secure OpenAI key setup flow. Never paste it into chat, commit it, or put it in browser JavaScript. API credits and model access are separate from ChatGPT/Codex subscription limits. [API billing](https://platform.openai.com/settings/organization/billing) and [limits](https://platform.openai.com/settings/organization/limits) must permit the selected models.
+Accept the [pyannote Community-1 conditions](https://huggingface.co/pyannote/speaker-diarization-community-1), then add a read-scoped Hugging Face token to `HF_TOKEN` using a local editor. Never paste it into chat, commit it, or put it in browser JavaScript. The token permits model downloads; audio is processed locally. No OpenAI key or API balance is required by the active application.
 
 | Variable | Required | Meaning |
 | --- | --- | --- |
-| `OPENAI_API_KEY` | For real speech analysis | Server-only OpenAI project API key |
+| `HF_TOKEN` | Initial gated model download | Server-only Hugging Face read token |
 | `PORT` | No; default 3000 | Local HTTP port |
 
-Models are intentionally fixed in `src/provider.mjs`: `gpt-4o-transcribe-diarize` and `gpt-4.1-mini-2025-04-14`. Changing a model requires rechecking capabilities, pricing and quality. The server binds to loopback and is not configured as a public service.
+Models are intentionally fixed in `src/local-provider.mjs`: `Systran/faster-whisper-small.en`, `pyannote/speaker-diarization-community-1`, and `qwen2.5:7b`. Changing a model requires rechecking quality. The app and Ollama bind to loopback and are not configured as public services.
 
 ## Use
 
@@ -41,7 +40,7 @@ Models are intentionally fixed in `src/provider.mjs`: `gpt-4o-transcribe-diarize
 3. Review confirmed work, uncertainty, open questions and inactive items. Click **Play evidence** to hear the original file at the cited segment; playback stops after a small context margin.
 4. Inspect the full transcript and processing/cost details. Use **Upload another recording** to clear the completed result and start again.
 
-Silence can be rejected locally without API access. Actual speech requires API credit. A valid key alone does not prove billing or model availability. The app never falls back to canned results.
+Silence is rejected before inference. Actual speech requires the downloaded local models and sufficient memory. The app never falls back to canned results.
 
 ## Tests and fixtures
 
@@ -64,7 +63,7 @@ node tests/browser-offline.mjs
 
 This runs real upload/error/silence checks plus explicitly mocked UI contract checks. Screenshots prefixed `TEST-ONLY` are not real AI results.
 
-**Paid live tests — currently blocked and not authorized to resume until the user says so:**
+**Real local audio tests — no metered API calls:**
 
 ```powershell
 $env:PLAYWRIGHT_MODULE = 'C:\path\to\node_modules\playwright'
@@ -72,7 +71,7 @@ $env:EVAL_OUTPUT = 'reports/live'
 node scripts/browser-check.mjs A B C D E
 ```
 
-The server reads the key; the browser harness does not. Each speech file normally makes one ASR and one extraction call, with no automatic retries. A standalone audio-only runner is also available:
+The server launches local speech inference, then calls Ollama on loopback. There are no automatic retries. A standalone audio-only runner is also available:
 
 ```powershell
 node --env-file=.env.local scripts/run-audio.mjs fixtures/audio/A.wav reports/A-direct.json
@@ -113,6 +112,6 @@ logs/         Ignored operational metrics; no audio or transcript
 
 Segment timestamps are not word alignment. The model can mishear speech, confuse speakers or misinterpret agreement even when quotes structurally match. Overlap, more than two speakers, noise, accents, non-English speech and more than three minutes are outside this MVP's validated scope. Even in-scope speech is not yet validated because of the credit blocker. Relative deadlines without calendar context stay unresolved as dates. Exact digital silence detection does not cover every form of unintelligible audio.
 
-Original audio remains in the browser; uploaded converted audio is held in server memory for processing and sent to OpenAI. Results stay in memory until cleared or for 30 minutes after completion. Local logs persist model IDs, usage, timings, retries and cost assumptions, without audio or transcript. Test scripts intentionally save fictional evaluation outputs. See [architecture/privacy](docs/ARCHITECTURE.md) and [OpenAI data controls](https://developers.openai.com/api/docs/guides/your-data).
+Original audio remains in the browser; converted audio is held in server/Python memory and processed on this computer. The transcript is sent only to local Ollama. Results stay in memory until cleared or for 30 minutes after completion. Local logs persist model IDs, usage, timings, retries and cost assumptions, without audio or transcript. Test scripts intentionally save fictional evaluation outputs. See [architecture/privacy](docs/ARCHITECTURE.md).
 
 No public URL, GitHub push or final video exists. No material was sent to an employer. [Recording script](docs/VIDEO-SCRIPT.md) is a script, not a completed video.

@@ -2,9 +2,9 @@ import {readFile,readdir,writeFile} from 'node:fs/promises';
 import {execFileSync} from 'node:child_process';
 import {resolve,dirname} from 'node:path';
 const files=execFileSync('git',['-c','safe.directory='+process.cwd().replaceAll('\\','/'),'ls-files','-z'],{encoding:'utf8'}).split('\0').filter(Boolean);
-const secret=process.env.OPENAI_API_KEY;
-if(!secret)throw Error('Cannot perform exact secret scan without configured environment.');
-const leaked=[];for(const file of files){const data=await readFile(file);if(data.includes(Buffer.from(secret)))leaked.push(file);}
+const secrets=[process.env.OPENAI_API_KEY,process.env.HF_TOKEN].filter(Boolean);
+if(!secrets.length)throw Error('Cannot perform exact secret scan without configured environment.');
+const leaked=[];for(const file of files){const data=await readFile(file);if(secrets.some(secret=>data.includes(Buffer.from(secret))))leaked.push(file);}
 if(files.includes('.env.local')||leaked.length)throw Error('Secret verification failed; file paths only: '+leaked.join(', '));
 const broken=[];
 for(const file of files.filter(f=>f.endsWith('.md'))){

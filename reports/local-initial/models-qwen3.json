@@ -1,0 +1,32 @@
+{
+  "createdAt": "2026-10-02T21:47:17.206Z",
+  "asr": {
+    "model": "Systran/faster-whisper-small.en",
+    "revision": "d1d751a5f8271d482d14ca55d9e2deeebbae577f"
+  },
+  "diarization": {
+    "model": "pyannote/speaker-diarization-community-1",
+    "revision": "3533c8cf8e369892e6b79ff1bf80f7b0286a54ee"
+  },
+  "extraction": {
+    "model": "qwen3:4b",
+    "digest": "359d7dd4bcdab3d86b87d73ac27966f4dbb9f5efdfcc75d34a8764a09474fae7",
+    "sizeBytes": 2497293931,
+    "details": {
+      "parent_model": "",
+      "format": "gguf",
+      "family": "qwen3",
+      "families": [
+        "qwen3"
+      ],
+      "parameter_size": "4.0B",
+      "quantization_level": "Q4_K_M",
+      "context_length": 262144,
+      "embedding_length": 2560
+    }
+  },
+  "speechDevice": "cpu",
+  "asrComputeType": "int8",
+  "apiChargesUsd": 0,
+  "localComputeCostUsd": null
+}

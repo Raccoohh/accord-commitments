@@ -1,6 +1,7 @@
 // Rates are documented in docs/COSTS.md. Estimates are never labelled billed totals.
 export const RATES={checkedOn:'2026-10-02',asrPerMinute:0.006,asrMinuteRateStatus:'assumption: estimate for related gpt-4o-transcribe; diarize page publishes token rates only',asrInputPerMillion:2.50,asrOutputPerMillion:10,inputPerMillion:0.40,cachedInputPerMillion:0.10,outputPerMillion:1.60};
 export function calculateCost(trace){
+  if(trace.provider==='local')return {currency:'USD',totalVariableOperationUsd:0,costPerAudioMinute:0,apiChargesUsd:0,basis:'Local inference: no metered API calls. Electricity, hardware and local compute costs are not measured and are excluded.',unknownChargesPossible:false,localComputeCostUsd:null,hosting:'Local Windows computer',ttsApiCost:0,paidIntermediaries:0};
   let measuredTokenCost=0,estimatedAsrCost=0,measuredAsrTokenCost=0,unknown=false;
   for(const call of trace.calls){
     if(call.stage==='asr'){

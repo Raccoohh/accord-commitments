@@ -1,0 +1,5 @@
+{
+  "reviewMethod": "Assistant review of saved actual outputs versus independent gold. No acoustic listening. Initial A and B incorrectly returned unusable with no tasks.",
+  "A": {"matches": {}},
+  "B": {"matches": {}}
+}

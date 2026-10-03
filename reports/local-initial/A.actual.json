@@ -1,0 +1,344 @@
+{
+  "caseId": "A",
+  "error": null,
+  "job": {
+    "id": "4fae7ef1-3e75-4dee-8736-23a566b0eb49",
+    "status": "done",
+    "createdAt": 1790977638774,
+    "metrics": {
+      "id": "4fae7ef1-3e75-4dee-8736-23a566b0eb49",
+      "startedAt": "2026-10-02T21:47:18.774Z",
+      "provider": "local",
+      "models": {
+        "asr": "Systran/faster-whisper-small.en",
+        "diarization": "pyannote/speaker-diarization-community-1",
+        "extraction": "qwen3:4b"
+      },
+      "audioSeconds": 88.46,
+      "uploadMs": 5,
+      "stages": {
+        "validationMs": 13,
+        "transcriptionMs": 55467,
+        "extractionMs": 186923,
+        "evidenceValidationMs": 3
+      },
+      "calls": [
+        {
+          "stage": "asr_and_diarization",
+          "provider": "local",
+          "model": "Systran/faster-whisper-small.en",
+          "diarizationModel": "pyannote/speaker-diarization-community-1",
+          "attempt": 1,
+          "usage": null,
+          "status": 200,
+          "localMetadata": {
+            "timings": {
+              "asrLoadMs": 1305,
+              "asrMs": 9220,
+              "diarizationLoadMs": 1727,
+              "diarizationMs": 36791
+            },
+            "models": [
+              "Systran/faster-whisper-small.en",
+              "pyannote/speaker-diarization-community-1"
+            ],
+            "device": "cpu",
+            "computeType": "int8 ASR",
+            "language": "en",
+            "audioSeconds": 88.46,
+            "timingPrecision": "ASR word estimates grouped by diarized speaker; not manually aligned"
+          },
+          "ms": 55467
+        },
+        {
+          "stage": "extraction",
+          "provider": "local",
+          "model": "qwen3:4b",
+          "attempt": 1,
+          "usage": {
+            "input_tokens": 1949,
+            "output_tokens": 1601,
+            "loadDurationNs": 5351188600,
+            "promptEvalDurationNs": 25032145000,
+            "evalDurationNs": 156497115000
+          },
+          "status": 200,
+          "ms": 186923
+        }
+      ],
+      "retries": 0,
+      "outcome": "unusable",
+      "processingMs": 242406,
+      "totalServerMs": 242411,
+      "cost": {
+        "currency": "USD",
+        "totalVariableOperationUsd": 0,
+        "costPerAudioMinute": 0,
+        "apiChargesUsd": 0,
+        "basis": "Local inference: no metered API calls. Electricity, hardware and local compute costs are not measured and are excluded.",
+        "unknownChargesPossible": false,
+        "localComputeCostUsd": null,
+        "hosting": "Local Windows computer",
+        "ttsApiCost": 0,
+        "paidIntermediaries": 0
+      }
+    },
+    "result": {
+      "outcome": "unusable",
+      "message": "Unintelligible or contradictory agreement is unresolved, not confident acceptance. Return partial or unusable as appropriate. Do not invent speech or tasks from silence, repetitions, noise or unrelated text.",
+      "speakers": [
+        {
+          "speakerId": "SPEAKER_00",
+          "name": "Maya",
+          "confidence": "uncertain",
+          "evidence": [
+            {
+              "segmentId": "s2",
+              "quote": "Hi Alex, I'm Maya.",
+              "role": "identity",
+              "speakerId": "SPEAKER_00",
+              "start": 5.28,
+              "end": 6.74,
+              "validation": "transcript_match"
+            }
+          ]
+        },
+        {
+          "speakerId": "SPEAKER_01",
+          "name": "Alex",
+          "confidence": "uncertain",
+          "evidence": [
+            {
+              "segmentId": "s0",
+              "quote": "Hi, I'm Alex.",
+              "role": "identity",
+              "speakerId": "SPEAKER_01",
+              "start": 0,
+              "end": 1.34,
+              "validation": "transcript_match"
+            }
+          ]
+        }
+      ],
+      "items": [],
+      "warnings": [
+        "Unintelligible or contradictory agreement is unresolved, not confident acceptance. Return partial or unusable as appropriate.",
+        "Evidence withheld for: Add dark mode to the dashboard",
+        "Evidence withheld for: Send wireframes by October 6, 2026",
+        "Evidence withheld for: Run accessibility audit before release"
+      ],
+      "clarifications": [],
+      "segments": [
+        {
+          "id": "s0",
+          "speakerId": "SPEAKER_01",
+          "text": "Hi, I'm Alex.",
+          "start": 0,
+          "end": 1.34
+        },
+        {
+          "id": "s1",
+          "speakerId": "SPEAKER_01",
+          "text": "Let's settle the launch work today.",
+          "start": 2.28,
+          "end": 4.2
+        },
+        {
+          "id": "s2",
+          "speakerId": "SPEAKER_00",
+          "text": "Hi Alex, I'm Maya.",
+          "start": 5.28,
+          "end": 6.74
+        },
+        {
+          "id": "s3",
+          "speakerId": "SPEAKER_00",
+          "text": "Yes, let's go through it.",
+          "start": 7.66,
+          "end": 9.56
+        },
+        {
+          "id": "s4",
+          "speakerId": "SPEAKER_01",
+          "text": "We could add a dark mode to the dashboard.",
+          "start": 10.5,
+          "end": 12.48
+        },
+        {
+          "id": "s5",
+          "speakerId": "SPEAKER_00",
+          "text": "Maybe, but let's leave that as an idea.",
+          "start": 13.86,
+          "end": 16.1
+        },
+        {
+          "id": "s6",
+          "speakerId": "SPEAKER_00",
+          "text": "We are not approving dark mode today.",
+          "start": 17.04,
+          "end": 18.98
+        },
+        {
+          "id": "s7",
+          "speakerId": "SPEAKER_01",
+          "text": "I'll send the wireframes by October 6th, 2026.",
+          "start": 20.08,
+          "end": 24.44
+        },
+        {
+          "id": "s8",
+          "speakerId": "SPEAKER_00",
+          "text": "Agreed.",
+          "start": 25.58,
+          "end": 26.2
+        },
+        {
+          "id": "s9",
+          "speakerId": "SPEAKER_00",
+          "text": "Please send those wireframes.",
+          "start": 27.22,
+          "end": 28.66
+        },
+        {
+          "id": "s10",
+          "speakerId": "SPEAKER_01",
+          "text": "Actually, I need until October 8, 2026, for the wireframes.",
+          "start": 30,
+          "end": 35.74
+        },
+        {
+          "id": "s11",
+          "speakerId": "SPEAKER_01",
+          "text": "Can we change the deadline?",
+          "start": 36.82,
+          "end": 38.08
+        },
+        {
+          "id": "s12",
+          "speakerId": "SPEAKER_00",
+          "text": "Yes, agreed.",
+          "start": 39.42,
+          "end": 40.62
+        },
+        {
+          "id": "s13",
+          "speakerId": "SPEAKER_00",
+          "text": "Use that later date instead of the original wireframe deadline.",
+          "start": 41.48,
+          "end": 44.78
+        },
+        {
+          "id": "s14",
+          "speakerId": "SPEAKER_00",
+          "text": "I will write the launch announcement.",
+          "start": 46.1,
+          "end": 47.6
+        },
+        {
+          "id": "s15",
+          "speakerId": "SPEAKER_00",
+          "text": "Let's make that a task for me.",
+          "start": 48.54,
+          "end": 50.3
+        },
+        {
+          "id": "s16",
+          "speakerId": "SPEAKER_01",
+          "text": "Agreed, Maya.",
+          "start": 51.38,
+          "end": 52.5
+        },
+        {
+          "id": "s17",
+          "speakerId": "SPEAKER_01",
+          "text": "Please write the launch announcement.",
+          "start": 53.52,
+          "end": 55.06
+        },
+        {
+          "id": "s18",
+          "speakerId": "SPEAKER_00",
+          "text": "Wait,",
+          "start": 55.94,
+          "end": 56.62
+        },
+        {
+          "id": "s19",
+          "speakerId": "SPEAKER_00",
+          "text": "is handling the announcement.",
+          "start": 57.48,
+          "end": 58.9
+        },
+        {
+          "id": "s20",
+          "speakerId": "SPEAKER_00",
+          "text": "Cancel my task to write it.",
+          "start": 60.04,
+          "end": 61.9
+        },
+        {
+          "id": "s21",
+          "speakerId": "SPEAKER_01",
+          "text": "Agreed.",
+          "start": 62.74,
+          "end": 63.06
+        },
+        {
+          "id": "s22",
+          "speakerId": "SPEAKER_01",
+          "text": "That announcement task is cancelled.",
+          "start": 64,
+          "end": 65.76
+        },
+        {
+          "id": "s23",
+          "speakerId": "SPEAKER_01",
+          "text": "We also need to run an accessibility audit before release.",
+          "start": 67.04,
+          "end": 70.22
+        },
+        {
+          "id": "s24",
+          "speakerId": "SPEAKER_00",
+          "text": "Agreed.",
+          "start": 71.46,
+          "end": 72.04
+        },
+        {
+          "id": "s25",
+          "speakerId": "SPEAKER_00",
+          "text": "The accessibility audit is a confirmed task, but we have not assigned anyone and have not agreed a deadline.",
+          "start": 72.96,
+          "end": 78.66
+        },
+        {
+          "id": "s26",
+          "speakerId": "SPEAKER_01",
+          "text": "Which analytics provider should we use?",
+          "start": 79.94,
+          "end": 82.1
+        },
+        {
+          "id": "s27",
+          "speakerId": "SPEAKER_00",
+          "text": "We have not decided.",
+          "start": 82.82,
+          "end": 84.44
+        },
+        {
+          "id": "s28",
+          "speakerId": "SPEAKER_00",
+          "text": "That provider question is still open.",
+          "start": 85.34,
+          "end": 87.24
+        }
+      ],
+      "timingPrecision": "segment"
+    },
+    "completedAt": 1790977881181
+  },
+  "clientMetrics": {
+    "preparationMs": 170,
+    "uploadToUsefulResultMs": 242870
+  }
+}

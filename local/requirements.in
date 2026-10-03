@@ -1,0 +1,7 @@
+# Tested CPU speech stack. Ollama uses the NVIDIA GPU separately.
+torch==2.8.0
+torchaudio==2.8.0
+torchcodec==0.7.0
+pyannote.audio==4.0.7
+faster-whisper==1.2.1
+soundfile==0.13.1

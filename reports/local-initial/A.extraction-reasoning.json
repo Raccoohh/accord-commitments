@@ -1,0 +1,38 @@
+{
+  "kind": "extraction-only replay",
+  "source": "reports/local-initial/A.actual.json",
+  "raw": {
+    "outcome": "complete",
+    "message": "No extra text. Just the JSON.",
+    "speakers": [],
+    "items": [],
+    "warnings": []
+  },
+  "result": {
+    "outcome": "complete",
+    "message": "No extra text. Just the JSON.",
+    "speakers": [],
+    "items": [],
+    "warnings": [],
+    "clarifications": []
+  },
+  "trace": {
+    "calls": [
+      {
+        "stage": "extraction",
+        "provider": "local",
+        "model": "qwen3:4b",
+        "attempt": 1,
+        "usage": {
+          "input_tokens": 2178,
+          "output_tokens": 7941,
+          "loadDurationNs": 3735030000,
+          "promptEvalDurationNs": 897231000,
+          "evalDurationNs": 271478376000
+        },
+        "status": 200,
+        "ms": 276155
+      }
+    ]
+  }
+}

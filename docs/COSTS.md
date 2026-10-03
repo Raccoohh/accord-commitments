@@ -1,5 +1,13 @@
 # Cost methodology
 
+## Active local pipeline (2026-10-03)
+
+The application now uses faster-whisper, pyannote Community-1 and Ollama Qwen2.5 7B on the user's computer. Each real local run has **$0 metered API charges**. There is no paid fallback. Local hardware, electricity and compute cost are **unmeasured**, not zero; metrics explicitly retain `localComputeCostUsd: null`. API cost per audio minute is zero, but total economic cost per minute is not measured.
+
+Speech and extraction durations, model identifiers, token counts, audio duration and retry count are recorded per operation. Initial downloads/loading are distinguished from inference where the runtime reports them. No automatic retry is configured. Initial model downloads require several GB; Python dependencies and portable binaries also use disk space. Synthetic audio uses existing Windows voices with no metered TTS API.
+
+## Historical cloud plan (inactive)
+
 Checked 2026-10-02 against official OpenAI documentation. These are USD list rates, not evidence of this account's invoice.
 
 | Component | Model | Rate / basis | Source |

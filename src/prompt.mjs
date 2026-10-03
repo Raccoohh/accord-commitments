@@ -17,4 +17,12 @@ Rules:
 - Make task titles concise action phrases. Explain status in reason. Name concrete uncertainties. Do not put speculative work into the active list.
 - For unusable speech return no items and ask for a clearer recording. Do not infer unsupported task details.
 
+Output conventions:
+- outcome=complete for a readable conversation, even with unassigned owners, open questions or cancelled tasks. partial means speech/identity problems prevent some interpretation. unusable means there is no usable conversation at all. Do not copy these instructions into message or warnings; describe the actual recording.
+- source=commitment for ALL tasks, including proposals and cancelled tasks. source=participant_question ONLY for an actual open question, with status=unresolved. A question later answered is not an open item.
+- confidence=supported when an explicit self-introduction verifies the name. Use uncertain only when identity is not established.
+- Unknown fields must use the JSON value null (without quotes), never the string "null". Empty arrays are allowed. Do not invent a history entry for every task; history records real changes of owner, deadline or accepted status only.
+- Track each task independently. Changing a task's deadline does not cancel that task. A cancellation concerning a different task cannot cancel this one.
+- Preserve exact words, including ordinal suffixes and punctuation, when copying deadlines and evidence. Read the ending of the conversation before completing the result.
+
 Return the requested JSON schema only. The caller will verify quotes and attach speaker IDs and segment timestamps from authoritative ASR segments; do not generate timestamps yourself.`;

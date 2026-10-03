@@ -1,0 +1,257 @@
+{
+  "result": {
+    "segments": [
+      {
+        "id": "s0",
+        "speaker": "SPEAKER_01",
+        "start": 0,
+        "end": 1.32,
+        "text": "Hi, I'm Alex."
+      },
+      {
+        "id": "s1",
+        "speaker": "SPEAKER_01",
+        "start": 2.28,
+        "end": 4.14,
+        "text": "Let's settle the launch work today."
+      },
+      {
+        "id": "s2",
+        "speaker": "SPEAKER_00",
+        "start": 5.28,
+        "end": 6.74,
+        "text": "Hi Alex, I'm Maya."
+      },
+      {
+        "id": "s3",
+        "speaker": "SPEAKER_00",
+        "start": 7.66,
+        "end": 9.56,
+        "text": "Yes, let's go through it."
+      },
+      {
+        "id": "s4",
+        "speaker": "SPEAKER_01",
+        "start": 10.5,
+        "end": 12.48,
+        "text": "We could add a dark mode to the dashboard."
+      },
+      {
+        "id": "s5",
+        "speaker": "SPEAKER_00",
+        "start": 13.88,
+        "end": 16.1,
+        "text": "Maybe, but let's leave that as an idea."
+      },
+      {
+        "id": "s6",
+        "speaker": "SPEAKER_00",
+        "start": 17.02,
+        "end": 19,
+        "text": "We are not approving dark mode today."
+      },
+      {
+        "id": "s7",
+        "speaker": "SPEAKER_01",
+        "start": 20.08,
+        "end": 24.42,
+        "text": "I'll send the wireframes by October 6th, 2026."
+      },
+      {
+        "id": "s8",
+        "speaker": "SPEAKER_00",
+        "start": 25.6,
+        "end": 26.2,
+        "text": "Agreed."
+      },
+      {
+        "id": "s9",
+        "speaker": "SPEAKER_00",
+        "start": 27.22,
+        "end": 28.66,
+        "text": "Please send those wireframes."
+      },
+      {
+        "id": "s10",
+        "speaker": "SPEAKER_01",
+        "start": 30,
+        "end": 35.74,
+        "text": "Actually, I need until October 8th, 2026, for the wireframes."
+      },
+      {
+        "id": "s11",
+        "speaker": "SPEAKER_01",
+        "start": 36.82,
+        "end": 38.08,
+        "text": "Can we change the deadline?"
+      },
+      {
+        "id": "s12",
+        "speaker": "SPEAKER_00",
+        "start": 39.44,
+        "end": 40.62,
+        "text": "Yes, agreed."
+      },
+      {
+        "id": "s13",
+        "speaker": "SPEAKER_00",
+        "start": 41.48,
+        "end": 44.76,
+        "text": "Use that later date instead of the original wireframe deadline."
+      },
+      {
+        "id": "s14",
+        "speaker": "SPEAKER_00",
+        "start": 46.1,
+        "end": 47.6,
+        "text": "I will write the launch announcement."
+      },
+      {
+        "id": "s15",
+        "speaker": "SPEAKER_00",
+        "start": 48.56,
+        "end": 50.32,
+        "text": "Let's make that a task for me."
+      },
+      {
+        "id": "s16",
+        "speaker": "SPEAKER_01",
+        "start": 51.36,
+        "end": 52.5,
+        "text": "Agreed, Maya."
+      },
+      {
+        "id": "s17",
+        "speaker": "SPEAKER_01",
+        "start": 53.52,
+        "end": 55.06,
+        "text": "Please write the launch announcement."
+      },
+      {
+        "id": "s18",
+        "speaker": "SPEAKER_00",
+        "start": 55.94,
+        "end": 56.62,
+        "text": "Wait,"
+      },
+      {
+        "id": "s19",
+        "speaker": "SPEAKER_00",
+        "start": 57.48,
+        "end": 58.9,
+        "text": "is handling the announcement."
+      },
+      {
+        "id": "s20",
+        "speaker": "SPEAKER_00",
+        "start": 60.06,
+        "end": 61.96,
+        "text": "Cancel my task to write it."
+      },
+      {
+        "id": "s21",
+        "speaker": "SPEAKER_01",
+        "start": 62.72,
+        "end": 63.06,
+        "text": "Agreed."
+      },
+      {
+        "id": "s22",
+        "speaker": "SPEAKER_01",
+        "start": 64.02,
+        "end": 65.76,
+        "text": "That announcement task is cancelled."
+      },
+      {
+        "id": "s23",
+        "speaker": "SPEAKER_01",
+        "start": 67.04,
+        "end": 70.22,
+        "text": "We also need to run an accessibility audit before release."
+      },
+      {
+        "id": "s24",
+        "speaker": "SPEAKER_00",
+        "start": 71.36,
+        "end": 72.04,
+        "text": "Agreed."
+      },
+      {
+        "id": "s25",
+        "speaker": "SPEAKER_00",
+        "start": 72.98,
+        "end": 78.66,
+        "text": "The accessibility audit is a confirmed task, but we have not assigned anyone and have not agreed a deadline."
+      },
+      {
+        "id": "s26",
+        "speaker": "SPEAKER_01",
+        "start": 79.94,
+        "end": 82.1,
+        "text": "Which analytics provider should we use?"
+      },
+      {
+        "id": "s27",
+        "speaker": "SPEAKER_00",
+        "start": 82.82,
+        "end": 84.42,
+        "text": "We have not decided."
+      },
+      {
+        "id": "s28",
+        "speaker": "SPEAKER_00",
+        "start": 85.36,
+        "end": 87.24,
+        "text": "That provider question is still open."
+      }
+    ],
+    "localMetadata": {
+      "timings": {
+        "asrLoadMs": 43097,
+        "asrMs": 9007,
+        "diarizationLoadMs": 8680,
+        "diarizationMs": 37459
+      },
+      "models": [
+        "Systran/faster-whisper-small.en",
+        "pyannote/speaker-diarization-community-1"
+      ],
+      "device": "cpu",
+      "computeType": "int8 ASR",
+      "language": "en",
+      "audioSeconds": 88.46,
+      "timingPrecision": "ASR word estimates grouped by diarized speaker; not manually aligned"
+    }
+  },
+  "trace": {
+    "calls": [
+      {
+        "stage": "asr_and_diarization",
+        "provider": "local",
+        "model": "Systran/faster-whisper-small.en",
+        "diarizationModel": "pyannote/speaker-diarization-community-1",
+        "attempt": 1,
+        "usage": null,
+        "status": 200,
+        "localMetadata": {
+          "timings": {
+            "asrLoadMs": 43097,
+            "asrMs": 9007,
+            "diarizationLoadMs": 8680,
+            "diarizationMs": 37459
+          },
+          "models": [
+            "Systran/faster-whisper-small.en",
+            "pyannote/speaker-diarization-community-1"
+          ],
+          "device": "cpu",
+          "computeType": "int8 ASR",
+          "language": "en",
+          "audioSeconds": 88.46,
+          "timingPrecision": "ASR word estimates grouped by diarized speaker; not manually aligned"
+        },
+        "ms": 104345
+      }
+    ]
+  }
+}

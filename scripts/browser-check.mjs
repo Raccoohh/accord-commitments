@@ -17,7 +17,7 @@ for(const id of ids){
   lastJobId=null;
   await page.locator('#file').setInputFiles(resolve(`fixtures/audio/${id}.wav`));
   await page.locator('#analyze').click();
-  await page.waitForFunction(()=>!document.querySelector('#results').hidden||!document.querySelector('#error').hidden,{},{timeout:260000});
+  await page.waitForFunction(()=>!document.querySelector('#results').hidden||!document.querySelector('#error').hidden,{},{timeout:1300000});
   const error=await page.locator('#error').isVisible()?await page.locator('#error').innerText():null;
   const metrics=error?null:JSON.parse(await page.locator('#metrics').textContent());
   let job=null;if(metrics?.id||lastJobId)job=await(await page.request.get(`/api/jobs/${metrics?.id||lastJobId}`)).json();

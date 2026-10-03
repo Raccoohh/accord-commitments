@@ -2,6 +2,8 @@ import http from 'node:http';
 import {readFile,appendFile,mkdir} from 'node:fs/promises';
 import {fileURLToPath} from 'node:url';
 import {randomUUID} from 'node:crypto';
+import {existsSync} from 'node:fs';
+import {LOCAL_MODELS} from './local-provider.mjs';
 import {analyze} from './pipeline.mjs';
 import {MAX_BYTES} from './audio.mjs';
 
@@ -23,7 +25,11 @@ const server=http.createServer(async(req,res)=>{
     if(req.method==='GET'&&staticFiles.has(pathname)){
       const [file,type]=staticFiles.get(pathname);res.writeHead(200,{'Content-Type':type,'Cache-Control':'no-store'});res.end(await readFile(root+file));return;
     }
-    if(req.method==='GET'&&pathname==='/api/health'){send(res,200,{ready:!!process.env.OPENAI_API_KEY,limits:{seconds:180,sourceBytes:20_000_000},privacy:'Local memory only; metrics without audio/transcript written to logs.'});return;}
+    if(req.method==='GET'&&pathname==='/api/health'){
+      let modelReady=false;
+      try{const data=await(await fetch('http://127.0.0.1:11435/api/tags',{signal:AbortSignal.timeout(1000)})).json();modelReady=data.models?.some(m=>m.name===LOCAL_MODELS.extraction)??false;}catch{}
+      send(res,200,{ready:existsSync(root+'.runtime/local-ready.json')&&modelReady,provider:'local',models:LOCAL_MODELS,limits:{seconds:180,sourceBytes:20_000_000},privacy:'Audio and transcript processed locally. Metrics without audio/transcript written to logs.'});return;
+    }
     if(req.method==='POST'&&pathname==='/api/jobs'){
       if(busy){send(res,429,{error:'Another recording is being processed. Please wait until it finishes.'});return;}
       if(req.headers['content-type']?.split(';')[0]!=='audio/wav'){send(res,415,{error:'Use the audio uploader to send a WAV recording.'});return;}
@@ -51,4 +57,4 @@ const server=http.createServer(async(req,res)=>{
 server.requestTimeout=30_000;
 server.headersTimeout=15_000;
 setInterval(()=>{for(const [id,j]of jobs)if(j.completedAt&&Date.now()-j.completedAt>30*60_000)jobs.delete(id);},60_000).unref();
-server.listen(port,'127.0.0.1',()=>console.log(`Final Commitments: http://127.0.0.1:${port} | API key ${process.env.OPENAI_API_KEY?'configured':'missing'}`));
+server.listen(port,'127.0.0.1',()=>console.log(`Final Commitments: http://127.0.0.1:${port} | Local inference only`));

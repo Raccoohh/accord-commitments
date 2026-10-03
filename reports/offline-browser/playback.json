@@ -2,11 +2,11 @@
   "testOnly": true,
   "playing": {
     "paused": false,
-    "time": 0.272844
+    "time": 0.270243
   },
   "stopped": {
     "paused": true,
-    "time": 1.057884
+    "time": 1.040709
   },
   "expectedEnd": 1.1,
   "acousticListening": "not performed"

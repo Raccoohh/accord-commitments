@@ -1,4 +1,10 @@
 import {validateSchema} from './schema.mjs';
+import {normalizeExplicitDate} from './dates.mjs';
+
+function comparableDeadline(value){
+  const cleaned=value.toLowerCase().replace(/(\d)(st|nd|rd|th)\b/g,'$1').trim();
+  return normalizeExplicitDate(cleaned)??cleaned.replace(/[.,]/g,'').replace(/\s+/g,' ');
+}
 
 export function normalizeSegments(raw,duration){
   if(!Array.isArray(raw))throw new Error('The transcription service returned no timestamped speaker segments.');
@@ -49,6 +55,11 @@ export function validateExtraction(raw,segments){
     }
     if(item.owner&&!item.ownerSpeakerId&&!item.evidence.some(e=>e.quote.toLowerCase().includes(item.owner.toLowerCase()))){item.owner=null;item.uncertainties.push('owner_not_supported');}
     if(item.deadlineOriginal&&!item.evidence.some(e=>e.quote.includes(item.deadlineOriginal))){item.deadlineOriginal=null;item.deadlineNormalized=null;item.uncertainties.push('deadline_not_supported');}
+    const finalDeadlineChange=item.history.filter(h=>h.field==='deadline').at(-1);
+    if(item.deadlineOriginal&&finalDeadlineChange&&comparableDeadline(item.deadlineOriginal)!==comparableDeadline(finalDeadlineChange.replacementValue)){
+      item.deadlineOriginal=null;item.deadlineNormalized=null;item.uncertainties.push('deadline_history_conflict');
+      issues.push(`Final deadline conflicts with the change history for: ${item.task}`);
+    }
     if(item.deadlineNormalized){
       const d=item.deadlineNormalized,q=item.dateContextQuote;
       const valid=/^\d{4}-\d{2}-\d{2}$/.test(d)&&!Number.isNaN(Date.parse(d))&&new Date(d).toISOString().slice(0,10)===d;
