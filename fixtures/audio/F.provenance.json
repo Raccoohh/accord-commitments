@@ -1,0 +1,114 @@
+{
+  "synthetic": true,
+  "engine": "Windows System.Speech",
+  "duration": 63.335,
+  "sha256": "4a3706cbdcf2440e35ae1687b16570f0e71d2a2268879e9fbcdb7da8b152906b",
+  "timing": [
+    {
+      "turn": 0,
+      "speaker": "Alex",
+      "text": "Hi, I'm Alex. Let's settle the data migration work.",
+      "voice": "Microsoft David Desktop",
+      "start": 0,
+      "end": 5.12
+    },
+    {
+      "turn": 1,
+      "speaker": "Maya",
+      "text": "Hi, I'm Maya. Let's do that.",
+      "voice": "Microsoft Zira Desktop",
+      "start": 5.47,
+      "end": 9.265
+    },
+    {
+      "turn": 2,
+      "speaker": "Alex",
+      "text": "I'll deliver the migration checklist by December fourth, twenty twenty-six.",
+      "voice": "Microsoft David Desktop",
+      "start": 9.614999999999998,
+      "end": 15.174999999999997
+    },
+    {
+      "turn": 3,
+      "speaker": "Maya",
+      "text": "Agreed. The checklist is yours for that date.",
+      "voice": "Microsoft Zira Desktop",
+      "start": 15.524999999999999,
+      "end": 19.59
+    },
+    {
+      "turn": 4,
+      "speaker": "Alex",
+      "text": "Could we push that checklist to December seventh, twenty twenty-six instead?",
+      "voice": "Microsoft David Desktop",
+      "start": 19.939999999999998,
+      "end": 25.38
+    },
+    {
+      "turn": 5,
+      "speaker": "Maya",
+      "text": "No, please keep December fourth, twenty twenty-six.",
+      "voice": "Microsoft Zira Desktop",
+      "start": 25.729999999999997,
+      "end": 30.345
+    },
+    {
+      "turn": 6,
+      "speaker": "Alex",
+      "text": "Understood. I'll stick with December fourth, twenty twenty-six.",
+      "voice": "Microsoft David Desktop",
+      "start": 30.694999999999997,
+      "end": 36.474999999999994
+    },
+    {
+      "turn": 7,
+      "speaker": "Maya",
+      "text": "I'll verify the access roles too. I don't have a completion date for that yet.",
+      "voice": "Microsoft Zira Desktop",
+      "start": 36.824999999999996,
+      "end": 42.669999999999995
+    },
+    {
+      "turn": 8,
+      "speaker": "Alex",
+      "text": "Agreed, please verify those roles. We can decide the deadline later.",
+      "voice": "Microsoft David Desktop",
+      "start": 43.019999999999996,
+      "end": 48.94499999999999
+    },
+    {
+      "turn": 9,
+      "speaker": "Alex",
+      "text": "We could archive the old exports.",
+      "voice": "Microsoft David Desktop",
+      "start": 49.294999999999995,
+      "end": 52.059999999999995
+    },
+    {
+      "turn": 10,
+      "speaker": "Maya",
+      "text": "Let's leave that as a suggestion for now. Don't approve it today.",
+      "voice": "Microsoft Zira Desktop",
+      "start": 52.41,
+      "end": 57.114999999999995
+    },
+    {
+      "turn": 11,
+      "speaker": "Alex",
+      "text": "Which staging region should we use?",
+      "voice": "Microsoft David Desktop",
+      "start": 57.464999999999996,
+      "end": 60.285
+    },
+    {
+      "turn": 12,
+      "speaker": "Maya",
+      "text": "We still need to decide that.",
+      "voice": "Microsoft Zira Desktop",
+      "start": 60.635,
+      "end": 62.985
+    }
+  ],
+  "scriptFidelityListening": "pending",
+  "evidenceListening": "pending"
+}
