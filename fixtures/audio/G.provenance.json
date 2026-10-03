@@ -1,0 +1,106 @@
+{
+  "synthetic": true,
+  "engine": "Windows System.Speech",
+  "duration": 60.055,
+  "sha256": "ac15d25ded06b7a017d4aac6da779a5e80f2032df5f3ce1c724b7d5d0f1e508c",
+  "timing": [
+    {
+      "turn": 0,
+      "speaker": "Alex",
+      "text": "Hi, I'm Alex. Let's plan the compatibility work.",
+      "voice": "Microsoft David Desktop",
+      "start": 0,
+      "end": 5
+    },
+    {
+      "turn": 1,
+      "speaker": "Maya",
+      "text": "Hi, I'm Maya. What do we need?",
+      "voice": "Microsoft Zira Desktop",
+      "start": 5.35,
+      "end": 9.165
+    },
+    {
+      "turn": 2,
+      "speaker": "Alex",
+      "text": "I'll prepare the compatibility matrix by January twelfth, twenty twenty-seven.",
+      "voice": "Microsoft David Desktop",
+      "start": 9.515,
+      "end": 15.55
+    },
+    {
+      "turn": 3,
+      "speaker": "Maya",
+      "text": "Agreed. Please prepare that matrix for that date.",
+      "voice": "Microsoft Zira Desktop",
+      "start": 15.9,
+      "end": 20.225
+    },
+    {
+      "turn": 4,
+      "speaker": "Maya",
+      "text": "I'll test the installer as well.",
+      "voice": "Microsoft Zira Desktop",
+      "start": 20.575,
+      "end": 23.155
+    },
+    {
+      "turn": 5,
+      "speaker": "Alex",
+      "text": "Agreed, please test the installer.",
+      "voice": "Microsoft David Desktop",
+      "start": 23.505,
+      "end": 26.645
+    },
+    {
+      "turn": 6,
+      "speaker": "Maya",
+      "text": "Actually, cancel my installer test task. The installer is being replaced.",
+      "voice": "Microsoft Zira Desktop",
+      "start": 26.994999999999997,
+      "end": 33.349999999999994
+    },
+    {
+      "turn": 7,
+      "speaker": "Alex",
+      "text": "Agreed. The installer test task is cancelled.",
+      "voice": "Microsoft David Desktop",
+      "start": 33.699999999999996,
+      "end": 38.059999999999995
+    },
+    {
+      "turn": 8,
+      "speaker": "Maya",
+      "text": "We also need to review the support notes.",
+      "voice": "Microsoft Zira Desktop",
+      "start": 38.41,
+      "end": 41.474999999999994
+    },
+    {
+      "turn": 9,
+      "speaker": "Alex",
+      "text": "Agreed. The support notes review is a confirmed task. Nobody has taken ownership, and we have not agreed a deadline.",
+      "voice": "Microsoft David Desktop",
+      "start": 41.824999999999996,
+      "end": 51.144999999999996
+    },
+    {
+      "turn": 10,
+      "speaker": "Alex",
+      "text": "We could redraw the toolbar icons.",
+      "voice": "Microsoft David Desktop",
+      "start": 51.495,
+      "end": 54.305
+    },
+    {
+      "turn": 11,
+      "speaker": "Maya",
+      "text": "That is only a suggestion. We are not approving the new icons.",
+      "voice": "Microsoft Zira Desktop",
+      "start": 54.655,
+      "end": 59.705
+    }
+  ],
+  "scriptFidelityListening": "pending",
+  "evidenceListening": "pending"
+}
