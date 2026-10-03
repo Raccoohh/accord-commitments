@@ -4,7 +4,7 @@ const directory=process.argv[2]||'reports/live';
 async function json(path){try{return JSON.parse((await readFile(path,'utf8')).replace(/^\uFEFF/,''));}catch(e){if(e.code==='ENOENT')return null;throw e;}}
 const mappings=await json(`${directory}/review-mapping.json`)||{};
 const rows=[],cases=[];
-for(const id of ['A','B','C','D','E']){
+for(const id of ['A','B','C','D','E','F']){
   const expected=await json(`fixtures/${id}/expected.json`);
   const record=await json(`${directory}/${id}.actual.json`)||(id==='D'?await json('reports/offline-browser/D.actual.json'):null);
   const actual=record?.job?.result??record?.result;

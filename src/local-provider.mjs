@@ -3,8 +3,9 @@ import {fileURLToPath} from 'node:url';
 import {existsSync} from 'node:fs';
 import {writeFile} from 'node:fs/promises';
 import {localSchema,localInstructions,expandLocalExtraction} from './local-extraction.mjs';
+import modelConfig from '../local/models.json' with {type:'json'};
 const root=fileURLToPath(new URL('../',import.meta.url));
-export const LOCAL_MODELS={asr:'Systran/faster-whisper-small.en',diarization:'pyannote/speaker-diarization-community-1',extraction:'qwen2.5:7b'};
+export const LOCAL_MODELS={asr:modelConfig.asr.id,diarization:modelConfig.diarization.id,extraction:modelConfig.extraction.id};
 
 export async function localTranscribe(audio,trace){
   const started=performance.now(),call={stage:'asr_and_diarization',provider:'local',model:LOCAL_MODELS.asr,diarizationModel:LOCAL_MODELS.diarization,attempt:1,usage:null};trace.calls.push(call);

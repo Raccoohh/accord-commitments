@@ -27,9 +27,19 @@ test('short agreement receives real neighboring context, without generated quote
   assert.equal(result.items[0].evidence[0].quote,segments[1].text);
 });
 test('one unanswered question is not duplicated as an unresolved task',()=>{
-  const r=record();r.tasks[0].status='unresolved';r.openQuestions=[{question:'Which draft?',segmentIds:['work']}];
+  const r=record();r.tasks[0].status='unresolved';r.openQuestions=[{question:segments[1].text,segmentIds:['work']}];
   const result=expandLocalExtraction(r,segments);assert.equal(result.items.length,1);assert.equal(result.items[0].source,'participant_question');
   r.tasks[0].status='confirmed';assert.equal(expandLocalExtraction(r,segments).items.length,2);
+});
+test('inferred questions cannot be presented as participant quotes',()=>{
+  const r=record();r.openQuestions=[{question:'Who will do this?',segmentIds:['work']}];
+  assert.equal(expandLocalExtraction(r,segments).items.filter(i=>i.source==='participant_question').length,0);
+});
+test('superseded or unagreed timing is removed from action titles',()=>{
+  const r=record();r.tasks[0].task='Send draft by March 1st, 2027';
+  assert.equal(expandLocalExtraction(r,segments).items[0].task,'Send draft');
+  r.tasks[0].task='Review before release checklist';
+  assert.equal(expandLocalExtraction(r,segments).items[0].task,'Review before release checklist');
 });
 test('cancelled tasks retain one quoted prior self-assignment, never invent an active owner',()=>{
   const r=record();r.tasks[0].status='cancelled';r.tasks[0].owner=null;

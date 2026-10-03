@@ -9,7 +9,7 @@ const versions={node:process.version,playwright:pkg.version,browser:await browse
 await browser.close();
 await writeFile('reports/tool-versions.json',JSON.stringify(versions,null,2)+'\n');
 const fixtures=[];
-for(const id of ['A','B','C','D','E']){
+for(const id of ['A','B','C','D','E','F']){
   const bytes=await readFile(`fixtures/audio/${id}.wav`),info=readWav(bytes);
   fixtures.push({id,durationSeconds:info.duration,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex'),peak:info.peak,synthetic:true,acousticReview:'pending'});
 }

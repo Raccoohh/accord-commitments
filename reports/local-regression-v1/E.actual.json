@@ -1,0 +1,488 @@
+{
+  "caseId": "E",
+  "error": null,
+  "job": {
+    "id": "c84f72ad-0cbe-46e1-af43-d09e38d328b6",
+    "status": "done",
+    "createdAt": 1790996579559,
+    "metrics": {
+      "id": "c84f72ad-0cbe-46e1-af43-d09e38d328b6",
+      "startedAt": "2026-10-03T03:02:59.560Z",
+      "provider": "local",
+      "models": {
+        "asr": "Systran/faster-whisper-small.en",
+        "diarization": "pyannote/speaker-diarization-community-1",
+        "extraction": "qwen2.5:7b"
+      },
+      "audioSeconds": 56.36,
+      "uploadMs": 25,
+      "stages": {
+        "validationMs": 8,
+        "transcriptionMs": 35905,
+        "extractionMs": 41743,
+        "evidenceValidationMs": 0
+      },
+      "calls": [
+        {
+          "stage": "asr_and_diarization",
+          "provider": "local",
+          "model": "Systran/faster-whisper-small.en",
+          "diarizationModel": "pyannote/speaker-diarization-community-1",
+          "attempt": 1,
+          "usage": null,
+          "status": 200,
+          "localMetadata": {
+            "timings": {
+              "asrLoadMs": 905,
+              "asrMs": 6057,
+              "diarizationLoadMs": 1032,
+              "diarizationMs": 22367
+            },
+            "models": [
+              "Systran/faster-whisper-small.en",
+              "pyannote/speaker-diarization-community-1"
+            ],
+            "revisions": [
+              "d1d751a5f8271d482d14ca55d9e2deeebbae577f",
+              "3533c8cf8e369892e6b79ff1bf80f7b0286a54ee"
+            ],
+            "device": "cpu",
+            "computeType": "int8 ASR",
+            "language": "en",
+            "audioSeconds": 56.36,
+            "timingPrecision": "ASR word estimates grouped by diarized speaker; not manually aligned"
+          },
+          "ms": 35905
+        },
+        {
+          "stage": "decision_reading",
+          "provider": "local",
+          "model": "qwen2.5:7b",
+          "contract": "plan-then-compact-v1",
+          "thinking": false,
+          "attempt": 1,
+          "usage": {
+            "input_tokens": 440,
+            "output_tokens": 131,
+            "loadDurationNs": 2080200,
+            "promptEvalDurationNs": 258257000,
+            "evalDurationNs": 5238335000
+          },
+          "status": 200,
+          "ms": 5527
+        },
+        {
+          "stage": "extraction",
+          "provider": "local",
+          "model": "qwen2.5:7b",
+          "contract": "plan-then-compact-v1",
+          "thinking": false,
+          "attempt": 1,
+          "usage": {
+            "input_tokens": 1607,
+            "output_tokens": 805,
+            "loadDurationNs": 2608400,
+            "promptEvalDurationNs": 358799000,
+            "evalDurationNs": 35821806000
+          },
+          "status": 200,
+          "ms": 36215
+        }
+      ],
+      "retries": 0,
+      "outcome": "partial",
+      "processingMs": 77656,
+      "totalServerMs": 77681,
+      "cost": {
+        "currency": "USD",
+        "totalVariableOperationUsd": 0,
+        "costPerAudioMinute": 0,
+        "apiChargesUsd": 0,
+        "basis": "Local inference: no metered API calls. Electricity, hardware and local compute costs are not measured and are excluded.",
+        "unknownChargesPossible": false,
+        "localComputeCostUsd": null,
+        "hosting": "Local Windows computer",
+        "ttsApiCost": 0,
+        "paidIntermediaries": 0
+      }
+    },
+    "result": {
+      "outcome": "partial",
+      "message": "Final task states are shown below. Review the evidence before relying on a decision.",
+      "speakers": [
+        {
+          "speakerId": "SPEAKER_00",
+          "name": "Alex",
+          "confidence": "supported",
+          "evidence": [
+            {
+              "segmentId": "s0",
+              "role": "identity",
+              "quote": "Hi, I'm Alex.",
+              "speakerId": "SPEAKER_00",
+              "start": 0,
+              "end": 1.32,
+              "validation": "transcript_match"
+            }
+          ]
+        },
+        {
+          "speakerId": "SPEAKER_01",
+          "name": null,
+          "confidence": "uncertain",
+          "evidence": []
+        }
+      ],
+      "items": [
+        {
+          "id": "task_1",
+          "task": "Prepare the rollback checklist",
+          "status": "confirmed",
+          "source": "commitment",
+          "reason": "Confirmed by mutual agreement with a deadline of November 3rd, 2026.",
+          "owner": null,
+          "ownerSpeakerId": null,
+          "deadlineOriginal": "November 3rd, 2026",
+          "deadlineNormalized": "2026-11-03",
+          "dateContextQuote": "I'll prepare the rollback checklist by November 3rd, 2026.",
+          "uncertainties": [
+            "speaker_identity_uncertain",
+            "owner_unassigned"
+          ],
+          "evidence": [
+            {
+              "segmentId": "s3",
+              "role": "proposal",
+              "quote": "I'll prepare the rollback checklist by November 3rd, 2026.",
+              "speakerId": "SPEAKER_00",
+              "start": 9.48,
+              "end": 13.88,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s4",
+              "role": "acceptance",
+              "quote": "Agreed.",
+              "speakerId": "SPEAKER_01",
+              "start": 14.94,
+              "end": 15.64,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s5",
+              "role": "change",
+              "quote": "Actually, I have the notes, so let me take ownership of that checklist.",
+              "speakerId": "SPEAKER_01",
+              "start": 16.56,
+              "end": 20.88,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s6",
+              "role": "change",
+              "quote": "The deadline stays November 3rd, 2026.",
+              "speakerId": "SPEAKER_01",
+              "start": 21.96,
+              "end": 25.26,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s7",
+              "role": "context",
+              "quote": "Agreed, Maya.",
+              "speakerId": "SPEAKER_00",
+              "start": 26.5,
+              "end": 27.78,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s8",
+              "role": "context",
+              "quote": "You own the rollback checklist now, with the same deadline.",
+              "speakerId": "SPEAKER_00",
+              "start": 28.66,
+              "end": 32.02,
+              "validation": "transcript_match"
+            }
+          ],
+          "history": [
+            {
+              "field": "owner",
+              "previousValue": "null",
+              "replacementValue": "SPEAKER_01",
+              "evidence": [
+                {
+                  "segmentId": "s5",
+                  "role": "change",
+                  "quote": "Actually, I have the notes, so let me take ownership of that checklist.",
+                  "speakerId": "SPEAKER_01",
+                  "start": 16.56,
+                  "end": 20.88,
+                  "validation": "transcript_match"
+                }
+              ]
+            },
+            {
+              "field": "status",
+              "previousValue": "proposed_not_accepted",
+              "replacementValue": "confirmed",
+              "evidence": [
+                {
+                  "segmentId": "s6",
+                  "role": "change",
+                  "quote": "The deadline stays November 3rd, 2026.",
+                  "speakerId": "SPEAKER_01",
+                  "start": 21.96,
+                  "end": 25.26,
+                  "validation": "transcript_match"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "task_2",
+          "task": "Verify the restore steps",
+          "status": "unresolved",
+          "source": "clarification",
+          "reason": "Evidence could not be validated. Review the transcript or record a clarification.",
+          "owner": null,
+          "ownerSpeakerId": null,
+          "deadlineOriginal": null,
+          "deadlineNormalized": null,
+          "dateContextQuote": null,
+          "uncertainties": [
+            "evidence_validation_failed",
+            "speaker_identity_uncertain"
+          ],
+          "evidence": [],
+          "history": []
+        },
+        {
+          "id": "task_3",
+          "task": "Delete old backups to save space",
+          "status": "proposed_not_accepted",
+          "source": "commitment",
+          "reason": "Suggested by SPEAKER_00, rejected by SPEAKER_01.",
+          "owner": null,
+          "ownerSpeakerId": null,
+          "deadlineOriginal": null,
+          "deadlineNormalized": null,
+          "dateContextQuote": null,
+          "uncertainties": [],
+          "evidence": [
+            {
+              "segmentId": "s14",
+              "role": "proposal",
+              "quote": "We could delete the old backups to save space.",
+              "speakerId": "SPEAKER_00",
+              "start": 46.4,
+              "end": 48.88,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s15",
+              "role": "acceptance",
+              "quote": "Let's keep that as a suggestion.",
+              "speakerId": "SPEAKER_01",
+              "start": 50.16,
+              "end": 51.62,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s16",
+              "role": "context",
+              "quote": "We are not approving deletion of any backups. You",
+              "speakerId": "SPEAKER_01",
+              "start": 52.62,
+              "end": 56.34,
+              "validation": "transcript_match"
+            }
+          ],
+          "history": []
+        },
+        {
+          "id": "question_1",
+          "task": "When should we agree on the deadline for verifying the restore steps?",
+          "status": "unresolved",
+          "source": "participant_question",
+          "reason": "This question remains unanswered in the conversation.",
+          "owner": null,
+          "ownerSpeakerId": null,
+          "deadlineOriginal": null,
+          "deadlineNormalized": null,
+          "dateContextQuote": null,
+          "uncertainties": [],
+          "evidence": [
+            {
+              "segmentId": "s10",
+              "role": "question",
+              "quote": "We haven't chosen a deadline for that yet.",
+              "speakerId": "SPEAKER_01",
+              "start": 36.24,
+              "end": 38.34,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s11",
+              "role": "question",
+              "quote": "Agreed.",
+              "speakerId": "SPEAKER_00",
+              "start": 39.42,
+              "end": 40.02,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s13",
+              "role": "question",
+              "quote": "We'll agree the deadline later.",
+              "speakerId": "SPEAKER_00",
+              "start": 43.7,
+              "end": 45.2,
+              "validation": "transcript_match"
+            }
+          ],
+          "history": []
+        }
+      ],
+      "warnings": [
+        "A speaker name could not be verified from a self-introduction.",
+        "Evidence withheld for: Verify the restore steps"
+      ],
+      "clarifications": [
+        {
+          "itemId": "task_1",
+          "text": "Who will own: Prepare the rollback checklist?",
+          "source": "system_clarification"
+        }
+      ],
+      "segments": [
+        {
+          "id": "s0",
+          "speakerId": "SPEAKER_00",
+          "text": "Hi, I'm Alex.",
+          "start": 0,
+          "end": 1.32
+        },
+        {
+          "id": "s1",
+          "speakerId": "SPEAKER_00",
+          "text": "Let's finish the recovery plan.",
+          "start": 2.4,
+          "end": 4.28
+        },
+        {
+          "id": "s2",
+          "speakerId": "SPEAKER_01",
+          "text": "Hi, I'm What needs doing?",
+          "start": 5.54,
+          "end": 8.22
+        },
+        {
+          "id": "s3",
+          "speakerId": "SPEAKER_00",
+          "text": "I'll prepare the rollback checklist by November 3rd, 2026.",
+          "start": 9.48,
+          "end": 13.88
+        },
+        {
+          "id": "s4",
+          "speakerId": "SPEAKER_01",
+          "text": "Agreed.",
+          "start": 14.94,
+          "end": 15.64
+        },
+        {
+          "id": "s5",
+          "speakerId": "SPEAKER_01",
+          "text": "Actually, I have the notes, so let me take ownership of that checklist.",
+          "start": 16.56,
+          "end": 20.88
+        },
+        {
+          "id": "s6",
+          "speakerId": "SPEAKER_01",
+          "text": "The deadline stays November 3rd, 2026.",
+          "start": 21.96,
+          "end": 25.26
+        },
+        {
+          "id": "s7",
+          "speakerId": "SPEAKER_00",
+          "text": "Agreed, Maya.",
+          "start": 26.5,
+          "end": 27.78
+        },
+        {
+          "id": "s8",
+          "speakerId": "SPEAKER_00",
+          "text": "You own the rollback checklist now, with the same deadline.",
+          "start": 28.66,
+          "end": 32.02
+        },
+        {
+          "id": "s9",
+          "speakerId": "SPEAKER_01",
+          "text": "I'll also verify the restore steps.",
+          "start": 33.38,
+          "end": 35.34
+        },
+        {
+          "id": "s10",
+          "speakerId": "SPEAKER_01",
+          "text": "We haven't chosen a deadline for that yet.",
+          "start": 36.24,
+          "end": 38.34
+        },
+        {
+          "id": "s11",
+          "speakerId": "SPEAKER_00",
+          "text": "Agreed.",
+          "start": 39.42,
+          "end": 40.02
+        },
+        {
+          "id": "s12",
+          "speakerId": "SPEAKER_00",
+          "text": "Please verify the restore steps.",
+          "start": 41.1,
+          "end": 42.82
+        },
+        {
+          "id": "s13",
+          "speakerId": "SPEAKER_00",
+          "text": "We'll agree the deadline later.",
+          "start": 43.7,
+          "end": 45.2
+        },
+        {
+          "id": "s14",
+          "speakerId": "SPEAKER_00",
+          "text": "We could delete the old backups to save space.",
+          "start": 46.4,
+          "end": 48.88
+        },
+        {
+          "id": "s15",
+          "speakerId": "SPEAKER_01",
+          "text": "Let's keep that as a suggestion.",
+          "start": 50.16,
+          "end": 51.62
+        },
+        {
+          "id": "s16",
+          "speakerId": "SPEAKER_01",
+          "text": "We are not approving deletion of any backups. You",
+          "start": 52.62,
+          "end": 56.34
+        }
+      ],
+      "timingPrecision": "segment"
+    },
+    "completedAt": 1790996657215
+  },
+  "clientMetrics": {
+    "preparationMs": 75,
+    "uploadToUsefulResultMs": 78272
+  }
+}

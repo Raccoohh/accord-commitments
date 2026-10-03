@@ -1,5 +1,6 @@
 import {validateSchema} from './schema.mjs';
 import {normalizeExplicitDate} from './dates.mjs';
+import {hasExplicitSelfCommitment} from './validate.mjs';
 
 const text={type:'string'},nullable={type:['string','null']};
 const array=items=>({type:'array',items});
@@ -31,7 +32,13 @@ export const localInstructions=`Read the WHOLE English transcript and list FINAL
 6. "Maybe", "we could", and explicitly unapproved ideas are proposed_not_accepted. Explicitly agreed work is confirmed even without owner/deadline. Missing owner/date NEVER makes accepted work unresolved. A later accepted cancellation is cancelled; retain its previous owner for history/context. Unclear agreement is unresolved. Do not create a new task for a third party merely mentioned as cancellation context. Open questions belong ONLY in openQuestions, not also in tasks.
 7. Evidence must include the original assignment/acceptance AND later change/cancellation AND acceptance of that change. Reference exact segment IDs; the app attaches their verbatim text and timestamps. Include the final reply that explicitly leaves an owner/deadline unassigned. Never fabricate IDs. No need to copy quotes into JSON.
 8. changes contains only real accepted replacements/cancellations, not every proposal. The final deadline must agree with the last accepted deadline change. Empty arrays are valid. Unknown values are JSON null, never the string "null".
-9. Do not invent follow-up questions; the app adds missing-owner/date clarifications. recordingStatus is readable for ordinary conversation with open issues; unclear only for unusable speech. Return JSON using the supplied schema.`;
+9. In openQuestions, copy the actual participant's unanswered question VERBATIM from its segment, including punctuation. Do not paraphrase or invent follow-up questions; the app adds missing-owner/date clarifications. A question answered by a refusal is answered, not open. recordingStatus is readable for ordinary conversation with open issues; unclear only for unusable speech. Return JSON using the supplied schema.`;
+
+function actionTitle(title){
+  // Timing belongs in final-deadline/history fields. Remove only recognizable
+  // trailing English temporal clauses; keep the action/object wording intact.
+  return title.replace(/\s+(?:by|before|until|on)\s+(?:(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2}(?:st|nd|rd|th)?(?:,?\s+\d{4})?|\d{4}-\d{2}-\d{2}|(?:next|this)\s+(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)|(?:the\s+)?(?:release|launch)|tomorrow|today)[.!]?$/i,'').trim();
+}
 
 export function expandLocalExtraction(raw,segments){
   validateSchema(raw,localSchema);
@@ -52,7 +59,8 @@ export function expandLocalExtraction(raw,segments){
     return [...expanded.values()].sort((a,b)=>byId.get(a.segmentId).start-byId.get(b.segmentId).start);
   };
   const speakers=raw.speakers.map(s=>({speakerId:s.speakerId,name:s.name,confidence:s.name&&s.introductionSegmentId?'supported':'uncertain',evidence:s.introductionSegmentId?[quote({segmentId:s.introductionSegmentId,role:'identity'})]:[]}));
-  const questionIds=new Set(raw.openQuestions.flatMap(q=>q.segmentIds));
+  const questions=raw.openQuestions.filter(q=>q.segmentIds.some(id=>byId.get(id)?.text.includes(q.question)));
+  const questionIds=new Set(questions.flatMap(q=>q.segmentIds));
   // One unanswered utterance should not become both a task and the same question.
   const tasks=raw.tasks.filter(t=>!(t.status==='unresolved'&&t.evidence.some(e=>questionIds.has(e.segmentId))));
   const items=tasks.map((t,index)=>{
@@ -60,17 +68,17 @@ export function expandLocalExtraction(raw,segments){
     // A cancelled task can retain a single explicit prior self-assignment.
     // Never infer an active assignment, or guess across an ownership transfer.
     if(t.status==='cancelled'&&t.owner===null&&!t.changes.some(c=>c.field==='owner')){
-      const priorIds=new Set(t.evidence.filter(e=>['proposal','acceptance'].includes(e.role)).map(e=>byId.get(e.segmentId)).filter(s=>s&&/^(?:(?:okay|yes|agreed|well|actually)[,.]\s*)?I(?:'ll| will)\s+(?!not\b|never\b)/i.test(s.text)).map(s=>s.speakerId));
+      const priorIds=new Set(t.evidence.filter(e=>['proposal','acceptance'].includes(e.role)).map(e=>byId.get(e.segmentId)).filter(s=>s&&hasExplicitSelfCommitment(s.text)).map(s=>s.speakerId));
       if(priorIds.size===1)speaker=speakers.find(s=>s.speakerId===[...priorIds][0]);
     }
     const owner=speaker?speaker.name:t.owner;
     const evidence=refsWithContext(t.evidence),date=normalizeExplicitDate(t.deadline);
-    return {id:`task_${index+1}`,task:t.task,status:t.status,source:'commitment',reason:t.reason,
+    return {id:`task_${index+1}`,task:actionTitle(t.task),status:t.status,source:'commitment',reason:t.reason,
       owner,ownerSpeakerId:speaker?speaker.speakerId:null,
       deadlineOriginal:t.deadline,deadlineNormalized:date,dateContextQuote:date?evidence.find(e=>e.quote.includes(t.deadline))?.quote??null:null,
       uncertainties:[],evidence,history:t.changes.map(c=>({...c,evidence:refsWithContext(c.evidence)}))};
   });
-  items.push(...raw.openQuestions.map((q,i)=>({id:`question_${i+1}`,task:q.question,status:'unresolved',source:'participant_question',reason:'This question remains unanswered in the conversation.',owner:null,ownerSpeakerId:null,deadlineOriginal:null,deadlineNormalized:null,dateContextQuote:null,uncertainties:[],evidence:q.segmentIds.map(segmentId=>quote({segmentId,role:'question'})),history:[]})));
+  items.push(...questions.map((q,i)=>({id:`question_${i+1}`,task:q.question,status:'unresolved',source:'participant_question',reason:'This question remains unanswered in the conversation.',owner:null,ownerSpeakerId:null,deadlineOriginal:null,deadlineNormalized:null,dateContextQuote:null,uncertainties:[],evidence:q.segmentIds.map(segmentId=>quote({segmentId,role:'question'})),history:[]})));
   const outcome=raw.recordingStatus==='unclear'?(items.length?'partial':'unusable'):'complete';
   return {outcome,message:outcome==='unusable'?'No reliable conversation could be established. Please upload a clearer recording.':'Final task states are shown below. Review the evidence before relying on a decision.',speakers,items,warnings:raw.warnings};
 }

@@ -20,10 +20,11 @@ from faster_whisper import WhisperModel
 from pyannote.audio import Pipeline
 
 torch.set_num_threads(6)
-ASR_MODEL = "Systran/faster-whisper-small.en"
-DIARIZATION_MODEL = "pyannote/speaker-diarization-community-1"
-ASR_REVISION = "d1d751a5f8271d482d14ca55d9e2deeebbae577f"
-DIARIZATION_REVISION = "3533c8cf8e369892e6b79ff1bf80f7b0286a54ee"
+MODEL_CONFIG = json.loads((ROOT / "local" / "models.json").read_text(encoding="utf-8"))
+ASR_MODEL = MODEL_CONFIG["asr"]["id"]
+DIARIZATION_MODEL = MODEL_CONFIG["diarization"]["id"]
+ASR_REVISION = MODEL_CONFIG["asr"]["revision"]
+DIARIZATION_REVISION = MODEL_CONFIG["diarization"]["revision"]
 
 
 def run(data):
