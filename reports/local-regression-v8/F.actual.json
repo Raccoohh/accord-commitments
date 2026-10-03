@@ -1,0 +1,54 @@
+{
+  "caseId": "F",
+  "error": "Unexpected token 'W', \"WARNING: V\"... is not valid JSON",
+  "job": {
+    "id": "8c922df1-544c-4eca-9d7a-ff1ad5ddf53f",
+    "status": "error",
+    "createdAt": 1791017498723,
+    "metrics": {
+      "id": "8c922df1-544c-4eca-9d7a-ff1ad5ddf53f",
+      "startedAt": "2026-10-03T08:51:38.723Z",
+      "provider": "local",
+      "models": {
+        "asr": "Systran/faster-whisper-medium.en",
+        "diarization": "pyannote/speaker-diarization-community-1",
+        "extraction": "qwen2.5:7b"
+      },
+      "audioSeconds": 63.335,
+      "uploadMs": 12,
+      "stages": {
+        "validationMs": 6
+      },
+      "calls": [
+        {
+          "stage": "asr_and_diarization",
+          "provider": "local",
+          "model": "Systran/faster-whisper-medium.en",
+          "diarizationModel": "pyannote/speaker-diarization-community-1",
+          "attempt": 1,
+          "usage": null,
+          "ms": 48466
+        }
+      ],
+      "retries": 0,
+      "outcome": "error",
+      "errorCode": "validation_or_internal",
+      "processingMs": 48473,
+      "totalServerMs": 48485,
+      "cost": {
+        "currency": "USD",
+        "totalVariableOperationUsd": 0,
+        "costPerAudioMinute": 0,
+        "apiChargesUsd": 0,
+        "basis": "Local inference: no metered API calls. Electricity, hardware and local compute costs are not measured and are excluded.",
+        "unknownChargesPossible": false,
+        "localComputeCostUsd": null,
+        "hosting": "Local Windows computer",
+        "ttsApiCost": 0,
+        "paidIntermediaries": 0
+      }
+    },
+    "error": "Unexpected token 'W', \"WARNING: V\"... is not valid JSON",
+    "completedAt": 1791017547196
+  }
+}

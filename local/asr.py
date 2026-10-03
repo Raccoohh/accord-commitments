@@ -6,6 +6,13 @@ import sys
 import time
 from pathlib import Path
 
+# Reserve a clean protocol channel before importing dependencies. Both Python
+# prints and native-library stdout diagnostics then go to stderr instead.
+RESULT_STREAM = sys.stdout
+if __name__ == "__main__":
+    RESULT_STREAM = os.fdopen(os.dup(sys.stdout.fileno()), "w", encoding="utf-8")
+    os.dup2(sys.stderr.fileno(), sys.stdout.fileno())
+
 ROOT = Path(__file__).resolve().parent.parent
 os.environ.setdefault("HF_HOME", str(ROOT / ".runtime" / "huggingface"))
 os.environ["HF_HUB_DISABLE_TELEMETRY"] = "1"
@@ -88,7 +95,7 @@ if __name__ == "__main__":
         payload = sys.stdin.buffer.read(6_000_001)
         if len(payload) > 6_000_000:
             raise ValueError("Audio too large")
-        print(json.dumps(run(payload), ensure_ascii=True))
+        print(json.dumps(run(payload), ensure_ascii=True), file=RESULT_STREAM, flush=True)
     except Exception as error:
         # Never echo a token or untrusted audio content in error output.
         message = str(error)
