@@ -1,6 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {localExtract} from '../src/local-provider.mjs';
+import {localSchema} from '../src/local-extraction.mjs';
 import {calculateCost} from '../src/cost.mjs';
 import {readFile} from 'node:fs/promises';
 
@@ -17,7 +18,7 @@ test('local extraction only addresses loopback Ollama and preserves schema/data 
     assert.equal(payload.format.properties.speakers.items.properties.name.enum,undefined);
     assert.equal(payload.format.properties.tasks.items.properties.reason.enum,undefined);
     // Ollama's decoding grammar alone does not tell the model what fields mean.
-    assert.ok(payload.messages[0].content.includes(JSON.stringify(payload.format)));
+    assert.ok(payload.messages[0].content.includes(JSON.stringify(localSchema)));
     return new Response(JSON.stringify({message:{content:JSON.stringify({speakers:[],tasks:[],openQuestions:[],warnings:[],recordingStatus:'readable'})},prompt_eval_count:2,eval_count:1,done_reason:'stop'}));
   });const trace={calls:[]};assert.deepEqual((await localExtract([{id:'s0',text:'Example input'}],trace)).items,[]);assert.equal(trace.calls[0].provider,'local');assert.equal(trace.calls[0].usage.output_tokens,1);
 });
