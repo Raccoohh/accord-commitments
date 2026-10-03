@@ -12,6 +12,14 @@ function hasExplicitCancellation(text){
       || /\b(?:task|assignment|work)\s+(?:is|has been)\s+cancell?ed\b/i.test(text));
 }
 
+function hasExplicitUnapprovedSuggestion(evidence){
+  const texts=evidence.map(e=>e.quote);
+  const suggested=texts.some(t=>/\b(?:we could|maybe|I suggest)\b/i.test(t));
+  const refused=texts.some(t=>/\b(?:not approv(?:ing|ed)|don['’]t approve)\b/i.test(t)&&!/\b(?:date|deadline|schedule)\b/i.test(t));
+  const accepted=texts.some(t=>hasExplicitSelfCommitment(t)||/\bagreed\b/i.test(t));
+  return suggested&&refused&&!accepted;
+}
+
 function comparableDeadline(value){
   const cleaned=value.toLowerCase().replace(/(\d)(st|nd|rd|th)\b/g,'$1').trim();
   return normalizeExplicitDate(cleaned)??cleaned.replace(/[.,]/g,'').replace(/\s+/g,' ');
@@ -54,6 +62,10 @@ export function validateExtraction(raw,segments){
     try{
       item.evidence=validateRefs(item.evidence);
       item.history=item.history.map(h=>({...h,evidence:validateRefs(h.evidence)}));
+      if(item.status==='unresolved'&&item.source==='commitment'&&hasExplicitUnapprovedSuggestion(item.evidence)){
+        item.status='proposed_not_accepted';
+        item.history=item.history.filter(h=>h.field!=='status');
+      }
       if(item.source!=='clarification'&&!item.evidence.length)throw Error('Missing evidence.');
       if(item.status==='confirmed'&&item.source!=='commitment')throw Error('Only commitments may be confirmed.');
       if(item.status==='confirmed'&&!item.evidence.some(e=>e.role==='acceptance'||hasExplicitSelfCommitment(e.quote)))throw Error('Missing acceptance evidence.');
