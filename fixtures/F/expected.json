@@ -1,0 +1,67 @@
+{
+  "caseId": "F",
+  "source": "Independent expectations from fixtures/fresh-local.json; frozen before analysis and expanded without content changes.",
+  "items": [
+    {
+      "key": "migration",
+      "task": "Deliver migration checklist",
+      "status": "confirmed",
+      "owner": "Alex",
+      "deadlineOriginal": "December fourth, twenty twenty-six",
+      "deadlineNormalized": "2026-12-04",
+      "evidenceTurns": [
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "reason": "Alex's assignment is accepted. The later December 7 proposal is refused; December 4 remains the agreed deadline."
+    },
+    {
+      "key": "roles",
+      "task": "Verify access roles",
+      "status": "confirmed",
+      "owner": "Maya",
+      "deadlineOriginal": null,
+      "deadlineNormalized": null,
+      "evidenceTurns": [
+        7,
+        8
+      ],
+      "reason": "Maya commits and Alex agrees. No completion date has been chosen."
+    },
+    {
+      "key": "exports",
+      "task": "Archive old exports",
+      "status": "proposed_not_accepted",
+      "owner": null,
+      "deadlineOriginal": null,
+      "deadlineNormalized": null,
+      "evidenceTurns": [
+        9,
+        10
+      ],
+      "reason": "The idea is explicitly left unapproved; proposing it does not assign Alex as owner."
+    },
+    {
+      "key": "region",
+      "task": "Choose staging region",
+      "status": "unresolved",
+      "source": "participant_question",
+      "owner": null,
+      "deadlineOriginal": null,
+      "deadlineNormalized": null,
+      "evidenceTurns": [
+        11,
+        12
+      ],
+      "reason": "The participant's question remains unanswered."
+    }
+  ],
+  "clarifications": [
+    "Agree a completion date for verifying access roles."
+  ],
+  "outcome": "complete",
+  "reason": null
+}

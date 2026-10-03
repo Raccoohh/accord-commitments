@@ -1,0 +1,28 @@
+F: A later proposed date is refused
+SYNTHETIC FICTIONAL DIALOGUE
+
+Alex: Hi, I'm Alex. Let's settle the data migration work.
+
+Maya: Hi, I'm Maya. Let's do that.
+
+Alex: I'll deliver the migration checklist by December fourth, twenty twenty-six.
+
+Maya: Agreed. The checklist is yours for that date.
+
+Alex: Could we push that checklist to December seventh, twenty twenty-six instead?
+
+Maya: No, please keep December fourth, twenty twenty-six.
+
+Alex: Understood. I'll stick with December fourth, twenty twenty-six.
+
+Maya: I'll verify the access roles too. I don't have a completion date for that yet.
+
+Alex: Agreed, please verify those roles. We can decide the deadline later.
+
+Alex: We could archive the old exports.
+
+Maya: Let's leave that as a suggestion for now. Don't approve it today.
+
+Alex: Which staging region should we use?
+
+Maya: We still need to decide that.

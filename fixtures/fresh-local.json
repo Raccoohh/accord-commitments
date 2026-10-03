@@ -1,0 +1,30 @@
+{
+  "frozenBeforeFirstAnalysis": true,
+  "purpose": "New independent recording after the local inference and two-stage extraction fixes in 6f9836b. Tests a refused deadline change. Never send this file or expected labels to runtime models.",
+  "cases": [{
+    "id": "F",
+    "title": "A later proposed date is refused",
+    "turns": [
+      {"speaker":"Alex","text":"Hi, I'm Alex. Let's settle the data migration work."},
+      {"speaker":"Maya","text":"Hi, I'm Maya. Let's do that."},
+      {"speaker":"Alex","text":"I'll deliver the migration checklist by December fourth, twenty twenty-six."},
+      {"speaker":"Maya","text":"Agreed. The checklist is yours for that date."},
+      {"speaker":"Alex","text":"Could we push that checklist to December seventh, twenty twenty-six instead?"},
+      {"speaker":"Maya","text":"No, please keep December fourth, twenty twenty-six."},
+      {"speaker":"Alex","text":"Understood. I'll stick with December fourth, twenty twenty-six."},
+      {"speaker":"Maya","text":"I'll verify the access roles too. I don't have a completion date for that yet."},
+      {"speaker":"Alex","text":"Agreed, please verify those roles. We can decide the deadline later."},
+      {"speaker":"Alex","text":"We could archive the old exports."},
+      {"speaker":"Maya","text":"Let's leave that as a suggestion for now. Don't approve it today."},
+      {"speaker":"Alex","text":"Which staging region should we use?"},
+      {"speaker":"Maya","text":"We still need to decide that."}
+    ],
+    "expected": [
+      {"key":"migration","task":"Deliver migration checklist","status":"confirmed","owner":"Alex","deadlineOriginal":"December fourth, twenty twenty-six","deadlineNormalized":"2026-12-04","evidenceTurns":[2,3,4,5,6],"reason":"Alex's assignment is accepted. The later December 7 proposal is refused; December 4 remains the agreed deadline."},
+      {"key":"roles","task":"Verify access roles","status":"confirmed","owner":"Maya","deadlineOriginal":null,"deadlineNormalized":null,"evidenceTurns":[7,8],"reason":"Maya commits and Alex agrees. No completion date has been chosen."},
+      {"key":"exports","task":"Archive old exports","status":"proposed_not_accepted","owner":null,"deadlineOriginal":null,"deadlineNormalized":null,"evidenceTurns":[9,10],"reason":"The idea is explicitly left unapproved; proposing it does not assign Alex as owner."},
+      {"key":"region","task":"Choose staging region","status":"unresolved","source":"participant_question","owner":null,"deadlineOriginal":null,"deadlineNormalized":null,"evidenceTurns":[11,12],"reason":"The participant's question remains unanswered."}
+    ],
+    "clarifications":["Agree a completion date for verifying access roles."]
+  }]
+}
