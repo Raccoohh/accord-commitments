@@ -8,7 +8,7 @@ Hardware inspected on this machine: AMD Ryzen 5 8645HS, 15.3 GiB usable system R
 | --- | --- | --- |
 | Python | 3.12.14 on this machine | Existing bundled runtime |
 | PyTorch / torchaudio | 2.8.0 CPU | [Official wheels](https://download.pytorch.org/whl/cpu) |
-| faster-whisper | 1.2.1, `Systran/faster-whisper-small.en`, INT8 CPU | [Project](https://github.com/SYSTRAN/faster-whisper) |
+| faster-whisper | 1.2.1, `Systran/faster-whisper-medium.en`, INT8 CPU | [Project](https://github.com/SYSTRAN/faster-whisper) |
 | pyannote.audio | 4.0.7, `pyannote/speaker-diarization-community-1` | [Model and conditions](https://huggingface.co/pyannote/speaker-diarization-community-1) |
 | Ollama | Portable Windows 0.35.0 | [Official release](https://github.com/ollama/ollama/releases/tag/v0.35.0) |
 | Extraction | `qwen2.5:7b`, Q4_K_M | [Model](https://ollama.com/library/qwen2.5:7b) |
@@ -33,7 +33,7 @@ On this Windows build, native CUDA DLL loading failed from the Cyrillic workspac
 
 The optional TorchCodec decoder reports unavailable FFmpeg DLLs on this machine. The actual pipeline decodes WAV with SoundFile and passes an in-memory waveform to pyannote; its successful real speech run confirms that this path does not need the optional decoder. Do not interpret the warning as a failed audio run.
 
-Installed transitive versions are saved in `local/requirements.lock.txt`. Model revisions and the Ollama digest are in `reports/local-models.json`. Setup runs a real synthetic A audio initialization and then records `.runtime/local-ready.json`; subsequent speech calls load offline. Delete that marker only when deliberately reinstalling or updating model caches.
+Installed transitive versions are saved in `local/requirements.lock.txt`. Pinned model identifiers are in `local/models.json`; the verified download manifest is in `reports/local-models.json`. Setup runs a real synthetic A audio initialization and then records `.runtime/local-ready.json`; subsequent speech calls load offline. Delete that marker only when deliberately reinstalling or updating model caches. The final development upgrade used E for this initialization because the smaller ASR model had omitted Maya's introduction. Medium.en restored the name from audio alone.
 
 Audio is sent only to the loopback app server. A bounded Python subprocess consumes audio through stdin, transcribes it, diarizes it and assigns each word estimate to the speaker with maximum time overlap. Contiguous same-speaker words form evidence segments. The language model sees only those segments. All timestamps remain ASR estimates; listening review is still required.
 

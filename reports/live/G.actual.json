@@ -1,0 +1,493 @@
+{
+  "caseId": "G",
+  "error": null,
+  "job": {
+    "id": "02d08f28-2b7d-402d-a2e2-6e631b33fca1",
+    "status": "done",
+    "createdAt": 1791034895753,
+    "metrics": {
+      "id": "02d08f28-2b7d-402d-a2e2-6e631b33fca1",
+      "startedAt": "2026-10-03T13:41:35.753Z",
+      "provider": "local",
+      "models": {
+        "asr": "Systran/faster-whisper-medium.en",
+        "diarization": "pyannote/speaker-diarization-community-1",
+        "extraction": "qwen2.5:7b"
+      },
+      "audioSeconds": 60.055,
+      "uploadMs": 3,
+      "stages": {
+        "validationMs": 8,
+        "transcriptionMs": 46998,
+        "extractionMs": 36849,
+        "evidenceValidationMs": 0
+      },
+      "calls": [
+        {
+          "stage": "asr_and_diarization",
+          "provider": "local",
+          "model": "Systran/faster-whisper-medium.en",
+          "diarizationModel": "pyannote/speaker-diarization-community-1",
+          "attempt": 1,
+          "usage": null,
+          "status": 200,
+          "localMetadata": {
+            "timings": {
+              "asrLoadMs": 2833,
+              "asrMs": 15859,
+              "diarizationLoadMs": 940,
+              "diarizationMs": 20634
+            },
+            "models": [
+              "Systran/faster-whisper-medium.en",
+              "pyannote/speaker-diarization-community-1"
+            ],
+            "revisions": [
+              "a29b04bd15381511a9af671baec01072039215e3",
+              "3533c8cf8e369892e6b79ff1bf80f7b0286a54ee"
+            ],
+            "device": "cpu",
+            "computeType": "int8 ASR",
+            "language": "en",
+            "audioSeconds": 60.055,
+            "timingPrecision": "ASR word estimates grouped by diarized speaker; not manually aligned"
+          },
+          "ms": 46998
+        },
+        {
+          "stage": "decision_reading",
+          "provider": "local",
+          "model": "qwen2.5:7b",
+          "contract": "plan-then-compact-v2-bounded-ids",
+          "thinking": false,
+          "attempt": 1,
+          "usage": {
+            "input_tokens": 421,
+            "output_tokens": 84,
+            "loadDurationNs": 3402700,
+            "promptEvalDurationNs": 299618000,
+            "evalDurationNs": 3338860000
+          },
+          "status": 200,
+          "ms": 3669
+        },
+        {
+          "stage": "extraction",
+          "provider": "local",
+          "model": "qwen2.5:7b",
+          "contract": "plan-then-compact-v2-bounded-ids",
+          "thinking": false,
+          "attempt": 1,
+          "usage": {
+            "input_tokens": 1569,
+            "output_tokens": 744,
+            "loadDurationNs": 2070600,
+            "promptEvalDurationNs": 326013000,
+            "evalDurationNs": 32815703000
+          },
+          "status": 200,
+          "ms": 33180
+        }
+      ],
+      "retries": 0,
+      "outcome": "complete",
+      "processingMs": 83855,
+      "totalServerMs": 83858,
+      "cost": {
+        "currency": "USD",
+        "totalVariableOperationUsd": 0,
+        "costPerAudioMinute": 0,
+        "apiChargesUsd": 0,
+        "basis": "Local inference: no metered API calls. Electricity, hardware and local compute costs are not measured and are excluded.",
+        "unknownChargesPossible": false,
+        "localComputeCostUsd": null,
+        "hosting": "Local Windows computer",
+        "ttsApiCost": 0,
+        "paidIntermediaries": 0
+      }
+    },
+    "result": {
+      "outcome": "complete",
+      "message": "Final task states are shown below. Review the evidence before relying on a decision.",
+      "speakers": [
+        {
+          "speakerId": "SPEAKER_01",
+          "name": "alex",
+          "confidence": "supported",
+          "evidence": [
+            {
+              "segmentId": "s0",
+              "role": "identity",
+              "quote": "hi i'm alex let's plan the compatibility work",
+              "speakerId": "SPEAKER_01",
+              "start": 0,
+              "end": 4.34,
+              "validation": "transcript_match"
+            }
+          ]
+        },
+        {
+          "speakerId": "SPEAKER_00",
+          "name": "maya",
+          "confidence": "supported",
+          "evidence": [
+            {
+              "segmentId": "s1",
+              "role": "identity",
+              "quote": "hi i'm maya what do we need",
+              "speakerId": "SPEAKER_00",
+              "start": 5.3,
+              "end": 8.52,
+              "validation": "transcript_match"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "id": "task_1",
+          "task": "Prepare compatibility matrix",
+          "status": "confirmed",
+          "source": "commitment",
+          "reason": "Alex proposed and Maya agreed to prepare the compatibility matrix by a specific date.",
+          "owner": "alex",
+          "ownerSpeakerId": "SPEAKER_01",
+          "deadlineOriginal": "january 12th 2027",
+          "deadlineNormalized": "2027-01-12",
+          "dateContextQuote": "i'll prepare the compatibility matrix by january 12th 2027",
+          "uncertainties": [],
+          "evidence": [
+            {
+              "segmentId": "s2",
+              "role": "proposal",
+              "quote": "i'll prepare the compatibility matrix by january 12th 2027",
+              "speakerId": "SPEAKER_01",
+              "start": 8.52,
+              "end": 14.7,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s3",
+              "role": "acceptance",
+              "quote": "agreed please prepare that matrix for that date",
+              "speakerId": "SPEAKER_00",
+              "start": 14.7,
+              "end": 19.5,
+              "validation": "transcript_match"
+            }
+          ],
+          "history": []
+        },
+        {
+          "id": "task_2",
+          "task": "Test the installer",
+          "status": "cancelled",
+          "source": "commitment",
+          "reason": "Maya proposed and agreed to test the installer, but then cancelled the task.",
+          "owner": "maya",
+          "ownerSpeakerId": "SPEAKER_00",
+          "deadlineOriginal": null,
+          "deadlineNormalized": null,
+          "dateContextQuote": null,
+          "uncertainties": [],
+          "evidence": [
+            {
+              "segmentId": "s4",
+              "role": "proposal",
+              "quote": "i'll test the installer as well",
+              "speakerId": "SPEAKER_00",
+              "start": 20.46,
+              "end": 22.92,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s5",
+              "role": "acceptance",
+              "quote": "agreed please test the installer",
+              "speakerId": "SPEAKER_01",
+              "start": 22.92,
+              "end": 25.92,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s6",
+              "role": "cancellation",
+              "quote": "Actually, cancel my installer test task. The installer is being replaced.",
+              "speakerId": "SPEAKER_00",
+              "start": 26.84,
+              "end": 32.62,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s8",
+              "role": "context",
+              "quote": "The installer test task is cancelled.",
+              "speakerId": "SPEAKER_01",
+              "start": 35.06,
+              "end": 37.18,
+              "validation": "transcript_match"
+            }
+          ],
+          "history": [
+            {
+              "field": "status",
+              "previousValue": "confirmed",
+              "replacementValue": "cancelled",
+              "evidence": [
+                {
+                  "segmentId": "s6",
+                  "role": "cancellation",
+                  "quote": "Actually, cancel my installer test task. The installer is being replaced.",
+                  "speakerId": "SPEAKER_00",
+                  "start": 26.84,
+                  "end": 32.62,
+                  "validation": "transcript_match"
+                },
+                {
+                  "segmentId": "s8",
+                  "role": "context",
+                  "quote": "The installer test task is cancelled.",
+                  "speakerId": "SPEAKER_01",
+                  "start": 35.06,
+                  "end": 37.18,
+                  "validation": "transcript_match"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "id": "task_3",
+          "task": "Review support notes",
+          "status": "confirmed",
+          "source": "commitment",
+          "reason": "Maya proposed and Alex agreed to review the support notes, but no deadline was agreed.",
+          "owner": null,
+          "ownerSpeakerId": null,
+          "deadlineOriginal": null,
+          "deadlineNormalized": null,
+          "dateContextQuote": null,
+          "uncertainties": [
+            "owner_unassigned",
+            "deadline_not_agreed"
+          ],
+          "evidence": [
+            {
+              "segmentId": "s9",
+              "role": "proposal",
+              "quote": "We also need to review the support notes.",
+              "speakerId": "SPEAKER_00",
+              "start": 38.54,
+              "end": 40.64,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s10",
+              "role": "acceptance",
+              "quote": "Agreed.",
+              "speakerId": "SPEAKER_01",
+              "start": 42.06,
+              "end": 42.36,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s11",
+              "role": "identity",
+              "quote": "The support notes review is a confirmed task.",
+              "speakerId": "SPEAKER_01",
+              "start": 43.32,
+              "end": 45.68,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s12",
+              "role": "identity",
+              "quote": "Nobody has taken ownership, and we have not agreed a deadline.",
+              "speakerId": "SPEAKER_01",
+              "start": 46.64,
+              "end": 50.22,
+              "validation": "transcript_match"
+            }
+          ],
+          "history": []
+        },
+        {
+          "id": "task_4",
+          "task": "Redraw toolbar icons",
+          "status": "proposed_not_accepted",
+          "source": "commitment",
+          "reason": "Alex proposed to redraw the toolbar icons, but Maya did not agree to this task.",
+          "owner": null,
+          "ownerSpeakerId": null,
+          "deadlineOriginal": null,
+          "deadlineNormalized": null,
+          "dateContextQuote": null,
+          "uncertainties": [],
+          "evidence": [
+            {
+              "segmentId": "s13",
+              "role": "proposal",
+              "quote": "We could redraw the toolbar icons.",
+              "speakerId": "SPEAKER_01",
+              "start": 51.6,
+              "end": 53.42,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s14",
+              "role": "identity",
+              "quote": "That is only a suggestion.",
+              "speakerId": "SPEAKER_00",
+              "start": 54.4,
+              "end": 56.06,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s15",
+              "role": "identity",
+              "quote": "We are not approving the new icons.",
+              "speakerId": "SPEAKER_00",
+              "start": 56.96,
+              "end": 58.78,
+              "validation": "transcript_match"
+            }
+          ],
+          "history": []
+        }
+      ],
+      "warnings": [],
+      "clarifications": [
+        {
+          "itemId": "task_3",
+          "text": "Who will own: Review support notes?",
+          "source": "system_clarification"
+        },
+        {
+          "itemId": "task_3",
+          "text": "What is the agreed deadline for: Review support notes?",
+          "source": "system_clarification"
+        }
+      ],
+      "segments": [
+        {
+          "id": "s0",
+          "speakerId": "SPEAKER_01",
+          "text": "hi i'm alex let's plan the compatibility work",
+          "start": 0,
+          "end": 4.34
+        },
+        {
+          "id": "s1",
+          "speakerId": "SPEAKER_00",
+          "text": "hi i'm maya what do we need",
+          "start": 5.3,
+          "end": 8.52
+        },
+        {
+          "id": "s2",
+          "speakerId": "SPEAKER_01",
+          "text": "i'll prepare the compatibility matrix by january 12th 2027",
+          "start": 8.52,
+          "end": 14.7
+        },
+        {
+          "id": "s3",
+          "speakerId": "SPEAKER_00",
+          "text": "agreed please prepare that matrix for that date",
+          "start": 14.7,
+          "end": 19.5
+        },
+        {
+          "id": "s4",
+          "speakerId": "SPEAKER_00",
+          "text": "i'll test the installer as well",
+          "start": 20.46,
+          "end": 22.92
+        },
+        {
+          "id": "s5",
+          "speakerId": "SPEAKER_01",
+          "text": "agreed please test the installer",
+          "start": 22.92,
+          "end": 25.92
+        },
+        {
+          "id": "s6",
+          "speakerId": "SPEAKER_00",
+          "text": "Actually, cancel my installer test task. The installer is being replaced.",
+          "start": 26.84,
+          "end": 32.62
+        },
+        {
+          "id": "s7",
+          "speakerId": "SPEAKER_01",
+          "text": "Agreed.",
+          "start": 33.94,
+          "end": 34.22
+        },
+        {
+          "id": "s8",
+          "speakerId": "SPEAKER_01",
+          "text": "The installer test task is cancelled.",
+          "start": 35.06,
+          "end": 37.18
+        },
+        {
+          "id": "s9",
+          "speakerId": "SPEAKER_00",
+          "text": "We also need to review the support notes.",
+          "start": 38.54,
+          "end": 40.64
+        },
+        {
+          "id": "s10",
+          "speakerId": "SPEAKER_01",
+          "text": "Agreed.",
+          "start": 42.06,
+          "end": 42.36
+        },
+        {
+          "id": "s11",
+          "speakerId": "SPEAKER_01",
+          "text": "The support notes review is a confirmed task.",
+          "start": 43.32,
+          "end": 45.68
+        },
+        {
+          "id": "s12",
+          "speakerId": "SPEAKER_01",
+          "text": "Nobody has taken ownership, and we have not agreed a deadline.",
+          "start": 46.64,
+          "end": 50.22
+        },
+        {
+          "id": "s13",
+          "speakerId": "SPEAKER_01",
+          "text": "We could redraw the toolbar icons.",
+          "start": 51.6,
+          "end": 53.42
+        },
+        {
+          "id": "s14",
+          "speakerId": "SPEAKER_00",
+          "text": "That is only a suggestion.",
+          "start": 54.4,
+          "end": 56.06
+        },
+        {
+          "id": "s15",
+          "speakerId": "SPEAKER_00",
+          "text": "We are not approving the new icons.",
+          "start": 56.96,
+          "end": 58.78
+        }
+      ],
+      "timingPrecision": "segment"
+    },
+    "completedAt": 1791034979607
+  },
+  "clientMetrics": {
+    "preparationMs": 105,
+    "uploadToUsefulResultMs": 84121
+  }
+}

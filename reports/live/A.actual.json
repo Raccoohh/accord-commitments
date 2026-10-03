@@ -1,0 +1,547 @@
+{
+  "caseId": "A",
+  "error": null,
+  "job": {
+    "id": "4bc8b149-49b3-408d-8b3a-b3dc64040ddf",
+    "status": "done",
+    "createdAt": 1791016978753,
+    "metrics": {
+      "id": "4bc8b149-49b3-408d-8b3a-b3dc64040ddf",
+      "startedAt": "2026-10-03T08:42:58.753Z",
+      "provider": "local",
+      "models": {
+        "asr": "Systran/faster-whisper-medium.en",
+        "diarization": "pyannote/speaker-diarization-community-1",
+        "extraction": "qwen2.5:7b"
+      },
+      "audioSeconds": 88.46,
+      "uploadMs": 3,
+      "stages": {
+        "validationMs": 12,
+        "transcriptionMs": 65443,
+        "extractionMs": 46395,
+        "evidenceValidationMs": 0
+      },
+      "calls": [
+        {
+          "stage": "asr_and_diarization",
+          "provider": "local",
+          "model": "Systran/faster-whisper-medium.en",
+          "diarizationModel": "pyannote/speaker-diarization-community-1",
+          "attempt": 1,
+          "usage": null,
+          "status": 200,
+          "localMetadata": {
+            "timings": {
+              "asrLoadMs": 3104,
+              "asrMs": 22723,
+              "diarizationLoadMs": 959,
+              "diarizationMs": 31772
+            },
+            "models": [
+              "Systran/faster-whisper-medium.en",
+              "pyannote/speaker-diarization-community-1"
+            ],
+            "revisions": [
+              "a29b04bd15381511a9af671baec01072039215e3",
+              "3533c8cf8e369892e6b79ff1bf80f7b0286a54ee"
+            ],
+            "device": "cpu",
+            "computeType": "int8 ASR",
+            "language": "en",
+            "audioSeconds": 88.46,
+            "timingPrecision": "ASR word estimates grouped by diarized speaker; not manually aligned"
+          },
+          "ms": 65443
+        },
+        {
+          "stage": "decision_reading",
+          "provider": "local",
+          "model": "qwen2.5:7b",
+          "contract": "plan-then-compact-v2-bounded-ids",
+          "thinking": false,
+          "attempt": 1,
+          "usage": {
+            "input_tokens": 540,
+            "output_tokens": 201,
+            "loadDurationNs": 3171900,
+            "promptEvalDurationNs": 239425000,
+            "evalDurationNs": 8213106000
+          },
+          "status": 200,
+          "ms": 8493
+        },
+        {
+          "stage": "extraction",
+          "provider": "local",
+          "model": "qwen2.5:7b",
+          "contract": "plan-then-compact-v2-bounded-ids",
+          "thinking": false,
+          "attempt": 1,
+          "usage": {
+            "input_tokens": 1817,
+            "output_tokens": 818,
+            "loadDurationNs": 2086800,
+            "promptEvalDurationNs": 523988000,
+            "evalDurationNs": 37336806000
+          },
+          "status": 200,
+          "ms": 37900
+        }
+      ],
+      "retries": 0,
+      "outcome": "complete",
+      "processingMs": 111850,
+      "totalServerMs": 111853,
+      "cost": {
+        "currency": "USD",
+        "totalVariableOperationUsd": 0,
+        "costPerAudioMinute": 0,
+        "apiChargesUsd": 0,
+        "basis": "Local inference: no metered API calls. Electricity, hardware and local compute costs are not measured and are excluded.",
+        "unknownChargesPossible": false,
+        "localComputeCostUsd": null,
+        "hosting": "Local Windows computer",
+        "ttsApiCost": 0,
+        "paidIntermediaries": 0
+      }
+    },
+    "result": {
+      "outcome": "complete",
+      "message": "Final task states are shown below. Review the evidence before relying on a decision.",
+      "speakers": [
+        {
+          "speakerId": "SPEAKER_01",
+          "name": "Alex",
+          "confidence": "supported",
+          "evidence": [
+            {
+              "segmentId": "s0",
+              "role": "identity",
+              "quote": "hi i'm alex let's settle the launch work today",
+              "speakerId": "SPEAKER_01",
+              "start": 0,
+              "end": 4.4,
+              "validation": "transcript_match"
+            }
+          ]
+        },
+        {
+          "speakerId": "SPEAKER_00",
+          "name": "Maya",
+          "confidence": "supported",
+          "evidence": [
+            {
+              "segmentId": "s1",
+              "role": "identity",
+              "quote": "hi alex i'm maya yes let's go through it",
+              "speakerId": "SPEAKER_00",
+              "start": 5.08,
+              "end": 9.78,
+              "validation": "transcript_match"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "id": "task_1",
+          "task": "Add Dark Mode to Dashboard",
+          "status": "proposed_not_accepted",
+          "source": "commitment",
+          "reason": "Idea, Not Approved",
+          "owner": null,
+          "ownerSpeakerId": null,
+          "deadlineOriginal": null,
+          "deadlineNormalized": null,
+          "dateContextQuote": null,
+          "uncertainties": [],
+          "evidence": [
+            {
+              "segmentId": "s2",
+              "role": "proposal",
+              "quote": "we could add a dark mode to the dashboard",
+              "speakerId": "SPEAKER_01",
+              "start": 9.78,
+              "end": 12.64,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s3",
+              "role": "change",
+              "quote": "maybe but let's leave that as an idea we are not approving dark mode today",
+              "speakerId": "SPEAKER_00",
+              "start": 13.44,
+              "end": 19.44,
+              "validation": "transcript_match"
+            }
+          ],
+          "history": []
+        },
+        {
+          "id": "task_2",
+          "task": "Send Wireframes",
+          "status": "confirmed",
+          "source": "commitment",
+          "reason": "Sent by October 8th, 2026",
+          "owner": "Alex",
+          "ownerSpeakerId": "SPEAKER_01",
+          "deadlineOriginal": "october 8th 2026",
+          "deadlineNormalized": "2026-10-08",
+          "dateContextQuote": "actually i need until october 8th 2026 for the wireframes can we change the deadline",
+          "uncertainties": [],
+          "evidence": [
+            {
+              "segmentId": "s4",
+              "role": "proposal",
+              "quote": "i'll send the wireframes by october 6th 2026",
+              "speakerId": "SPEAKER_01",
+              "start": 20.08,
+              "end": 24.52,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s5",
+              "role": "acceptance",
+              "quote": "agreed please send those wireframes",
+              "speakerId": "SPEAKER_00",
+              "start": 24.52,
+              "end": 28.78,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s6",
+              "role": "change",
+              "quote": "actually i need until october 8th 2026 for the wireframes can we change the deadline",
+              "speakerId": "SPEAKER_01",
+              "start": 30,
+              "end": 38.18,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s7",
+              "role": "acceptance",
+              "quote": "yes agreed use that later date instead of the original wireframe deadline",
+              "speakerId": "SPEAKER_00",
+              "start": 39.26,
+              "end": 44.88,
+              "validation": "transcript_match"
+            }
+          ],
+          "history": []
+        },
+        {
+          "id": "task_3",
+          "task": "Write Launch Announcement",
+          "status": "cancelled",
+          "source": "commitment",
+          "reason": "Cancelled",
+          "owner": "Maya",
+          "ownerSpeakerId": "SPEAKER_00",
+          "deadlineOriginal": null,
+          "deadlineNormalized": null,
+          "dateContextQuote": null,
+          "uncertainties": [],
+          "evidence": [
+            {
+              "segmentId": "s8",
+              "role": "proposal",
+              "quote": "i will write the launch announcement let's make that a task for me",
+              "speakerId": "SPEAKER_00",
+              "start": 45.92,
+              "end": 50.26,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s9",
+              "role": "acceptance",
+              "quote": "agreed maya please write the launch announcement",
+              "speakerId": "SPEAKER_01",
+              "start": 51.6,
+              "end": 55.22,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s10",
+              "role": "context",
+              "quote": "Wait, marketing is handling the announcement.",
+              "speakerId": "SPEAKER_00",
+              "start": 56,
+              "end": 58.94,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s11",
+              "role": "cancellation",
+              "quote": "Cancel my task to write it.",
+              "speakerId": "SPEAKER_00",
+              "start": 60.02,
+              "end": 61.94,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s12",
+              "role": "acceptance",
+              "quote": "Agreed.",
+              "speakerId": "SPEAKER_01",
+              "start": 62.84,
+              "end": 63.1,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s13",
+              "role": "context",
+              "quote": "That announcement task is cancelled.",
+              "speakerId": "SPEAKER_01",
+              "start": 64.06,
+              "end": 65.78,
+              "validation": "transcript_match"
+            }
+          ],
+          "history": []
+        },
+        {
+          "id": "task_4",
+          "task": "Run Accessibility Audit",
+          "status": "confirmed",
+          "source": "commitment",
+          "reason": "Confirmed, No Executor, No Deadline",
+          "owner": null,
+          "ownerSpeakerId": null,
+          "deadlineOriginal": null,
+          "deadlineNormalized": null,
+          "dateContextQuote": null,
+          "uncertainties": [
+            "owner_unassigned",
+            "deadline_not_agreed"
+          ],
+          "evidence": [
+            {
+              "segmentId": "s14",
+              "role": "proposal",
+              "quote": "We also need to run an accessibility audit before release.",
+              "speakerId": "SPEAKER_01",
+              "start": 67.14,
+              "end": 70.4,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s15",
+              "role": "acceptance",
+              "quote": "Agreed.",
+              "speakerId": "SPEAKER_00",
+              "start": 71.68,
+              "end": 72.08,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s16",
+              "role": "context",
+              "quote": "The accessibility audit is a confirmed task, but we have not assigned anyone and have not agreed a deadline.",
+              "speakerId": "SPEAKER_00",
+              "start": 73,
+              "end": 78.74,
+              "validation": "transcript_match"
+            }
+          ],
+          "history": []
+        },
+        {
+          "id": "question_1",
+          "task": "Which analytics provider should we use?",
+          "status": "unresolved",
+          "source": "participant_question",
+          "reason": "This question remains unanswered in the conversation.",
+          "owner": null,
+          "ownerSpeakerId": null,
+          "deadlineOriginal": null,
+          "deadlineNormalized": null,
+          "dateContextQuote": null,
+          "uncertainties": [],
+          "evidence": [
+            {
+              "segmentId": "s17",
+              "role": "question",
+              "quote": "Which analytics provider should we use?",
+              "speakerId": "SPEAKER_01",
+              "start": 80.14,
+              "end": 82.16,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s18",
+              "role": "context",
+              "quote": "We have not decided.",
+              "speakerId": "SPEAKER_00",
+              "start": 82.16,
+              "end": 84.44,
+              "validation": "transcript_match"
+            }
+          ],
+          "history": []
+        }
+      ],
+      "warnings": [],
+      "clarifications": [
+        {
+          "itemId": "task_4",
+          "text": "Who will own: Run Accessibility Audit?",
+          "source": "system_clarification"
+        },
+        {
+          "itemId": "task_4",
+          "text": "What is the agreed deadline for: Run Accessibility Audit?",
+          "source": "system_clarification"
+        }
+      ],
+      "segments": [
+        {
+          "id": "s0",
+          "speakerId": "SPEAKER_01",
+          "text": "hi i'm alex let's settle the launch work today",
+          "start": 0,
+          "end": 4.4
+        },
+        {
+          "id": "s1",
+          "speakerId": "SPEAKER_00",
+          "text": "hi alex i'm maya yes let's go through it",
+          "start": 5.08,
+          "end": 9.78
+        },
+        {
+          "id": "s2",
+          "speakerId": "SPEAKER_01",
+          "text": "we could add a dark mode to the dashboard",
+          "start": 9.78,
+          "end": 12.64
+        },
+        {
+          "id": "s3",
+          "speakerId": "SPEAKER_00",
+          "text": "maybe but let's leave that as an idea we are not approving dark mode today",
+          "start": 13.44,
+          "end": 19.44
+        },
+        {
+          "id": "s4",
+          "speakerId": "SPEAKER_01",
+          "text": "i'll send the wireframes by october 6th 2026",
+          "start": 20.08,
+          "end": 24.52
+        },
+        {
+          "id": "s5",
+          "speakerId": "SPEAKER_00",
+          "text": "agreed please send those wireframes",
+          "start": 24.52,
+          "end": 28.78
+        },
+        {
+          "id": "s6",
+          "speakerId": "SPEAKER_01",
+          "text": "actually i need until october 8th 2026 for the wireframes can we change the deadline",
+          "start": 30,
+          "end": 38.18
+        },
+        {
+          "id": "s7",
+          "speakerId": "SPEAKER_00",
+          "text": "yes agreed use that later date instead of the original wireframe deadline",
+          "start": 39.26,
+          "end": 44.88
+        },
+        {
+          "id": "s8",
+          "speakerId": "SPEAKER_00",
+          "text": "i will write the launch announcement let's make that a task for me",
+          "start": 45.92,
+          "end": 50.26
+        },
+        {
+          "id": "s9",
+          "speakerId": "SPEAKER_01",
+          "text": "agreed maya please write the launch announcement",
+          "start": 51.6,
+          "end": 55.22
+        },
+        {
+          "id": "s10",
+          "speakerId": "SPEAKER_00",
+          "text": "Wait, marketing is handling the announcement.",
+          "start": 56,
+          "end": 58.94
+        },
+        {
+          "id": "s11",
+          "speakerId": "SPEAKER_00",
+          "text": "Cancel my task to write it.",
+          "start": 60.02,
+          "end": 61.94
+        },
+        {
+          "id": "s12",
+          "speakerId": "SPEAKER_01",
+          "text": "Agreed.",
+          "start": 62.84,
+          "end": 63.1
+        },
+        {
+          "id": "s13",
+          "speakerId": "SPEAKER_01",
+          "text": "That announcement task is cancelled.",
+          "start": 64.06,
+          "end": 65.78
+        },
+        {
+          "id": "s14",
+          "speakerId": "SPEAKER_01",
+          "text": "We also need to run an accessibility audit before release.",
+          "start": 67.14,
+          "end": 70.4
+        },
+        {
+          "id": "s15",
+          "speakerId": "SPEAKER_00",
+          "text": "Agreed.",
+          "start": 71.68,
+          "end": 72.08
+        },
+        {
+          "id": "s16",
+          "speakerId": "SPEAKER_00",
+          "text": "The accessibility audit is a confirmed task, but we have not assigned anyone and have not agreed a deadline.",
+          "start": 73,
+          "end": 78.74
+        },
+        {
+          "id": "s17",
+          "speakerId": "SPEAKER_01",
+          "text": "Which analytics provider should we use?",
+          "start": 80.14,
+          "end": 82.16
+        },
+        {
+          "id": "s18",
+          "speakerId": "SPEAKER_00",
+          "text": "We have not decided.",
+          "start": 82.16,
+          "end": 84.44
+        },
+        {
+          "id": "s19",
+          "speakerId": "SPEAKER_00",
+          "text": "That provider question is still open.",
+          "start": 85.3,
+          "end": 87.3
+        }
+      ],
+      "timingPrecision": "segment"
+    },
+    "completedAt": 1791017090603
+  },
+  "clientMetrics": {
+    "preparationMs": 106,
+    "uploadToUsefulResultMs": 112431
+  }
+}

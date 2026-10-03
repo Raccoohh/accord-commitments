@@ -1,5 +1,5 @@
 import {createRequire} from 'node:module';
-import {mkdir,writeFile} from 'node:fs/promises';
+import {mkdir,writeFile,rm} from 'node:fs/promises';
 import {resolve} from 'node:path';
 const require=createRequire(import.meta.url);
 const {chromium}=require(process.env.PLAYWRIGHT_MODULE||'playwright');
@@ -14,6 +14,7 @@ await page.screenshot({path:`${output}/upload.png`,fullPage:true});
 const ids=process.argv.slice(2);if(!ids.length)ids.push('A','B','C','D');
 for(const id of ids){
   console.log(`Browser upload: ${id}`);
+  await rm(`${output}/${id}.playback.json`,{force:true});
   lastJobId=null;
   await page.locator('#file').setInputFiles(resolve(`fixtures/audio/${id}.wav`));
   await page.locator('#analyze').click();

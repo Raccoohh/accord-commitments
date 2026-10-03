@@ -1,4 +1,25 @@
-# Quality report
+// Builds tables from saved REAL runs and separately authored semantic review mappings.
+import {readFile,writeFile} from 'node:fs/promises';
+const json=async path=>JSON.parse((await readFile(path,'utf8')).replace(/^\uFEFF/,''));
+const evaluation=await json('reports/evaluation.json'),mapping=await json('reports/live/review-mapping.json');
+const runs=Object.fromEntries(await Promise.all(['A','B','C','D','E','F','G'].map(async id=>[id,await json(`reports/live/${id}.actual.json`)])));
+const a=runs.A.job.result,b=runs.B.job.result,rows=[];
+for(const key of Object.keys(mapping.A.matches)){
+  const first=a.items.find(i=>i.id===mapping.A.matches[key].actualId),second=b.items.find(i=>i.id===mapping.B.matches[key].actualId);
+  if(!first||!second)throw Error(`Incomplete A/B manual match: ${key}`);
+  rows.push({key,statusUnchanged:first.status===second.status,ownerUnchanged:first.owner===second.owner,sourceUnchanged:first.source===second.source,deadlineA:first.deadlineNormalized??first.deadlineOriginal,deadlineB:second.deadlineNormalized??second.deadlineOriginal,deadlineCorrect:key==='wireframes'?first.deadlineNormalized==='2026-10-08'&&second.deadlineNormalized==='2026-10-09':first.deadlineOriginal===second.deadlineOriginal});
+}
+const comparison={reviewBasis:'Manual semantic key matching; programmatic comparison of final fields.',finalFieldsPass:rows.every(r=>r.statusUnchanged&&r.ownerUnchanged&&r.sourceUnchanged&&r.deadlineCorrect),rows,historyAndEvidenceReview:mapping.A.notes.concat(mapping.B.notes),note:'Final-field invariance does not imply identical history completeness, wording or timestamps. Read the separate semantic review notes.'};
+await writeFile('reports/ab-comparison.json',JSON.stringify(comparison,null,2)+'\n');
+const fmt=ms=>(ms/1000).toFixed(3);
+const timingRows=Object.entries(runs).map(([id,r])=>{
+  const m=r.job.metrics,c=r.clientMetrics??{};
+  return `| ${id} | ${m.audioSeconds} | ${fmt(c.preparationMs??0)} | ${fmt(m.stages.transcriptionMs??0)} | ${fmt(m.stages.extractionMs??0)} | ${fmt(m.processingMs)} | ${fmt(c.uploadToUsefulResultMs??0)} | ${m.calls.length} |`;
+});
+const scoreRows=evaluation.cases.map(c=>`| ${c.id} | ${c.TP??'n/a'} | ${c.FP??'n/a'} | ${c.FN??'n/a'} | ${c.status} |`);
+const summary=evaluation.summary;
+const notes=evaluation.cases.filter(c=>c.reviewNotes?.length).map(c=>`### ${c.id}\n\n${c.reviewNotes.map(n=>'- '+n).join('\n')}`).join('\n\n');
+const content=`# Quality report
 
 Evaluated on **3 October 2026**. The application performs real local audio analysis with no paid API fallback. All results below come from actual audio uploads through Microsoft Edge. Expected labels were frozen independently before analysis. Human acoustic review remains pending; semantic review here means the assistant compared actual transcript text, evidence chains and output fields against those labels.
 
@@ -6,21 +27,15 @@ Evaluated on **3 October 2026**. The application performs real local audio analy
 
 | Case | TP | FP | FN | Review |
 | --- | ---: | ---: | ---: | --- |
-| A | 2 | 0 | 0 | reviewed |
-| B | 2 | 0 | 0 | reviewed |
-| C | 1 | 0 | 0 | reviewed |
-| D | 0 | 0 | 0 | passed |
-| E | 2 | 0 | 0 | reviewed |
-| F | 2 | 0 | 0 | reviewed |
-| G | 2 | 0 | 0 | reviewed |
+${scoreRows.join('\n')}
 
-Task detection across speech cases: **TP 11, FP 0, FN 0**. D is a negative silence case and does not establish positive-task accuracy. Across 22 expected items, status matched 21, owner 21, and deadline 21. Evidence had structural matches for 21 items and text-reviewed final-state support for 21. Acoustic listening completed: **0**. Task detection and final-field counts do not score history completeness or role-label correctness; those are disclosed below.
+Task detection across speech cases: **TP ${summary.TP}, FP ${summary.FP}, FN ${summary.FN}**. D is a negative silence case and does not establish positive-task accuracy. Across ${summary.expectedItems} expected items, status matched ${summary.statusCorrect}, owner ${summary.ownerCorrect}, and deadline ${summary.deadlineCorrect}. Evidence had structural matches for ${summary.evidenceStructural} items and text-reviewed final-state support for ${summary.evidenceSemantic}. Acoustic listening completed: **${summary.listened}**. Task detection and final-field counts do not score history completeness or role-label correctness; those are disclosed below.
 
 [Complete field table](../reports/expected-vs-actual.md) · [Machine-readable counts](../reports/evaluation.json) · [Review mapping and notes](../reports/live/review-mapping.json).
 
 ## A/B controlled change
 
-Final status, owner, source and all other deadline fields: **PASS**. Only the intended wireframe date changes from 2026-10-08 to 2026-10-09. Semantic task matching was reviewed before comparison. This is a final-field check, not a claim that every generated history or explanation is invariant. See [comparison](../reports/ab-comparison.json) and the case notes below.
+Final status, owner, source and all other deadline fields: **${comparison.finalFieldsPass?'PASS':'FAIL'}**. ${comparison.finalFieldsPass?'Only the intended wireframe date changes from 2026-10-08 to 2026-10-09.':'The intended wireframe date changes from 2026-10-08 to 2026-10-09, but additional differences remain; strict invariance is not achieved.'} Semantic task matching was reviewed before comparison. This is a final-field check, not a claim that every generated history or explanation is invariant. See [comparison](../reports/ab-comparison.json) and the case notes below.
 
 ## Measured latency and cost
 
@@ -28,13 +43,7 @@ All durations below are seconds. Browser preparation and upload-to-render are di
 
 | Case | Audio | Browser preparation | Speech stage | Two LLM stages | Server processing | Browser upload-to-render | Calls |
 | --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| A | 88.46 | 0.106 | 65.443 | 46.395 | 111.850 | 112.431 | 3 |
-| B | 88.6 | 0.148 | 85.656 | 91.815 | 177.488 | 177.925 | 3 |
-| C | 32.69 | 0.050 | 31.127 | 16.308 | 47.442 | 47.922 | 3 |
-| D | 8 | 0.017 | 0.000 | 0.000 | 0.001 | 0.032 | 0 |
-| E | 56.36 | 0.124 | 44.688 | 40.013 | 84.713 | 85.437 | 3 |
-| F | 63.335 | 0.118 | 49.316 | 33.373 | 82.702 | 83.485 | 3 |
-| G | 60.055 | 0.105 | 46.998 | 36.849 | 83.855 | 84.121 | 3 |
+${timingRows.join('\n')}
 
 Every successful speech operation has one combined ASR/diarization call and two Ollama calls, with **zero automatic retries**. Actual per-call token usage and load/evaluation timings are in each [saved result](../reports/live/) and [run metrics](../reports/run-metrics.jsonl). Standalone and extraction-only experiments have separate [diagnostic traces](../reports/diagnostic-metrics.jsonl); [manual interruptions](../reports/interrupted-runs.json) disclose unrecovered timings/usage as null. Speech token billing is not applicable to local inference. D uses zero model calls. All final runs have **$0 metered API charges and $0 API cost per input minute**; hardware, electricity and local compute are unmeasured, represented by null. Windows TTS and hosting have no purchased metered service. [Cost method](COSTS.md) retains the separate historical cloud assumptions.
 
@@ -50,43 +59,7 @@ Pinned runtime: faster-whisper medium.en CPU INT8, pyannote Community-1 CPU, and
 
 ## Remaining semantic observations
 
-### A
-
-- All final states, owners and deadlines match frozen expectations.
-- Selected question evidence now includes the explicit not-decided reply.
-- Structured deadline-change history is empty despite the accepted replacement; the complete four-fragment chain is present in main task evidence.
-
-### B
-
-- All final states, owners and deadlines match frozen expectations. Selected question evidence includes the not-decided reply.
-- A/B final fields differ only in the intended wireframe date. Structured history completeness differs: B has a deadline-change entry while A does not; both include the complete main evidence chain.
-- Cancellation evidence contains the explicit cancellation and acknowledgement, but individual model role labels are imperfect. Final cancelled status and active-list exclusion are correct.
-
-### C
-
-- Confirmed task, null owner, verbatim next Friday and null normalized date are correct. Evidence includes explicit ownership refusal and confirmation that the owner is unassigned. No fabricated participant question remains.
-
-### E
-
-- Both active tasks are assigned to Maya; the rollback checklist keeps November 3, 2026 and restore steps have no agreed deadline.
-- The selected rollback evidence includes original assignment, acceptance, ownership transfer and acceptance. Structured owner-change history is empty, so history completeness is limited.
-- The backups refusal is correctly quoted and final state is unapproved, but its evidence role is incorrectly labelled acceptance. Role-label accuracy is not counted as final-field accuracy.
-
-### F
-
-- Both accepted tasks are now active with correct owners; the refused December 7 proposal does not replace the agreed December 4 date.
-- The inactive archive-exports suggestion is missing. It is not a false-positive active task, but item completeness fails and its expected row is scored missing.
-- ASR merged the roles acceptance and exports suggestion in one segment; its text says do not prove rather than the scripted do not approve. This is a script/transcript discrepancy, not an acoustic listening verdict.
-- Migration evidence contains original acceptance and final reaffirmation; the intervening counterproposal/refusal is available in the full transcript but is not among its selected excerpts.
-- F is a regression case after its first semantic result informed the accepted-self-commitment consistency check; the original failure remains in local-regression-v9.
-
-### G
-
-- All four final task states, owners and deadlines match the independently frozen expectations. Names alex and maya differ only in capitalization; owner scoring ignores case, not spelling.
-- Installer evidence includes the original assignment, acceptance, cancellation and a second-speaker statement that the task is cancelled.
-- The support-notes review stays confirmed with no owner or deadline; the icons suggestion remains inactive.
-- Several context quotes are labelled identity by the model. Their actual text supports the final state; role-label correctness is not claimed.
-- G was evaluated after final semantic fixes and its results did not inform runtime changes.
+${notes}
 
 Quotes match ASR text structurally; they can still contain misheard words or incorrect speaker alignment. Evidence-role labels, explanations and structured change histories are model interpretations, not independently verified facts. No acoustic listening is claimed. Natural speech, accents, noise, overlapping speakers, larger groups, non-English recordings, longer meetings and adversarial speech were not semantically validated.
 
@@ -101,3 +74,10 @@ A later B run exposed dependence on evidence-role labels for cancellation, follo
 F's first completed extraction missed an accepted access-role task and omitted an inactive exports proposal. Its ASR merged adjacent same-speaker topics and misheard “don't approve” as “don't prove.” A further evidence-consistency guard recognizes unconditional self-commitment followed by another speaker's agreement, while excluding conditional or contradicted commitments. F was then rerun as a regression test; G is the new independent post-fix recording. The original failure is preserved, not replaced by a passing claim.
 
 No public URL, GitHub publication or finished video is claimed. The runnable local package and [2:50 recording script](VIDEO-SCRIPT.md) are the permitted handoff fallback. Human listening and review of the disclosed limitations remain before submission.
+`;
+await writeFile('docs/QUALITY-REPORT.md',content);
+console.log(JSON.stringify({summary,abFinalFieldsPass:comparison.finalFieldsPass}));
+
+
+
+

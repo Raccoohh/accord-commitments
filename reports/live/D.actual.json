@@ -1,12 +1,13 @@
 {
   "caseId": "D",
+  "error": null,
   "job": {
-    "id": "7d26d2e8-b443-4e2f-86f4-497c71269041",
+    "id": "71169297-2cd4-4cf3-b14a-0fab6d02959e",
     "status": "done",
-    "createdAt": 1791035072852,
+    "createdAt": 1791017498510,
     "metrics": {
-      "id": "7d26d2e8-b443-4e2f-86f4-497c71269041",
-      "startedAt": "2026-10-03T13:44:32.852Z",
+      "id": "71169297-2cd4-4cf3-b14a-0fab6d02959e",
+      "startedAt": "2026-10-03T08:51:38.510Z",
       "provider": "local",
       "models": {
         "asr": "Systran/faster-whisper-medium.en",
@@ -46,10 +47,10 @@
       "clarifications": [],
       "timingPrecision": "segment"
     },
-    "completedAt": 1791035072854
+    "completedAt": 1791017498510
   },
   "clientMetrics": {
-    "preparationMs": 14,
+    "preparationMs": 17,
     "uploadToUsefulResultMs": 32
   }
 }

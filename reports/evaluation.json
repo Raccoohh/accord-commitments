@@ -1,131 +1,172 @@
 {
-  "sourceDirectory": "reports/local-initial",
-  "warning": "Task detection TP/FP/FN are separate from field accuracy; no live speech accuracy claim without completed runs and human evidence review.",
+  "sourceDirectory": "reports/live",
+  "reviewBasis": "Assistant review of actual transcript and frozen expected labels; no acoustic listening audit. Owner names compare case-insensitively after NFC/trim; spelling differences are not normalized.",
+  "warning": "Task detection TP/FP/FN are separate from field accuracy. These synthetic examples do not establish general accuracy. See review notes for history and evidence limitations.",
+  "summary": {
+    "TP": 11,
+    "FP": 0,
+    "FN": 0,
+    "expectedItems": 22,
+    "statusCorrect": 21,
+    "ownerCorrect": 21,
+    "deadlineCorrect": 21,
+    "evidenceStructural": 21,
+    "evidenceSemantic": 21,
+    "listened": 0
+  },
   "cases": [
     {
       "id": "A",
       "status": "reviewed",
-      "TP": 0,
+      "TP": 2,
       "FP": 0,
-      "FN": 2,
+      "FN": 0,
       "details": [
         {
           "key": "dark_mode",
-          "actualId": null,
-          "statusCorrect": false,
-          "ownerCorrect": false,
-          "deadlineCorrect": false,
-          "evidenceStructural": false,
-          "evidenceSemantic": null,
+          "actualId": "task_1",
+          "statusCorrect": true,
+          "ownerCorrect": true,
+          "deadlineCorrect": true,
+          "evidenceStructural": true,
+          "evidenceSemantic": true,
           "listened": false
         },
         {
           "key": "wireframes",
-          "actualId": null,
-          "statusCorrect": false,
-          "ownerCorrect": false,
-          "deadlineCorrect": false,
-          "evidenceStructural": false,
-          "evidenceSemantic": null,
+          "actualId": "task_2",
+          "statusCorrect": true,
+          "ownerCorrect": true,
+          "deadlineCorrect": true,
+          "evidenceStructural": true,
+          "evidenceSemantic": true,
           "listened": false
         },
         {
           "key": "announcement",
-          "actualId": null,
-          "statusCorrect": false,
-          "ownerCorrect": false,
-          "deadlineCorrect": false,
-          "evidenceStructural": false,
-          "evidenceSemantic": null,
+          "actualId": "task_3",
+          "statusCorrect": true,
+          "ownerCorrect": true,
+          "deadlineCorrect": true,
+          "evidenceStructural": true,
+          "evidenceSemantic": true,
           "listened": false
         },
         {
           "key": "audit",
-          "actualId": null,
-          "statusCorrect": false,
-          "ownerCorrect": false,
-          "deadlineCorrect": false,
-          "evidenceStructural": false,
-          "evidenceSemantic": null,
+          "actualId": "task_4",
+          "statusCorrect": true,
+          "ownerCorrect": true,
+          "deadlineCorrect": true,
+          "evidenceStructural": true,
+          "evidenceSemantic": true,
           "listened": false
         },
         {
           "key": "analytics",
-          "actualId": null,
-          "statusCorrect": false,
-          "ownerCorrect": false,
-          "deadlineCorrect": false,
-          "evidenceStructural": false,
-          "evidenceSemantic": null,
+          "actualId": "question_1",
+          "statusCorrect": true,
+          "ownerCorrect": true,
+          "deadlineCorrect": true,
+          "evidenceStructural": true,
+          "evidenceSemantic": true,
           "listened": false
         }
+      ],
+      "unmatchedActual": [],
+      "reviewNotes": [
+        "All final states, owners and deadlines match frozen expectations.",
+        "Selected question evidence now includes the explicit not-decided reply.",
+        "Structured deadline-change history is empty despite the accepted replacement; the complete four-fragment chain is present in main task evidence."
       ]
     },
     {
       "id": "B",
       "status": "reviewed",
-      "TP": 0,
+      "TP": 2,
       "FP": 0,
-      "FN": 2,
+      "FN": 0,
       "details": [
         {
           "key": "dark_mode",
-          "actualId": null,
-          "statusCorrect": false,
-          "ownerCorrect": false,
-          "deadlineCorrect": false,
-          "evidenceStructural": false,
-          "evidenceSemantic": null,
+          "actualId": "task_1",
+          "statusCorrect": true,
+          "ownerCorrect": true,
+          "deadlineCorrect": true,
+          "evidenceStructural": true,
+          "evidenceSemantic": true,
           "listened": false
         },
         {
           "key": "wireframes",
-          "actualId": null,
-          "statusCorrect": false,
-          "ownerCorrect": false,
-          "deadlineCorrect": false,
-          "evidenceStructural": false,
-          "evidenceSemantic": null,
+          "actualId": "task_2",
+          "statusCorrect": true,
+          "ownerCorrect": true,
+          "deadlineCorrect": true,
+          "evidenceStructural": true,
+          "evidenceSemantic": true,
           "listened": false
         },
         {
           "key": "announcement",
-          "actualId": null,
-          "statusCorrect": false,
-          "ownerCorrect": false,
-          "deadlineCorrect": false,
-          "evidenceStructural": false,
-          "evidenceSemantic": null,
+          "actualId": "task_3",
+          "statusCorrect": true,
+          "ownerCorrect": true,
+          "deadlineCorrect": true,
+          "evidenceStructural": true,
+          "evidenceSemantic": true,
           "listened": false
         },
         {
           "key": "audit",
-          "actualId": null,
-          "statusCorrect": false,
-          "ownerCorrect": false,
-          "deadlineCorrect": false,
-          "evidenceStructural": false,
-          "evidenceSemantic": null,
+          "actualId": "task_4",
+          "statusCorrect": true,
+          "ownerCorrect": true,
+          "deadlineCorrect": true,
+          "evidenceStructural": true,
+          "evidenceSemantic": true,
           "listened": false
         },
         {
           "key": "analytics",
-          "actualId": null,
-          "statusCorrect": false,
-          "ownerCorrect": false,
-          "deadlineCorrect": false,
-          "evidenceStructural": false,
-          "evidenceSemantic": null,
+          "actualId": "question_1",
+          "statusCorrect": true,
+          "ownerCorrect": true,
+          "deadlineCorrect": true,
+          "evidenceStructural": true,
+          "evidenceSemantic": true,
           "listened": false
         }
+      ],
+      "unmatchedActual": [],
+      "reviewNotes": [
+        "All final states, owners and deadlines match frozen expectations. Selected question evidence includes the not-decided reply.",
+        "A/B final fields differ only in the intended wireframe date. Structured history completeness differs: B has a deadline-change entry while A does not; both include the complete main evidence chain.",
+        "Cancellation evidence contains the explicit cancellation and acknowledgement, but individual model role labels are imperfect. Final cancelled status and active-list exclusion are correct."
       ]
     },
     {
       "id": "C",
-      "status": "not_evaluated",
-      "TP": null,
-      "FP": null,
-      "FN": null
+      "status": "reviewed",
+      "TP": 1,
+      "FP": 0,
+      "FN": 0,
+      "details": [
+        {
+          "key": "usability",
+          "actualId": "task_1",
+          "statusCorrect": true,
+          "ownerCorrect": true,
+          "deadlineCorrect": true,
+          "evidenceStructural": true,
+          "evidenceSemantic": true,
+          "listened": false
+        }
+      ],
+      "unmatchedActual": [],
+      "reviewNotes": [
+        "Confirmed task, null owner, verbatim next Friday and null normalized date are correct. Evidence includes explicit ownership refusal and confirmation that the owner is unassigned. No fabricated participant question remains."
+      ]
     },
     {
       "id": "D",
@@ -137,10 +178,162 @@
     },
     {
       "id": "E",
-      "status": "not_evaluated",
-      "TP": null,
-      "FP": null,
-      "FN": null
+      "status": "reviewed",
+      "TP": 2,
+      "FP": 0,
+      "FN": 0,
+      "details": [
+        {
+          "key": "rollback",
+          "actualId": "task_1",
+          "statusCorrect": true,
+          "ownerCorrect": true,
+          "deadlineCorrect": true,
+          "evidenceStructural": true,
+          "evidenceSemantic": true,
+          "listened": false
+        },
+        {
+          "key": "restore",
+          "actualId": "task_2",
+          "statusCorrect": true,
+          "ownerCorrect": true,
+          "deadlineCorrect": true,
+          "evidenceStructural": true,
+          "evidenceSemantic": true,
+          "listened": false
+        },
+        {
+          "key": "backups",
+          "actualId": "task_3",
+          "statusCorrect": true,
+          "ownerCorrect": true,
+          "deadlineCorrect": true,
+          "evidenceStructural": true,
+          "evidenceSemantic": true,
+          "listened": false
+        }
+      ],
+      "unmatchedActual": [],
+      "reviewNotes": [
+        "Both active tasks are assigned to Maya; the rollback checklist keeps November 3, 2026 and restore steps have no agreed deadline.",
+        "The selected rollback evidence includes original assignment, acceptance, ownership transfer and acceptance. Structured owner-change history is empty, so history completeness is limited.",
+        "The backups refusal is correctly quoted and final state is unapproved, but its evidence role is incorrectly labelled acceptance. Role-label accuracy is not counted as final-field accuracy."
+      ]
+    },
+    {
+      "id": "F",
+      "status": "reviewed",
+      "TP": 2,
+      "FP": 0,
+      "FN": 0,
+      "details": [
+        {
+          "key": "migration",
+          "actualId": "task_1",
+          "statusCorrect": true,
+          "ownerCorrect": true,
+          "deadlineCorrect": true,
+          "evidenceStructural": true,
+          "evidenceSemantic": true,
+          "listened": false
+        },
+        {
+          "key": "roles",
+          "actualId": "task_2",
+          "statusCorrect": true,
+          "ownerCorrect": true,
+          "deadlineCorrect": true,
+          "evidenceStructural": true,
+          "evidenceSemantic": true,
+          "listened": false
+        },
+        {
+          "key": "exports",
+          "actualId": null,
+          "statusCorrect": false,
+          "ownerCorrect": false,
+          "deadlineCorrect": false,
+          "evidenceStructural": false,
+          "evidenceSemantic": false,
+          "listened": false
+        },
+        {
+          "key": "region",
+          "actualId": "question_1",
+          "statusCorrect": true,
+          "ownerCorrect": true,
+          "deadlineCorrect": true,
+          "evidenceStructural": true,
+          "evidenceSemantic": true,
+          "listened": false
+        }
+      ],
+      "unmatchedActual": [],
+      "reviewNotes": [
+        "Both accepted tasks are now active with correct owners; the refused December 7 proposal does not replace the agreed December 4 date.",
+        "The inactive archive-exports suggestion is missing. It is not a false-positive active task, but item completeness fails and its expected row is scored missing.",
+        "ASR merged the roles acceptance and exports suggestion in one segment; its text says do not prove rather than the scripted do not approve. This is a script/transcript discrepancy, not an acoustic listening verdict.",
+        "Migration evidence contains original acceptance and final reaffirmation; the intervening counterproposal/refusal is available in the full transcript but is not among its selected excerpts.",
+        "F is a regression case after its first semantic result informed the accepted-self-commitment consistency check; the original failure remains in local-regression-v9."
+      ]
+    },
+    {
+      "id": "G",
+      "status": "reviewed",
+      "TP": 2,
+      "FP": 0,
+      "FN": 0,
+      "details": [
+        {
+          "key": "matrix",
+          "actualId": "task_1",
+          "statusCorrect": true,
+          "ownerCorrect": true,
+          "deadlineCorrect": true,
+          "evidenceStructural": true,
+          "evidenceSemantic": true,
+          "listened": false
+        },
+        {
+          "key": "installer",
+          "actualId": "task_2",
+          "statusCorrect": true,
+          "ownerCorrect": true,
+          "deadlineCorrect": true,
+          "evidenceStructural": true,
+          "evidenceSemantic": true,
+          "listened": false
+        },
+        {
+          "key": "notes",
+          "actualId": "task_3",
+          "statusCorrect": true,
+          "ownerCorrect": true,
+          "deadlineCorrect": true,
+          "evidenceStructural": true,
+          "evidenceSemantic": true,
+          "listened": false
+        },
+        {
+          "key": "icons",
+          "actualId": "task_4",
+          "statusCorrect": true,
+          "ownerCorrect": true,
+          "deadlineCorrect": true,
+          "evidenceStructural": true,
+          "evidenceSemantic": true,
+          "listened": false
+        }
+      ],
+      "unmatchedActual": [],
+      "reviewNotes": [
+        "All four final task states, owners and deadlines match the independently frozen expectations. Names alex and maya differ only in capitalization; owner scoring ignores case, not spelling.",
+        "Installer evidence includes the original assignment, acceptance, cancellation and a second-speaker statement that the task is cancelled.",
+        "The support-notes review stays confirmed with no owner or deadline; the icons suggestion remains inactive.",
+        "Several context quotes are labelled identity by the model. Their actual text supports the final state; role-label correctness is not claimed.",
+        "G was evaluated after final semantic fixes and its results did not inform runtime changes."
+      ]
     }
   ]
 }

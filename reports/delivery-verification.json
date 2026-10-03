@@ -1,8 +1,9 @@
 {
-  "checkedAt": "2026-10-03T02:59:40.010Z",
-  "trackedFileCount": 123,
+  "checkedAt": "2026-10-03T13:46:44.640Z",
+  "trackedFileCount": 229,
+  "historyBlobsChecked": 260,
   "envLocalTracked": false,
   "exactSecretMatches": 0,
   "brokenLocalMarkdownLinks": 0,
-  "scope": "Current tracked delivery files; no plaintext secret emitted"
+  "scope": "Current tracked files and all reachable Git history blobs; exact configured secrets scanned as UTF-8 and UTF-16LE; no plaintext secret emitted"
 }

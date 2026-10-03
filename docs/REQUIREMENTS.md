@@ -1,54 +1,57 @@
 # Requirement-by-requirement review
 
-Done = implemented and the cited check supports the stated claim. Partial = implemented/prepared but required live or listening validation is missing. Not done = no completed deliverable. This checklist does not turn offline tests into evidence of model accuracy.
+Done means implemented and checked to the stated scope. Partial identifies missing acoustic review or a remaining semantic limitation. A small synthetic test set is not a general accuracy guarantee.
 
 | Brief requirement | Status | Evidence / remaining work |
 | --- | --- | --- |
-| New project structure and local Git repository | Done | `public/`, `src/`, `tests/`, `scripts/`, `fixtures/`, `docs/`, `reports/`; commits `32b67be`, `d90a247`, `0281e15` |
-| Inspect tools, files, keys and runtime first | Done | [Plan/environment](PLAN.md), [work log](WORKLOG.md) |
-| Safe API-key setup | Done | Ignored `.env.local`; key never in browser/repository; metadata-only verification |
-| English interface, fixtures and evaluator materials | Done | [UI](../public/index.html), [fixtures](../fixtures/README.md), English docs |
-| Short plan, risks and readiness criteria | Done | [Plan](PLAN.md) |
-| Up to 8 focused hours and factual time log | Partial | [Work log](WORKLOG.md); measured wall-clock checkpoints, initial unmeasured inspection disclosed |
-| English, ≤3 min, two speakers with introductions, no overlap | Partial | UI guidance, byte/duration validation and generated recordings; speaker/English correctness awaits live checks |
-| Audio-first upload and drag-and-drop | Done | Real browser file and drag/drop tests in [checks](../reports/offline-browser/checks.json) |
-| Visible file size/type/duration/language limits | Done | [Upload screenshot](../reports/initial/upload.png) |
-| Real progress states and actionable errors | Partial | Actual stages emitted by [pipeline](../src/pipeline.mjs); real 429 surfaced, quota wording fixed and locally tested |
-| Real ASR → extraction → evidence-validation pipeline | Partial | Real provider adapters implemented; first ASR blocked by credit balance; no completed speech pipeline |
-| Distinguish confirmed / proposed / cancelled / unresolved | Partial | Schema, prompt, validator and UI contract tested; semantic correctness unmeasured |
-| Include all accepted work, even without owner/deadline | Partial | Prompt and null handling; no successful speech output yet |
-| Final corrected deadline only; history for previous values | Partial | Model contract/UI history implemented; A/B runtime validation pending |
-| Cancelled work excluded from active list | Partial | UI filtering tested; real cancellation interpretation pending |
-| No invented owner or deadline; relative dates preserved | Partial | Validator tests pass; [C expectations](../fixtures/C/expected.json), live case blocked |
-| Reliable voice/name mapping and uncertainty | Partial | Self-introduction checks tested with local data; acoustic/ASR identity check pending |
-| Unclear agreement stays unresolved/partial | Partial | Prompt/validator behavior implemented; no live ambiguous speech verification |
-| Participant questions separate from app clarifications | Partial | UI/source separation and deterministic clarifications tested; live content pending |
-| Treat transcript/audio as data, not instructions | Partial | Prompt and serialized input boundary tested; no universal injection-resistance claim |
-| Structured result and schema validation | Done for implementation | [Schema](../src/schema.mjs), [unit output](../reports/unit-tests.txt); live service response still unobserved |
-| Verify segment existence, exact quotes, speaker IDs and time bounds | Done for structural checks | [Validator](../src/validate.mjs), unit tests; semantic/acoustic validation pending |
-| Multiple evidence fragments for changes/cancellations | Partial | Array schema, full-transcript prompt, UI; real evidence sufficiency pending |
-| Timestamped quotes and Play evidence on original audio | Partial | Seek/stop tested in [playback](../reports/offline-browser/playback.json); actual quote audibility not audited |
-| Full transcript and unresolved questions | Partial | Rendering tested with labelled UI fixtures; no real speech transcript yet |
-| Bounded retries, timeouts, empty/service-error handling | Done for implementation | Zero automatic retries, 120 s/provider timeout; local provider tests; actual quota failure retained |
-| Honest data-location/retention disclosure | Done | UI privacy panel, [architecture](ARCHITECTURE.md) |
-| A–D scripts and independent expectations frozen before analysis | Done | Commit `32b67be`; [source](../fixtures/cases.json) |
-| Two synthetic voices and audio for every case | Done | [Audio](../fixtures/audio/), System.Speech provenance; A 88.46 s/B 88.60 s/C 32.69 s/D 8 s |
-| Listen to generated audio and every evidence timestamp | Not done | [Pending checklist](LISTENING-CHECKLIST.md); no acoustic listening claim |
-| Real browser upload → analysis → result → evidence | Partial | Upload/error/silence real; speech result/evidence semantics blocked |
-| TP/FP/FN and status/owner/deadline/evidence table | Partial | [Comparison](../reports/expected-vs-actual.md), [counts](../reports/evaluation.json); A/B/C/E unavailable, D negative-only counts |
-| Controlled A/B difference validated | Not done | Inputs differ in one final date; actual outputs unavailable |
-| Repeat checks after fixes | Partial | Local tests rerun successfully; real paid regression run blocked |
-| Fresh recording after fixes | Partial | [E](../fixtures/holdout.json) frozen and synthesized; not analyzed |
-| Per-run duration, stage time, models, usage, retries, cost/minute | Partial | [Run metrics](../reports/run-metrics.jsonl), [cost method](COSTS.md); no successful speech cost/latency measurement |
-| Verify official prices and disclose estimates | Done with explicit uncertainty | Token rates verified; diarize minute fallback explicitly assumed in [costs](COSTS.md) |
-| Separate TTS and hosting costs | Done | No paid TTS/hosting; local compute excluded in [costs](COSTS.md) |
-| Runnable local demo | Done with live-analysis blocker | [Local URL](http://127.0.0.1:3000), [README](../README.md) |
-| Public demo URL | Not done | No hosting configured; localhost is not public |
-| GitHub repository | Not done | Local Git repository and offline delivery bundle prepared; no remote configured |
-| README, env example and pinned dependencies | Done | [README](../README.md), `.env.example`, `.node-version`, `package-lock.json` |
-| Actual outputs, failures, reused tools and AI models | Done for available evidence | [Quality report](QUALITY-REPORT.md), [AI/reuse](AI-AND-REUSE.md), `reports/` |
-| ≤3 minute final video | Not done; fallback prepared | [2:50 recording script](VIDEO-SCRIPT.md), explicitly not a completed video |
-| English delivery notes and all artifact links | Done | [Delivery notes](DELIVERY-NOTES.md) |
-| No extra features, purchases or sending to employer | Done | Local prototype only; no calendar/accounts/payments/task integrations |
+| New project structure and local Git repository | Done | Source, fixtures, tests, reports and docs; independent fixture commit 32b67be |
+| Inspect environment/tools/access first; no purchases | Done | [Plan](PLAN.md), [work log](WORKLOG.md); existing hardware and local installs |
+| English UI, recordings and delivery materials | Done | [UI](../public/index.html), [fixtures](../fixtures/README.md) |
+| Plan, risks and readiness criteria | Done | [Plan](PLAN.md) |
+| Eight-hour target and factual time log | Partial | [Work log](WORKLOG.md); measured work windows exclude long limit pauses; initial inspection was untimed |
+| Secure credentials and no paid calls after user constraint | Done | Ignored server-only HF_TOKEN; active runtime is local; [delivery scan](../reports/delivery-verification.json) |
+| English, two speakers, introductions, no overlap, up to 3 minutes | Done for tested scope | Guided input; actual byte/duration checks; two-speaker ASR/diarization; synthetic A–G |
+| Upload and drag-and-drop; size/type/language/duration limits | Done | [Browser checks](../reports/offline-browser/checks.json) |
+| Actual processing stages and errors, another-upload flow | Done | [Pipeline](../src/pipeline.mjs), real browser runs and HTTP checks |
+| Real audio → timestamped ASR/diarization → model → validation | Done | [Local model manifest](../reports/local-models.json), actual A–G JSON under reports/live |
+| No filename lookup, hidden transcript or expected-label input | Done | Audio bytes enter Python; only ASR segments reach Ollama; fixture data is test-only |
+| Confirmed / proposed / cancelled / unresolved distinctions | Done on final synthetic set to reported scope | [Field-level evaluation](../reports/expected-vs-actual.md); limitations in quality report |
+| Include accepted work with missing fields | Done on synthetic set | Accessibility audit and usability test remain active with null fields |
+| Final accepted deadline; no earlier deadline in headline | Done on synthetic set | A/B final date fields and C relative-date behavior |
+| Accurate structured change history | Partial | Final states and original quotes are reviewed; model-generated histories can omit transfers or misstate earlier status; see [quality report](QUALITY-REPORT.md) |
+| Cancelled and unapproved work excluded from active list | Done on synthetic set | A/B cancellation and proposals; E/F suggestions |
+| No invented owner/date; no upload/system-date normalization | Done to tested scope | Null handling, self-introduction grounding, explicit-year parser and C |
+| Reliable voice/name mapping | Partial | Actual ASR text grounds names; acoustic voice check remains pending |
+| Unclear agreement not promoted; transcript is untrusted data | Partial | Prompts and conservative validators tested; no broad adversarial/noisy-speech evaluation |
+| Spoken questions separate from generated clarifications | Done to tested scope | Verbatim question filter, separate source values and UI sections |
+| Structured model output checked against schema | Done | Compact schema plus strict final schema; 40 passing tests |
+| Segment IDs, exact quote text, speaker and time bounds | Done for structure | Authoritative ASR segments supply quotes/timestamps; [validation code](../src/validate.mjs) |
+| Sufficient multi-fragment evidence for changes/cancellation | Partial | Main task chains reviewed in final results; evidence roles and some open-question context remain imperfect; acoustic review pending |
+| Original-audio evidence playback and transcript | Done for mechanics | Real browser playback records for A/B/C/E/F/G; [listening checklist](LISTENING-CHECKLIST.md) remains separate |
+| Bounded calls, timeouts and error handling | Done | One speech call and two fixed local LLM calls, no automatic retries, ten-minute timeout per call; D skips models |
+| Actual privacy and retention explanation | Done | Local processing, loopback services, 30-minute in-memory results; [architecture](ARCHITECTURE.md) |
+| Freeze A–D independent scripts and expectations before analysis | Done | Commit 32b67be; [frozen source](../fixtures/cases.json) |
+| Two synthetic voices, WAVs, scripts, expected/actual files | Done | Windows David/Zira; A–G audio and provenance; [fixture integrity](../reports/fixture-integrity.json) |
+| Listen to recordings and every evidence excerpt | Not done | Human acoustic review required; no hearing claim from browser state or ASR text |
+| Real browser end-to-end checks | Done | Actual uploads, outputs, screenshots, client/server measurements and playback under reports/live |
+| TP/FP/FN separate from field/evidence accuracy | Done | [Counts](../reports/evaluation.json), [comparison](../reports/expected-vs-actual.md); assistant text review, not acoustic certification |
+| Controlled A/B difference | Partial | Final-field comparison and any history differences are separately documented in quality report |
+| Repeat testing after observed fixes | Done | Failed local runs preserved in local-initial and local-regression-v1/v2; final real run in live |
+| Fresh recording after main fixes, no tuning to its content | Done | G labels 99f1bc2; fresh audio 370411b; actual result G |
+| Duration, stage times, models, usage, retries and cost/minute | Done | Every final JSON contains metrics; speech subtimings and both LLM token counts; [costs](COSTS.md) |
+| Separate TTS/hosting/compute costs; no invented zero compute cost | Done | API charges $0; hardware/electricity unmeasured, localComputeCostUsd null; no paid TTS/hosting |
+| Runnable browser demo | Done locally | [Local URL](http://127.0.0.1:3000), launcher and [setup](LOCAL-SETUP.md) |
+| Public evaluator URL | Not done; local fallback provided | Requires suitable inference host or explicitly approved access to this machine; localhost is not public |
+| GitHub repository | Not published; local fallback provided | Local Git and bundle. GitHub connector is authenticated, but no accessible destination repository is configured |
+| README, env example, pinned dependencies and model revisions | Done | [README](../README.md), local/requirements.lock.txt, local/models.json |
+| Actual outputs, failures, AI/reuse disclosure | Done | [Quality report](QUALITY-REPORT.md), [local failure log](LOCAL-QUALITY.md), [AI/reuse](AI-AND-REUSE.md) |
+| Video up to 3 minutes | Permitted fallback provided | [Exact 2:50 recording script](VIDEO-SCRIPT.md); no finished video claimed |
+| English delivery notes and artifact links | Done | [Delivery notes](DELIVERY-NOTES.md) |
+| No extra accounts/task integrations or employer sending | Done | Local prototype and evaluation artifacts only |
 
-Overall: **partial / not yet ready to submit as a fully working AI demo**. The critical next step is funded, authorized real-audio testing, followed by listening review and completion of the evaluation and demonstration.
+The local demo and reproducible package are available. Submission still needs the human listening audit, review of the disclosed semantic limitations, and optional public repository/hosting and video steps. Do not represent those unfinished steps as completed.
+
+
+
+
+

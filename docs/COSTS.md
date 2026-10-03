@@ -6,6 +6,8 @@ The application now uses faster-whisper, pyannote Community-1 and Ollama Qwen2.5
 
 Speech and extraction durations, model identifiers, token counts, audio duration and retry count are recorded per operation. Initial downloads/loading are distinguished from inference where the runtime reports them. No automatic retry is configured. Initial model downloads require several GB; Python dependencies and portable binaries also use disk space. Synthetic audio uses existing Windows voices with no metered TTS API.
 
+A successful speech operation records three calls: combined local ASR/diarization, local decision reading, and local structured extraction. The two language-model calls are fixed stages, not retries. The ASR/diarization call includes separate load/inference timings in its metadata. CPU speech models are reloaded per request; the language model may be warm or cold depending on Ollama's five-minute keep-alive. Compare actual runs rather than treating one timing as a service guarantee. The final timing table is in [the quality report](QUALITY-REPORT.md); extraction-only experiments retain their own traces under `reports/local-initial/`.
+
 ## Historical cloud plan (inactive)
 
 Checked 2026-10-02 against official OpenAI documentation. These are USD list rates, not evidence of this account's invoice.
@@ -26,6 +28,6 @@ For token usage: `(uncached_input × input_rate + cached_input × cached_rate + 
 
 Every request has a call record. Automatic retries are disabled: exactly one attempt per stage, at most two provider calls for a successful run. An explicit user rerun is a new operation with its own metrics. Failed requests with unknown billing produce `totalVariableOperationUsd: null` and `unknownChargesPossible: true`; zero known charges does not mean zero billed charges. Free credits do not change list-price variable cost.
 
-Actual observations: two transcription attempts were rejected before a usable result. The diagnostic returned `credit_balance_exhausted`. There is no measured successful speech-pipeline cost or latency. D (digital silence) is detected locally without provider requests; its API variable cost is $0, with local compute excluded. See `reports/access-diagnostic.json`, `reports/initial/` and `reports/offline-browser/D.actual.json`.
+Historical cloud observations: two transcription attempts were rejected before a usable result. The diagnostic returned `credit_balance_exhausted`. No successful cloud speech-pipeline cost or latency was measured. D (digital silence) is detected locally without provider requests; its API variable cost is $0, with local compute excluded. See `reports/access-diagnostic.json`, `reports/initial/` and `reports/offline-browser/D.actual.json`.
 
 The development assistant's subscription cost is separate from runtime operation cost. No purchases, paid TTS, public hosting, or subscriptions were initiated.

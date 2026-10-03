@@ -1,0 +1,60 @@
+{
+  "reviewBasis": "Manual semantic key matching; programmatic comparison of final fields.",
+  "finalFieldsPass": true,
+  "rows": [
+    {
+      "key": "dark_mode",
+      "statusUnchanged": true,
+      "ownerUnchanged": true,
+      "sourceUnchanged": true,
+      "deadlineA": null,
+      "deadlineB": null,
+      "deadlineCorrect": true
+    },
+    {
+      "key": "wireframes",
+      "statusUnchanged": true,
+      "ownerUnchanged": true,
+      "sourceUnchanged": true,
+      "deadlineA": "2026-10-08",
+      "deadlineB": "2026-10-09",
+      "deadlineCorrect": true
+    },
+    {
+      "key": "announcement",
+      "statusUnchanged": true,
+      "ownerUnchanged": true,
+      "sourceUnchanged": true,
+      "deadlineA": null,
+      "deadlineB": null,
+      "deadlineCorrect": true
+    },
+    {
+      "key": "audit",
+      "statusUnchanged": true,
+      "ownerUnchanged": true,
+      "sourceUnchanged": true,
+      "deadlineA": null,
+      "deadlineB": null,
+      "deadlineCorrect": true
+    },
+    {
+      "key": "analytics",
+      "statusUnchanged": true,
+      "ownerUnchanged": true,
+      "sourceUnchanged": true,
+      "deadlineA": null,
+      "deadlineB": null,
+      "deadlineCorrect": true
+    }
+  ],
+  "historyAndEvidenceReview": [
+    "All final states, owners and deadlines match frozen expectations.",
+    "Selected question evidence now includes the explicit not-decided reply.",
+    "Structured deadline-change history is empty despite the accepted replacement; the complete four-fragment chain is present in main task evidence.",
+    "All final states, owners and deadlines match frozen expectations. Selected question evidence includes the not-decided reply.",
+    "A/B final fields differ only in the intended wireframe date. Structured history completeness differs: B has a deadline-change entry while A does not; both include the complete main evidence chain.",
+    "Cancellation evidence contains the explicit cancellation and acknowledgement, but individual model role labels are imperfect. Final cancelled status and active-list exclusion are correct."
+  ],
+  "note": "Final-field invariance does not imply identical history completeness, wording or timestamps. Read the separate semantic review notes."
+}

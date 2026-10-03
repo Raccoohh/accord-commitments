@@ -1,0 +1,170 @@
+{
+  "reviewer": "Codex assistant: transcript/evidence text review against frozen labels; no acoustic listening",
+  "A": {
+    "matches": {
+      "dark_mode": {
+        "actualId": "task_1",
+        "evidenceSupportsFinalState": true,
+        "listened": false
+      },
+      "wireframes": {
+        "actualId": "task_2",
+        "evidenceSupportsFinalState": true,
+        "listened": false
+      },
+      "announcement": {
+        "actualId": "task_3",
+        "evidenceSupportsFinalState": true,
+        "listened": false
+      },
+      "audit": {
+        "actualId": "task_4",
+        "evidenceSupportsFinalState": true,
+        "listened": false
+      },
+      "analytics": {
+        "actualId": "question_1",
+        "evidenceSupportsFinalState": true,
+        "listened": false
+      }
+    },
+    "notes": [
+      "All final states, owners and deadlines match frozen expectations.",
+      "Selected question evidence now includes the explicit not-decided reply.",
+      "Structured deadline-change history is empty despite the accepted replacement; the complete four-fragment chain is present in main task evidence."
+    ]
+  },
+  "B": {
+    "matches": {
+      "dark_mode": {
+        "actualId": "task_1",
+        "evidenceSupportsFinalState": true,
+        "listened": false
+      },
+      "wireframes": {
+        "actualId": "task_2",
+        "evidenceSupportsFinalState": true,
+        "listened": false
+      },
+      "announcement": {
+        "actualId": "task_3",
+        "evidenceSupportsFinalState": true,
+        "listened": false
+      },
+      "audit": {
+        "actualId": "task_4",
+        "evidenceSupportsFinalState": true,
+        "listened": false
+      },
+      "analytics": {
+        "actualId": "question_1",
+        "evidenceSupportsFinalState": true,
+        "listened": false
+      }
+    },
+    "notes": [
+      "All final states, owners and deadlines match frozen expectations. Selected question evidence includes the not-decided reply.",
+      "A/B final fields differ only in the intended wireframe date. Structured history completeness differs: B has a deadline-change entry while A does not; both include the complete main evidence chain.",
+      "Cancellation evidence contains the explicit cancellation and acknowledgement, but individual model role labels are imperfect. Final cancelled status and active-list exclusion are correct."
+    ]
+  },
+  "C": {
+    "matches": {
+      "usability": {
+        "actualId": "task_1",
+        "deadlineMeaningCorrect": true,
+        "evidenceSupportsFinalState": true,
+        "listened": false
+      }
+    },
+    "notes": [
+      "Confirmed task, null owner, verbatim next Friday and null normalized date are correct. Evidence includes explicit ownership refusal and confirmation that the owner is unassigned. No fabricated participant question remains."
+    ]
+  },
+  "E": {
+    "matches": {
+      "rollback": {
+        "actualId": "task_1",
+        "evidenceSupportsFinalState": true,
+        "listened": false
+      },
+      "restore": {
+        "actualId": "task_2",
+        "evidenceSupportsFinalState": true,
+        "listened": false
+      },
+      "backups": {
+        "actualId": "task_3",
+        "evidenceSupportsFinalState": true,
+        "listened": false
+      }
+    },
+    "notes": [
+      "Both active tasks are assigned to Maya; the rollback checklist keeps November 3, 2026 and restore steps have no agreed deadline.",
+      "The selected rollback evidence includes original assignment, acceptance, ownership transfer and acceptance. Structured owner-change history is empty, so history completeness is limited.",
+      "The backups refusal is correctly quoted and final state is unapproved, but its evidence role is incorrectly labelled acceptance. Role-label accuracy is not counted as final-field accuracy."
+    ]
+  },
+  "F": {
+    "matches": {
+      "migration": {
+        "actualId": "task_1",
+        "evidenceSupportsFinalState": true,
+        "listened": false
+      },
+      "roles": {
+        "actualId": "task_2",
+        "evidenceSupportsFinalState": true,
+        "listened": false
+      },
+      "exports": {
+        "actualId": null,
+        "evidenceSupportsFinalState": false,
+        "listened": false
+      },
+      "region": {
+        "actualId": "question_1",
+        "evidenceSupportsFinalState": true,
+        "listened": false
+      }
+    },
+    "notes": [
+      "Both accepted tasks are now active with correct owners; the refused December 7 proposal does not replace the agreed December 4 date.",
+      "The inactive archive-exports suggestion is missing. It is not a false-positive active task, but item completeness fails and its expected row is scored missing.",
+      "ASR merged the roles acceptance and exports suggestion in one segment; its text says do not prove rather than the scripted do not approve. This is a script/transcript discrepancy, not an acoustic listening verdict.",
+      "Migration evidence contains original acceptance and final reaffirmation; the intervening counterproposal/refusal is available in the full transcript but is not among its selected excerpts.",
+      "F is a regression case after its first semantic result informed the accepted-self-commitment consistency check; the original failure remains in local-regression-v9."
+    ]
+  },
+  "G": {
+    "matches": {
+      "matrix": {
+        "actualId": "task_1",
+        "evidenceSupportsFinalState": true,
+        "listened": false
+      },
+      "installer": {
+        "actualId": "task_2",
+        "evidenceSupportsFinalState": true,
+        "listened": false
+      },
+      "notes": {
+        "actualId": "task_3",
+        "evidenceSupportsFinalState": true,
+        "listened": false
+      },
+      "icons": {
+        "actualId": "task_4",
+        "evidenceSupportsFinalState": true,
+        "listened": false
+      }
+    },
+    "notes": [
+      "All four final task states, owners and deadlines match the independently frozen expectations. Names alex and maya differ only in capitalization; owner scoring ignores case, not spelling.",
+      "Installer evidence includes the original assignment, acceptance, cancellation and a second-speaker statement that the task is cancelled.",
+      "The support-notes review stays confirmed with no owner or deadline; the icons suggestion remains inactive.",
+      "Several context quotes are labelled identity by the model. Their actual text supports the final state; role-label correctness is not claimed.",
+      "G was evaluated after final semantic fixes and its results did not inform runtime changes."
+    ]
+  }
+}

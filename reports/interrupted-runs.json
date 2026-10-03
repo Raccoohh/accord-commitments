@@ -1,0 +1,45 @@
+{
+  "note": "Manual development interruptions, not automatic retries or successful results. Exact unfinished-stage durations and usage were not recovered; they are null rather than fabricated. Local API charges are zero; compute cost is unknown. Completed and ordinarily failed calls are in run-metrics.jsonl; standalone diagnostic traces are in diagnostic-metrics.jsonl.",
+  "runs": [
+    {
+      "caseId": "C",
+      "window": "2026-10-03 before approximately 01:18 Europe/Kyiv",
+      "reason": "Restart owned local processes while diagnosing CPU/GPU selection.",
+      "outcome": "interrupted",
+      "processingMs": null,
+      "usage": null,
+      "apiChargesUsd": 0,
+      "localComputeCostUsd": null
+    },
+    {
+      "caseId": "A",
+      "window": "2026-10-03 approximately 11:35–11:36 Europe/Kyiv",
+      "reason": "Stop the known-bad shared-schema run after E exposed identifier constraints leaking into free-text fields.",
+      "outcome": "interrupted",
+      "processingMs": null,
+      "usage": null,
+      "apiChargesUsd": 0,
+      "localComputeCostUsd": null
+    },
+    {
+      "caseId": "B",
+      "window": "2026-10-03 approximately 11:40–11:41 Europe/Kyiv",
+      "reason": "Restart after A exposed omission of an unapproved suggestion with repeated ID enums in the prompt; retain bounded decoder and restore concise prompt.",
+      "outcome": "interrupted",
+      "processingMs": null,
+      "usage": null,
+      "apiChargesUsd": 0,
+      "localComputeCostUsd": null
+    },
+    {
+      "caseId": "F",
+      "window": "2026-10-03 approximately 11:48 Europe/Kyiv",
+      "reason": "Batch reached F before being stopped to fix B cancellation-role validation. No F result was produced or used to change code. F was synthesized again afterward before its first completed evaluation.",
+      "outcome": "interrupted",
+      "processingMs": null,
+      "usage": null,
+      "apiChargesUsd": 0,
+      "localComputeCostUsd": null
+    }
+  ]
+}

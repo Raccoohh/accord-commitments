@@ -7,15 +7,15 @@
     "Malformed audio fails before any provider call"
   ],
   "malformedAudioJob": {
-    "id": "f0b60331-3275-468a-8547-be9f5cb3d534",
+    "id": "a82e7820-8d50-498d-8cf2-b8f237ddc48f",
     "status": "error",
-    "createdAt": 1790979220161,
+    "createdAt": 1791035070584,
     "metrics": {
-      "id": "f0b60331-3275-468a-8547-be9f5cb3d534",
-      "startedAt": "2026-10-02T22:13:40.161Z",
+      "id": "a82e7820-8d50-498d-8cf2-b8f237ddc48f",
+      "startedAt": "2026-10-03T13:44:30.584Z",
       "provider": "local",
       "models": {
-        "asr": "Systran/faster-whisper-small.en",
+        "asr": "Systran/faster-whisper-medium.en",
         "diarization": "pyannote/speaker-diarization-community-1",
         "extraction": "qwen2.5:7b"
       },
@@ -31,6 +31,6 @@
       "cost": null
     },
     "error": "Upload a valid PCM WAV recording.",
-    "completedAt": 1790979220161
+    "completedAt": 1791035070584
   }
 }

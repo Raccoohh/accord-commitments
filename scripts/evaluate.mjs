@@ -1,10 +1,11 @@
 // Offline scoring of saved REAL results. Never calls a model or infers gold labels from it.
 import {readFile,writeFile,mkdir} from 'node:fs/promises';
 const directory=process.argv[2]||'reports/live';
+const nameKey=value=>typeof value==='string'?value.normalize('NFC').trim().toLowerCase():value;
 async function json(path){try{return JSON.parse((await readFile(path,'utf8')).replace(/^\uFEFF/,''));}catch(e){if(e.code==='ENOENT')return null;throw e;}}
 const mappings=await json(`${directory}/review-mapping.json`)||{};
 const rows=[],cases=[];
-for(const id of ['A','B','C','D','E','F']){
+for(const id of ['A','B','C','D','E','F','G']){
   const expected=await json(`fixtures/${id}/expected.json`);
   const record=await json(`${directory}/${id}.actual.json`)||(id==='D'?await json('reports/offline-browser/D.actual.json'):null);
   const actual=record?.job?.result??record?.result;
@@ -22,7 +23,7 @@ for(const id of ['A','B','C','D','E','F']){
     const review=map[e.key],a=review?.actualId?actual.items.find(i=>i.id===review.actualId):null;
     if(a){if(used.has(a.id))throw Error(`Duplicate actual match in ${id}: ${a.id}`);used.add(a.id);}
     if(e.status==='confirmed'){if(a?.status==='confirmed')TP++;else FN++;}
-    const statusCorrect=a?e.status===a.status:false,ownerCorrect=a?e.owner===a.owner:false;
+    const statusCorrect=a?e.status===a.status:false,ownerCorrect=a?nameKey(e.owner)===nameKey(a.owner):false;
     const deadlineCorrect=a?(e.deadlineNormalized?e.deadlineNormalized===a.deadlineNormalized:e.deadlineOriginal===null?a.deadlineOriginal===null:review?.deadlineMeaningCorrect===true&&a.deadlineNormalized===null):false;
     const evidenceStructural=a?!!a.evidence.length&&a.evidence.every(v=>v.validation==='transcript_match'):false;
     const evidenceSemantic=review?.evidenceSupportsFinalState??null,listened=review?.listened??false;
@@ -31,10 +32,14 @@ for(const id of ['A','B','C','D','E','F']){
   }
   const expectedByActual=new Map(Object.entries(map).filter(([,v])=>v.actualId).map(([key,v])=>[v.actualId,expected.items.find(e=>e.key===key)]));
   const FP=actual.items.filter(a=>a.status==='confirmed'&&expectedByActual.get(a.id)?.status!=='confirmed').length;
-  cases.push({id,status:'reviewed',TP,FP,FN,details});
+  cases.push({id,status:'reviewed',TP,FP,FN,details,unmatchedActual:actual.items.filter(a=>!used.has(a.id)).map(a=>({id:a.id,task:a.task,status:a.status})),reviewNotes:mappings[id]?.notes??[]});
 }
 await mkdir('reports',{recursive:true});
-await writeFile('reports/evaluation.json',JSON.stringify({sourceDirectory:directory,warning:'Task detection TP/FP/FN are separate from field accuracy; no live speech accuracy claim without completed runs and human evidence review.',cases},null,2)+'\n');
+const reviewed=cases.filter(c=>c.status==='reviewed'),details=reviewed.flatMap(c=>c.details);
+const summary={TP:reviewed.reduce((n,c)=>n+c.TP,0),FP:reviewed.reduce((n,c)=>n+c.FP,0),FN:reviewed.reduce((n,c)=>n+c.FN,0),expectedItems:details.length};
+for(const field of ['statusCorrect','ownerCorrect','deadlineCorrect','evidenceStructural','evidenceSemantic','listened'])summary[field]=details.filter(d=>d[field]===true).length;
+await writeFile('reports/evaluation.json',JSON.stringify({sourceDirectory:directory,reviewBasis:'Assistant review of actual transcript and frozen expected labels; no acoustic listening audit. Owner names compare case-insensitively after NFC/trim; spelling differences are not normalized.',warning:'Task detection TP/FP/FN are separate from field accuracy. These synthetic examples do not establish general accuracy. See review notes for history and evidence limitations.',summary,cases},null,2)+'\n');
 const table=['# Expected versus actual','','Expected labels were frozen before analysis. Unavailable is not a passing result. Owner/deadline shown on unavailable rows are EXPECTED values, not analyzer outputs.','','| Case | Expected task / status | Actual status | Owner | Deadline | Evidence structure | Evidence meaning / listening |','| --- | --- | --- | --- | --- | --- | --- |',...rows.map(r=>'| '+r.map(c=>String(c).replaceAll('|','/')).join(' | ')+' |')];
 await writeFile('reports/expected-vs-actual.md',table.join('\n')+'\n');
 console.log(JSON.stringify(cases.map(({id,status,TP,FP,FN})=>({id,status,TP,FP,FN})),null,2));
+

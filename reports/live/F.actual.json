@@ -1,0 +1,372 @@
+{
+  "caseId": "F",
+  "error": null,
+  "job": {
+    "id": "c015f4c9-2f9e-4486-803f-78c0e3ea66d1",
+    "status": "done",
+    "createdAt": 1791034805976,
+    "metrics": {
+      "id": "c015f4c9-2f9e-4486-803f-78c0e3ea66d1",
+      "startedAt": "2026-10-03T13:40:05.977Z",
+      "provider": "local",
+      "models": {
+        "asr": "Systran/faster-whisper-medium.en",
+        "diarization": "pyannote/speaker-diarization-community-1",
+        "extraction": "qwen2.5:7b"
+      },
+      "audioSeconds": 63.335,
+      "uploadMs": 3,
+      "stages": {
+        "validationMs": 9,
+        "transcriptionMs": 49316,
+        "extractionMs": 33373,
+        "evidenceValidationMs": 4
+      },
+      "calls": [
+        {
+          "stage": "asr_and_diarization",
+          "provider": "local",
+          "model": "Systran/faster-whisper-medium.en",
+          "diarizationModel": "pyannote/speaker-diarization-community-1",
+          "attempt": 1,
+          "usage": null,
+          "status": 200,
+          "localMetadata": {
+            "timings": {
+              "asrLoadMs": 2781,
+              "asrMs": 16957,
+              "diarizationLoadMs": 1101,
+              "diarizationMs": 21582
+            },
+            "models": [
+              "Systran/faster-whisper-medium.en",
+              "pyannote/speaker-diarization-community-1"
+            ],
+            "revisions": [
+              "a29b04bd15381511a9af671baec01072039215e3",
+              "3533c8cf8e369892e6b79ff1bf80f7b0286a54ee"
+            ],
+            "device": "cpu",
+            "computeType": "int8 ASR",
+            "language": "en",
+            "audioSeconds": 63.335,
+            "timingPrecision": "ASR word estimates grouped by diarized speaker; not manually aligned"
+          },
+          "ms": 49316
+        },
+        {
+          "stage": "decision_reading",
+          "provider": "local",
+          "model": "qwen2.5:7b",
+          "contract": "plan-then-compact-v2-bounded-ids",
+          "thinking": false,
+          "attempt": 1,
+          "usage": {
+            "input_tokens": 394,
+            "output_tokens": 122,
+            "loadDurationNs": 2603400,
+            "promptEvalDurationNs": 45579000,
+            "evalDurationNs": 4894657000
+          },
+          "status": 200,
+          "ms": 4982
+        },
+        {
+          "stage": "extraction",
+          "provider": "local",
+          "model": "qwen2.5:7b",
+          "contract": "plan-then-compact-v2-bounded-ids",
+          "thinking": false,
+          "attempt": 1,
+          "usage": {
+            "input_tokens": 1600,
+            "output_tokens": 643,
+            "loadDurationNs": 2156300,
+            "promptEvalDurationNs": 56056000,
+            "evalDurationNs": 28293416000
+          },
+          "status": 200,
+          "ms": 28388
+        }
+      ],
+      "retries": 0,
+      "outcome": "complete",
+      "processingMs": 82702,
+      "totalServerMs": 82705,
+      "cost": {
+        "currency": "USD",
+        "totalVariableOperationUsd": 0,
+        "costPerAudioMinute": 0,
+        "apiChargesUsd": 0,
+        "basis": "Local inference: no metered API calls. Electricity, hardware and local compute costs are not measured and are excluded.",
+        "unknownChargesPossible": false,
+        "localComputeCostUsd": null,
+        "hosting": "Local Windows computer",
+        "ttsApiCost": 0,
+        "paidIntermediaries": 0
+      }
+    },
+    "result": {
+      "outcome": "complete",
+      "message": "Final task states are shown below. Review the evidence before relying on a decision.",
+      "speakers": [
+        {
+          "speakerId": "SPEAKER_01",
+          "name": "Alex",
+          "confidence": "supported",
+          "evidence": [
+            {
+              "segmentId": "s0",
+              "role": "identity",
+              "quote": "hi i'm alex let's settle the data migration work",
+              "speakerId": "SPEAKER_01",
+              "start": 0,
+              "end": 4.46,
+              "validation": "transcript_match"
+            }
+          ]
+        },
+        {
+          "speakerId": "SPEAKER_00",
+          "name": "Maya",
+          "confidence": "supported",
+          "evidence": [
+            {
+              "segmentId": "s1",
+              "role": "identity",
+              "quote": "hi i'm maya let's do that",
+              "speakerId": "SPEAKER_00",
+              "start": 5.42,
+              "end": 8.6,
+              "validation": "transcript_match"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "id": "task_1",
+          "task": "Deliver migration checklist",
+          "status": "confirmed",
+          "source": "commitment",
+          "reason": "Alex will deliver the migration checklist by December 4th, 2026.",
+          "owner": "Alex",
+          "ownerSpeakerId": "SPEAKER_01",
+          "deadlineOriginal": "december 4th 2026",
+          "deadlineNormalized": "2026-12-04",
+          "dateContextQuote": "i'll deliver the migration checklist by december 4th 2026",
+          "uncertainties": [],
+          "evidence": [
+            {
+              "segmentId": "s2",
+              "role": "proposal",
+              "quote": "i'll deliver the migration checklist by december 4th 2026",
+              "speakerId": "SPEAKER_01",
+              "start": 8.6,
+              "end": 14.32,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s3",
+              "role": "acceptance",
+              "quote": "agreed the checklist is yours for that date",
+              "speakerId": "SPEAKER_00",
+              "start": 14.32,
+              "end": 18.94,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s6",
+              "role": "acceptance",
+              "quote": "understood I'll stick with December 4th 2026",
+              "speakerId": "SPEAKER_01",
+              "start": 29.46,
+              "end": 35.62,
+              "validation": "transcript_match"
+            }
+          ],
+          "history": []
+        },
+        {
+          "id": "task_2",
+          "task": "Verify access roles",
+          "status": "confirmed",
+          "source": "commitment",
+          "reason": "Maya will verify access roles, with a deadline to be decided later.",
+          "owner": "Maya",
+          "ownerSpeakerId": "SPEAKER_00",
+          "deadlineOriginal": null,
+          "deadlineNormalized": null,
+          "dateContextQuote": null,
+          "uncertainties": [
+            "deadline_not_agreed"
+          ],
+          "evidence": [
+            {
+              "segmentId": "s7",
+              "role": "proposal",
+              "quote": "I'll verify the access roles too I don't have a completion date for that yet",
+              "speakerId": "SPEAKER_00",
+              "start": 35.62,
+              "end": 42.28,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s8",
+              "role": "acceptance",
+              "quote": "agreed please verify those roles we can decide the deadline later we could archive the old exports",
+              "speakerId": "SPEAKER_01",
+              "start": 42.28,
+              "end": 51.2,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s9",
+              "role": "context",
+              "quote": "let's leave that as a suggestion for now don't prove it today.",
+              "speakerId": "SPEAKER_00",
+              "start": 51.2,
+              "end": 56.64,
+              "validation": "transcript_match"
+            }
+          ],
+          "history": []
+        },
+        {
+          "id": "question_1",
+          "task": "Which staging region should we use?",
+          "status": "unresolved",
+          "source": "participant_question",
+          "reason": "This question remains unanswered in the conversation.",
+          "owner": null,
+          "ownerSpeakerId": null,
+          "deadlineOriginal": null,
+          "deadlineNormalized": null,
+          "dateContextQuote": null,
+          "uncertainties": [],
+          "evidence": [
+            {
+              "segmentId": "s10",
+              "role": "question",
+              "quote": "Which staging region should we use?",
+              "speakerId": "SPEAKER_01",
+              "start": 57.68,
+              "end": 59.48,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s11",
+              "role": "context",
+              "quote": "We still need to decide that.",
+              "speakerId": "SPEAKER_00",
+              "start": 60.56,
+              "end": 62.16,
+              "validation": "transcript_match"
+            }
+          ],
+          "history": []
+        }
+      ],
+      "warnings": [],
+      "clarifications": [
+        {
+          "itemId": "task_2",
+          "text": "What is the agreed deadline for: Verify access roles?",
+          "source": "system_clarification"
+        }
+      ],
+      "segments": [
+        {
+          "id": "s0",
+          "speakerId": "SPEAKER_01",
+          "text": "hi i'm alex let's settle the data migration work",
+          "start": 0,
+          "end": 4.46
+        },
+        {
+          "id": "s1",
+          "speakerId": "SPEAKER_00",
+          "text": "hi i'm maya let's do that",
+          "start": 5.42,
+          "end": 8.6
+        },
+        {
+          "id": "s2",
+          "speakerId": "SPEAKER_01",
+          "text": "i'll deliver the migration checklist by december 4th 2026",
+          "start": 8.6,
+          "end": 14.32
+        },
+        {
+          "id": "s3",
+          "speakerId": "SPEAKER_00",
+          "text": "agreed the checklist is yours for that date",
+          "start": 14.32,
+          "end": 18.94
+        },
+        {
+          "id": "s4",
+          "speakerId": "SPEAKER_01",
+          "text": "could we push that checklist to december 7th 2026 instead",
+          "start": 18.94,
+          "end": 24.66
+        },
+        {
+          "id": "s5",
+          "speakerId": "SPEAKER_00",
+          "text": "no please keep December 4th 2026",
+          "start": 24.66,
+          "end": 29.46
+        },
+        {
+          "id": "s6",
+          "speakerId": "SPEAKER_01",
+          "text": "understood I'll stick with December 4th 2026",
+          "start": 29.46,
+          "end": 35.62
+        },
+        {
+          "id": "s7",
+          "speakerId": "SPEAKER_00",
+          "text": "I'll verify the access roles too I don't have a completion date for that yet",
+          "start": 35.62,
+          "end": 42.28
+        },
+        {
+          "id": "s8",
+          "speakerId": "SPEAKER_01",
+          "text": "agreed please verify those roles we can decide the deadline later we could archive the old exports",
+          "start": 42.28,
+          "end": 51.2
+        },
+        {
+          "id": "s9",
+          "speakerId": "SPEAKER_00",
+          "text": "let's leave that as a suggestion for now don't prove it today.",
+          "start": 51.2,
+          "end": 56.64
+        },
+        {
+          "id": "s10",
+          "speakerId": "SPEAKER_01",
+          "text": "Which staging region should we use?",
+          "start": 57.68,
+          "end": 59.48
+        },
+        {
+          "id": "s11",
+          "speakerId": "SPEAKER_00",
+          "text": "We still need to decide that.",
+          "start": 60.56,
+          "end": 62.16
+        }
+      ],
+      "timingPrecision": "segment"
+    },
+    "completedAt": 1791034888681
+  },
+  "clientMetrics": {
+    "preparationMs": 118,
+    "uploadToUsefulResultMs": 83485
+  }
+}

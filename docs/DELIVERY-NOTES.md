@@ -2,23 +2,25 @@
 
 **Accord — Recorded conversation → final commitments**
 
-Deadline: 5 October 2026. Current delivery is a local prototype and reproducible test package. It is **not yet a fully validated submission**: OpenAI ASR returned `credit_balance_exhausted`, and further paid calls were stopped at the user's request. No successful speech analysis, public demo, GitHub push or final video is claimed.
+Deadline: 5 October 2026. This package contains a working local browser prototype, real local audio-analysis results and a reproducible evaluation. No paid API calls are needed. Human acoustic review remains pending; model interpretation and history limitations are disclosed in the quality report. No public demo, GitHub push or completed video is claimed.
 
-- [Run/setup instructions](../README.md)
-- [Local demo](http://127.0.0.1:3000) — available only while the local server is running; not a public URL
-- [Architecture and privacy](ARCHITECTURE.md)
-- [Frozen scenarios A–D](../fixtures/cases.json), [fresh holdout E](../fixtures/holdout.json)
-- Audio: [A](../fixtures/audio/A.wav), [B](../fixtures/audio/B.wav), [C](../fixtures/audio/C.wav), [D](../fixtures/audio/D.wav), [E](../fixtures/audio/E.wav)
-- Scripts/expectations: [A](../fixtures/A/expected.json), [B](../fixtures/B/expected.json), [C](../fixtures/C/expected.json), [D](../fixtures/D/expected.json), [E](../fixtures/E/expected.json); script.txt is next to each expected file
-- [Quality report with failures](QUALITY-REPORT.md), [expected versus actual](../reports/expected-vs-actual.md), [evaluation counts](../reports/evaluation.json)
-- [Local test output](../reports/unit-tests.txt), [browser checks](../reports/offline-browser/checks.json), [HTTP checks](../reports/server-checks.json)
-- [API failure diagnostic](../reports/access-diagnostic.json), [run metrics](../reports/run-metrics.jsonl), [cost assumptions](COSTS.md)
-- [Listening review checklist](LISTENING-CHECKLIST.md), [evaluation protocol](EVALUATION-PROTOCOL.md)
-- [Reused components and AI tools](AI-AND-REUSE.md), [time log](WORKLOG.md), [requirements checklist](REQUIREMENTS.md)
-- [2:50 video recording script](VIDEO-SCRIPT.md) — not a finished video
+- [Run instructions](../README.md), [one-time local setup](LOCAL-SETUP.md)
+- [Local demo](http://127.0.0.1:3000) — only while the local server runs; not public
+- [Architecture and privacy](ARCHITECTURE.md), [pinned model manifest](../reports/local-models.json)
+- [Frozen A–D scenarios](../fixtures/cases.json), [E regression](../fixtures/holdout.json), [F fresh scenario](../fixtures/fresh-local.json), [F generation checkpoint](../reports/F-generation.json)
+- Audio: [A](../fixtures/audio/A.wav), [B](../fixtures/audio/B.wav), [C](../fixtures/audio/C.wav), [D](../fixtures/audio/D.wav), [E](../fixtures/audio/E.wav), [F](../fixtures/audio/F.wav)
+- Expectations: [A](../fixtures/A/expected.json), [B](../fixtures/B/expected.json), [C](../fixtures/C/expected.json), [D](../fixtures/D/expected.json), [E](../fixtures/E/expected.json), [F](../fixtures/F/expected.json); script.txt is beside each file
+- Actual results: [A](../reports/live/A.actual.json), [B](../reports/live/B.actual.json), [C](../reports/live/C.actual.json), [D](../reports/live/D.actual.json), [E](../reports/live/E.actual.json), [F](../reports/live/F.actual.json)
+- [Quality report](QUALITY-REPORT.md), [retained local failures](LOCAL-QUALITY.md), [expected versus actual](../reports/expected-vs-actual.md), [counts](../reports/evaluation.json)
+- [Unit tests](../reports/unit-tests.txt), [browser checks](../reports/offline-browser/checks.json), [HTTP checks](../reports/server-checks.json)
+- [Run metrics](../reports/run-metrics.jsonl), [cost accounting](COSTS.md), [historical API failure](../reports/access-diagnostic.json)
+- [Listening checklist](LISTENING-CHECKLIST.md), [evaluation protocol](EVALUATION-PROTOCOL.md)
+- [Saved-result listening page](../reports/listening-review.html) — open in a browser from the project folder; all original audio links remain local
+- [Tools and original work](AI-AND-REUSE.md), [time log](WORKLOG.md), [requirement checklist](REQUIREMENTS.md)
+- [Exact 2:50 video script](VIDEO-SCRIPT.md) — the allowed fallback, not a finished video
 
-Local repository root: the project folder. The initial independent fixture commit is `32b67be`. Delivery archives exclude `.env.local`, runtime logs and temporary synthesis parts. A Git bundle preserves the local commit history; the source ZIP contains the committed snapshot. No files were sent to an employer or uploaded publicly.
+The source ZIP and Git bundle are generated from the final committed snapshot in delivery/accord-source.zip and delivery/accord-repository.bundle. They exclude secrets, model weights, Python/Ollama runtimes, operational logs and temporary synthesis parts. The ZIP includes fictional audio and actual test reports. Recover the repository using `git clone delivery/accord-repository.bundle accord`, then follow local setup on the receiving computer. Keep the archive outside the cloned repository to avoid duplicate delivery files.
 
-Offline handoff files, generated after the final commit: `delivery/accord-source.zip` and `delivery/accord-repository.bundle`. To recover a standalone repository: `git clone delivery/accord-repository.bundle accord`. Add your own ignored `.env.local` before live use. The source ZIP includes reports, fictional audio, scripts and documentation.
+For GitHub publication, supply an empty destination repository URL with connector or Git write access. The connector account is authenticated, but no accessible repository or remote was selected. For a public demo, provide an authorized machine capable of running the local models and an access plan; static hosting cannot run this inference backend. No subscription or hosting purchase is needed to use the local handoff. No material has been sent to an employer or other people.
 
-To finish: restore API credit and explicitly authorize paid testing, execute and review A–D, fix observed semantic errors, evaluate an unseen holdout, listen to the evidence, record the demonstration, and provide a public URL/GitHub remote if required. Preserve all failed runs and update these notes around the final verified state.
+Final independent case: [G script and labels](../fixtures/fresh-final.json), [G audio](../fixtures/audio/G.wav), [G expected](../fixtures/G/expected.json), [G actual](../reports/live/G.actual.json). F is now a regression case; its first semantic failure is retained separately. The final review includes A–G and does not hide missing inactive items or model-history limitations.

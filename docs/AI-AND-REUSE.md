@@ -4,9 +4,9 @@
 | --- | --- | --- |
 | Development assistant | OpenAI Codex desktop; system identifies the assistant as GPT-6, exact serving model snapshot not exposed | Authored code, fixture dialogue, documentation; ran commands and examined results |
 | API setup | OpenAI Developers encrypted-key connector | Created `TZ`; wrote it only to the approved ignored file. Secret not reproduced. |
-| Active runtime ASR | faster-whisper 1.2.1, `Systran/faster-whisper-small.en` | Local CPU INT8 transcription and word timestamp estimates |
+| Active runtime ASR | faster-whisper 1.2.1, `Systran/faster-whisper-medium.en` | Local CPU INT8 transcription and word timestamp estimates; replaced small.en after an observed missing name |
 | Active runtime diarization | pyannote.audio 4.0.7, Community-1 | Local CPU two-speaker exclusive timelines; user accepted gated download conditions |
-| Active runtime extraction | Portable Ollama 0.35.0, `qwen2.5:7b` Q4_K_M | Local schema-constrained final-state extraction; no paid fallback |
+| Active runtime extraction | Portable Ollama 0.35.0, `qwen2.5:7b` Q4_K_M | Two fixed local calls: decision reading and schema-constrained extraction; no paid fallback |
 | Historical cloud adapters | OpenAI `gpt-4o-transcribe-diarize` and `gpt-4.1-mini-2025-04-14` | Two ASR calls failed due to exhausted balance; extraction never ran. Adapter retained only for isolated mocked tests |
 | Runtime libraries | Node.js 24.19.0 built-ins; Web Audio and browser DOM APIs | Server, HTTPS requests, JSON, audio conversion/playback |
 | Browser tests | Bundled Playwright and installed Microsoft Edge | Real UI interactions; explicitly intercepted responses only in offline contract tests |
