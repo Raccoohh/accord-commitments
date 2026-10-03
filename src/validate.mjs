@@ -6,6 +6,12 @@ export function hasExplicitSelfCommitment(text){
     && !/\b(?:if|unless|maybe|might|would|could)\b/i.test(text);
 }
 
+function hasExplicitCancellation(text){
+  return !/\b(?:if|unless|maybe|might|could|would|should)\b/i.test(text)
+    && (/^(?:please\s+)?cancel\s+(?:my|our|that|this|the)\s+task\b/i.test(text.trim())
+      || /\b(?:task|assignment|work)\s+(?:is|has been)\s+cancell?ed\b/i.test(text));
+}
+
 function comparableDeadline(value){
   const cleaned=value.toLowerCase().replace(/(\d)(st|nd|rd|th)\b/g,'$1').trim();
   return normalizeExplicitDate(cleaned)??cleaned.replace(/[.,]/g,'').replace(/\s+/g,' ');
@@ -51,7 +57,7 @@ export function validateExtraction(raw,segments){
       if(item.source!=='clarification'&&!item.evidence.length)throw Error('Missing evidence.');
       if(item.status==='confirmed'&&item.source!=='commitment')throw Error('Only commitments may be confirmed.');
       if(item.status==='confirmed'&&!item.evidence.some(e=>e.role==='acceptance'||hasExplicitSelfCommitment(e.quote)))throw Error('Missing acceptance evidence.');
-      if(item.status==='cancelled'&&!item.evidence.some(e=>e.role==='cancellation'))throw Error('Missing cancellation evidence.');
+      if(item.status==='cancelled'&&!item.evidence.some(e=>e.role==='cancellation'||hasExplicitCancellation(e.quote)))throw Error('Missing cancellation evidence.');
     }catch{invalid=true;item.evidence=[];item.history=[];}
     if(invalid){item.status='unresolved';item.source='clarification';item.uncertainties.push('evidence_validation_failed');item.reason='Evidence could not be validated. Review the transcript or record a clarification.';issues.push(`Evidence withheld for: ${item.task}`);}
     if(item.ownerSpeakerId){
