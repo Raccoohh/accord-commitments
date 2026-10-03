@@ -49,7 +49,8 @@ async function localChat(messages,trace,{model,think,format,stage,numPredict}){
 }
 
 export async function localExtract(segments,trace,{model=LOCAL_MODELS.extraction,think}={}){
-  const responseSchema=structuredClone(localSchema),ids=segments.map(s=>s.id);
+  // JSON cloning also breaks shared leaf-schema references (e.g. generic text).
+  const responseSchema=JSON.parse(JSON.stringify(localSchema)),ids=segments.map(s=>s.id);
   // The decoder may select only existing IDs; prompt instructions alone are insufficient.
   function boundReferences(schema){
     if(schema.properties)for(const [name,property] of Object.entries(schema.properties)){

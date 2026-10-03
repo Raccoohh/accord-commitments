@@ -13,6 +13,9 @@ test('local extraction only addresses loopback Ollama and preserves schema/data 
     assert.deepEqual(payload.format.properties.tasks.items.properties.evidence.items.properties.segmentId.enum,['s0']);
     assert.deepEqual(payload.format.properties.speakers.items.properties.introductionSegmentId.enum,['s0',null]);
     assert.deepEqual(payload.format.properties.openQuestions.items.properties.segmentIds.items.enum,['s0']);
+    assert.equal(payload.format.properties.tasks.items.properties.task.enum,undefined);
+    assert.equal(payload.format.properties.speakers.items.properties.name.enum,undefined);
+    assert.equal(payload.format.properties.tasks.items.properties.reason.enum,undefined);
     // Ollama's decoding grammar alone does not tell the model what fields mean.
     assert.ok(payload.messages[0].content.includes(JSON.stringify(payload.format)));
     return new Response(JSON.stringify({message:{content:JSON.stringify({speakers:[],tasks:[],openQuestions:[],warnings:[],recordingStatus:'readable'})},prompt_eval_count:2,eval_count:1,done_reason:'stop'}));
