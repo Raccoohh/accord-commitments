@@ -1,0 +1,56 @@
+{
+  "caseId": "D",
+  "error": null,
+  "job": {
+    "id": "e2959c8a-1a06-480b-8e84-4ecfa5f0d854",
+    "status": "done",
+    "createdAt": 1790997852689,
+    "metrics": {
+      "id": "e2959c8a-1a06-480b-8e84-4ecfa5f0d854",
+      "startedAt": "2026-10-03T03:24:12.689Z",
+      "provider": "local",
+      "models": {
+        "asr": "Systran/faster-whisper-medium.en",
+        "diarization": "pyannote/speaker-diarization-community-1",
+        "extraction": "qwen2.5:7b"
+      },
+      "audioSeconds": 8,
+      "uploadMs": 1,
+      "stages": {
+        "validationMs": 1
+      },
+      "calls": [],
+      "retries": 0,
+      "outcome": "unusable",
+      "processingMs": 1,
+      "totalServerMs": 2,
+      "cost": {
+        "currency": "USD",
+        "totalVariableOperationUsd": 0,
+        "costPerAudioMinute": 0,
+        "apiChargesUsd": 0,
+        "basis": "Local inference: no metered API calls. Electricity, hardware and local compute costs are not measured and are excluded.",
+        "unknownChargesPossible": false,
+        "localComputeCostUsd": null,
+        "hosting": "Local Windows computer",
+        "ttsApiCost": 0,
+        "paidIntermediaries": 0
+      }
+    },
+    "result": {
+      "outcome": "unusable",
+      "message": "No audible speech was detected. Please upload a new recording with two clearly audible speakers.",
+      "items": [],
+      "speakers": [],
+      "segments": [],
+      "warnings": [],
+      "clarifications": [],
+      "timingPrecision": "segment"
+    },
+    "completedAt": 1790997852690
+  },
+  "clientMetrics": {
+    "preparationMs": 16,
+    "uploadToUsefulResultMs": 33
+  }
+}

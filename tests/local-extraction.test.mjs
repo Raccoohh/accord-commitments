@@ -27,9 +27,33 @@ test('short agreement receives real neighboring context, without generated quote
   assert.equal(result.items[0].evidence[0].quote,segments[1].text);
 });
 test('one unanswered question is not duplicated as an unresolved task',()=>{
-  const r=record();r.tasks[0].status='unresolved';r.openQuestions=[{question:segments[1].text,segmentIds:['work']}];
-  const result=expandLocalExtraction(r,segments);assert.equal(result.items.length,1);assert.equal(result.items[0].source,'participant_question');
-  r.tasks[0].status='confirmed';assert.equal(expandLocalExtraction(r,segments).items.length,2);
+  const s=structuredClone(segments);s[1].text='Which draft should we use?';
+  const r=record();r.tasks[0].status='unresolved';r.openQuestions=[{question:s[1].text,segmentIds:['work']}];
+  const result=expandLocalExtraction(r,s);assert.equal(result.items.length,1);assert.equal(result.items[0].source,'participant_question');
+  r.tasks[0].status='confirmed';assert.equal(expandLocalExtraction(r,s).items.length,2);
+  r.tasks[0].status='proposed_not_accepted';assert.equal(expandLocalExtraction(r,s).items.length,1);
+});
+
+test('date capitalization and commas are grounded back to the literal transcript span',()=>{
+  const s=structuredClone(segments);s[1].text="i'll send the draft by march 12th 2027";
+  const actual=validateExtraction(expandLocalExtraction(record(),s),s);
+  assert.equal(actual.items[0].deadlineOriginal,'march 12th 2027');assert.equal(actual.items[0].deadlineNormalized,'2027-03-12');
+  const r=record();r.tasks[0].deadline='March 13th, 2027';
+  assert.equal(validateExtraction(expandLocalExtraction(r,s),s).items[0].deadlineOriginal,null);
+});
+
+test('missing introduction reference is recovered only from that speaker stating the selected name',()=>{
+  const r=record();r.speakers[0].introductionSegmentId=null;
+  assert.equal(validateExtraction(expandLocalExtraction(r,segments),segments).items[0].owner,'Sam');
+  const s=structuredClone(segments);s[0].speakerId='SomeoneElse';
+  assert.equal(validateExtraction(expandLocalExtraction(r,s),s).items[0].owner,null);
+});
+
+test('verbatim requests are not unanswered participant questions and unchanged values are not changes',()=>{
+  const r=record(),s=[...segments,{id:'request',speakerId:'Q',start:5,end:7,text:'Please send the draft.'}];
+  r.openQuestions=[{question:'Please send the draft.',segmentIds:['request']}];
+  r.tasks[0].changes=[{field:'owner',previousValue:'Sam',replacementValue:'Sam',evidence:[]}];
+  const actual=expandLocalExtraction(r,s);assert.equal(actual.items.length,1);assert.deepEqual(actual.items[0].history,[]);
 });
 test('inferred questions cannot be presented as participant quotes',()=>{
   const r=record();r.openQuestions=[{question:'Who will do this?',segmentIds:['work']}];

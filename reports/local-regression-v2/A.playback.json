@@ -1,0 +1,13 @@
+{
+  "playing": {
+    "paused": false,
+    "time": 20.540073,
+    "duration": 88.46
+  },
+  "stopped": {
+    "paused": true,
+    "time": 24.680034
+  },
+  "expectedEnd": 24.72,
+  "acousticListening": "not performed; playback state/timing verified"
+}

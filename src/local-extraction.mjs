@@ -40,6 +40,20 @@ function actionTitle(title){
   return title.replace(/\s+(?:by|before|until|on)\s+(?:(?:January|February|March|April|May|June|July|August|September|October|November|December)\s+\d{1,2}(?:st|nd|rd|th)?(?:,?\s+\d{4})?|\d{4}-\d{2}-\d{2}|(?:next|this)\s+(?:Monday|Tuesday|Wednesday|Thursday|Friday|Saturday|Sunday)|(?:the\s+)?(?:release|launch)|tomorrow|today)[.!]?$/i,'').trim();
 }
 
+function exactPhrase(phrase,text){
+  if(!phrase)return null;
+  if(text.includes(phrase))return phrase;
+  // Correct formatting differences only; retain the exact span actually spoken.
+  const words=phrase.match(/[\p{L}\p{N}]+/gu);
+  if(!words?.length)return null;
+  const pattern=words.map(w=>w.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')).join('[\\s,.;:’\u0027-]+');
+  return text.match(new RegExp('\\b'+pattern+'\\b','iu'))?.[0]??null;
+}
+
+function isQuestion(text){
+  return /^(?:(?:so|and|but|then)[, ]+)?(?:who|what|when|where|why|which|whose|how|can|could|would|should|will|do|does|did|is|are|was|were|have|has)\b/i.test(text.trim());
+}
+
 export function expandLocalExtraction(raw,segments){
   validateSchema(raw,localSchema);
   const byId=new Map(segments.map(s=>[s.id,s]));
@@ -58,11 +72,17 @@ export function expandLocalExtraction(raw,segments){
     }
     return [...expanded.values()].sort((a,b)=>byId.get(a.segmentId).start-byId.get(b.segmentId).start);
   };
-  const speakers=raw.speakers.map(s=>({speakerId:s.speakerId,name:s.name,confidence:s.name&&s.introductionSegmentId?'supported':'uncertain',evidence:s.introductionSegmentId?[quote({segmentId:s.introductionSegmentId,role:'identity'})]:[]}));
-  const questions=raw.openQuestions.filter(q=>q.segmentIds.some(id=>byId.get(id)?.text.includes(q.question)));
+  const speakers=raw.speakers.map(s=>{
+    const escaped=s.name?.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+    const introduction=escaped?new RegExp("\\b(?:I(?:['’]m| am)|my name is)\\s+"+escaped+'\\b','i'):null;
+    const matches=introduction?segments.filter(segment=>segment.speakerId===s.speakerId&&introduction.test(segment.text)):[];
+    const id=matches.length===1?matches[0].id:s.introductionSegmentId;
+    return {speakerId:s.speakerId,name:s.name,confidence:s.name&&id?'supported':'uncertain',evidence:id?[quote({segmentId:id,role:'identity'})]:[]};
+  });
+  const questions=raw.openQuestions.filter(q=>isQuestion(q.question)&&q.segmentIds.some(id=>byId.get(id)?.text.includes(q.question)));
   const questionIds=new Set(questions.flatMap(q=>q.segmentIds));
   // One unanswered utterance should not become both a task and the same question.
-  const tasks=raw.tasks.filter(t=>!(t.status==='unresolved'&&t.evidence.some(e=>questionIds.has(e.segmentId))));
+  const tasks=raw.tasks.filter(t=>!(['unresolved','proposed_not_accepted'].includes(t.status)&&t.evidence.some(e=>questionIds.has(e.segmentId))));
   const items=tasks.map((t,index)=>{
     let speaker=speakers.find(s=>s.speakerId===t.owner||s.name===t.owner&&t.owner!==null);
     // A cancelled task can retain a single explicit prior self-assignment.
@@ -72,11 +92,13 @@ export function expandLocalExtraction(raw,segments){
       if(priorIds.size===1)speaker=speakers.find(s=>s.speakerId===[...priorIds][0]);
     }
     const owner=speaker?speaker.name:t.owner;
-    const evidence=refsWithContext(t.evidence),date=normalizeExplicitDate(t.deadline);
+    const evidence=refsWithContext(t.evidence);
+    const deadline=evidence.map(e=>exactPhrase(t.deadline,e.quote)).find(Boolean)??t.deadline;
+    const date=normalizeExplicitDate(deadline);
     return {id:`task_${index+1}`,task:actionTitle(t.task),status:t.status,source:'commitment',reason:t.reason,
       owner,ownerSpeakerId:speaker?speaker.speakerId:null,
-      deadlineOriginal:t.deadline,deadlineNormalized:date,dateContextQuote:date?evidence.find(e=>e.quote.includes(t.deadline))?.quote??null:null,
-      uncertainties:[],evidence,history:t.changes.map(c=>({...c,evidence:refsWithContext(c.evidence)}))};
+      deadlineOriginal:deadline,deadlineNormalized:date,dateContextQuote:date?evidence.find(e=>e.quote.includes(deadline))?.quote??null:null,
+      uncertainties:[],evidence,history:t.changes.filter(c=>c.previousValue.trim().toLowerCase()!==c.replacementValue.trim().toLowerCase()).map(c=>({...c,evidence:refsWithContext(c.evidence)}))};
   });
   items.push(...questions.map((q,i)=>({id:`question_${i+1}`,task:q.question,status:'unresolved',source:'participant_question',reason:'This question remains unanswered in the conversation.',owner:null,ownerSpeakerId:null,deadlineOriginal:null,deadlineNormalized:null,dateContextQuote:null,uncertainties:[],evidence:q.segmentIds.map(segmentId=>quote({segmentId,role:'question'})),history:[]})));
   const outcome=raw.recordingStatus==='unclear'?(items.length?'partial':'unusable'):'complete';
