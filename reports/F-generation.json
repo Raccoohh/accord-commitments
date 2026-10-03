@@ -2,8 +2,8 @@
   "caseId": "F",
   "scriptFrozenCommit": "9faa729",
   "audioFirstCommit": "1c042f8",
-  "runtimeFixCommit": "98efce4",
-  "regeneratedAt": "2026-10-03T08:33:42.4349037Z",
+  "runtimeFixCommit": "420e573",
+  "regeneratedAt": "2026-10-03T08:36:34.1976525Z",
   "sha256": "4a3706cbdcf2440e35ae1687b16570f0e71d2a2268879e9fbcdb7da8b152906b",
   "note": "Re-synthesized after final runtime fixes and before first analysis. Deterministic SAPI synthesis produced the same bytes as the earlier untested recording. Expected labels were unchanged."
 }
