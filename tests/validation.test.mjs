@@ -43,6 +43,15 @@ test('an explicitly unapproved suggestion is not ambiguous agreement',()=>{
   ss[2].text='We are not approving that deadline today.';s.items[0].evidence[1].quote=ss[2].text;
   assert.equal(validateExtraction(s,ss).items[0].status,'unresolved');
 });
+
+test('a self-commitment with another speaker agreeing is accepted despite a proposed label',()=>{
+  const s=sample();s.items[0].status='proposed_not_accepted';s.items[0].evidence=[ref('agree',segments[1].text,'proposal'),ref('reply','Agreed.','context')];
+  assert.equal(validateExtraction(s,segments).items[0].status,'confirmed');
+  const ss=structuredClone(segments);ss[1].text='I will send the report if the budget is approved.';s.items[0].evidence[0].quote=ss[1].text;
+  assert.equal(validateExtraction(s,ss).items[0].status,'proposed_not_accepted');
+  ss[1].text=segments[1].text;s.items[0].evidence[0].quote=ss[1].text;ss.push({id:'cancel',speakerId:'A',start:8,end:10,text:'Cancel my task to send it.'});s.items[0].evidence.push(ref('cancel',ss[3].text,'context'));
+  assert.equal(validateExtraction(s,ss).items[0].status,'proposed_not_accepted');
+});
 test('speaker names must be supported by self-introduction on the same speaker',()=>{const s=sample();s.speakers[0].name='Sam';s.items[0].owner='Sam';const r=validateExtraction(s,segments);assert.equal(r.speakers[0].name,null);assert.equal(r.items[0].owner,null);assert.ok(r.clarifications.some(c=>c.text.startsWith('Who')));});
 test('next Friday never receives a date from upload or system time',()=>{const s=sample();s.items[0].deadlineNormalized='2026-10-09';s.items[0].dateContextQuote='next Friday';const r=validateExtraction(s,segments);assert.equal(r.items[0].deadlineOriginal,'next Friday');assert.equal(r.items[0].deadlineNormalized,null);assert.ok(r.items[0].uncertainties.includes('missing_date_context'));});
 test('impossible dates are rejected even if a quoted year exists',()=>{const s=sample(),ss=structuredClone(segments);ss[1].text='I will send the report by February 30, 2026.';s.items[0].evidence[0].quote=ss[1].text;s.items[0].deadlineOriginal='February 30, 2026';s.items[0].deadlineNormalized='2026-02-30';s.items[0].dateContextQuote='February 30, 2026';assert.equal(validateExtraction(s,ss).items[0].deadlineNormalized,null);});

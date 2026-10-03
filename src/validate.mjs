@@ -20,6 +20,12 @@ function hasExplicitUnapprovedSuggestion(evidence){
   return suggested&&refused&&!accepted;
 }
 
+function hasAcceptedSelfCommitment(evidence){
+  if(evidence.some(e=>hasExplicitCancellation(e.quote)||/\b(?:can't|cannot|won't|will not|no longer)\b/i.test(e.quote)))return false;
+  return evidence.some(p=>hasExplicitSelfCommitment(p.quote)&&evidence.some(a=>
+    a.speakerId!==p.speakerId&&a.start>=p.end&&/^(?:yes[, ]+)?agreed\b/i.test(a.quote.trim())));
+}
+
 function comparableDeadline(value){
   const cleaned=value.toLowerCase().replace(/(\d)(st|nd|rd|th)\b/g,'$1').trim();
   return normalizeExplicitDate(cleaned)??cleaned.replace(/[.,]/g,'').replace(/\s+/g,' ');
@@ -64,6 +70,10 @@ export function validateExtraction(raw,segments){
       item.history=item.history.map(h=>({...h,evidence:validateRefs(h.evidence)}));
       if(item.status==='unresolved'&&item.source==='commitment'&&hasExplicitUnapprovedSuggestion(item.evidence)){
         item.status='proposed_not_accepted';
+        item.history=item.history.filter(h=>h.field!=='status');
+      }
+      if(item.status==='proposed_not_accepted'&&item.source==='commitment'&&hasAcceptedSelfCommitment(item.evidence)){
+        item.status='confirmed';
         item.history=item.history.filter(h=>h.field!=='status');
       }
       if(item.source!=='clarification'&&!item.evidence.length)throw Error('Missing evidence.');

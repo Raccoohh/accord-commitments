@@ -1,0 +1,29 @@
+{
+  "frozenBeforeFirstAnalysis": true,
+  "purpose": "Independent final G, authored after the accepted-self-commitment fix. Never pass script or expectations to runtime models.",
+  "cases": [{
+    "id":"G",
+    "title":"Compatibility review and a cancelled installer check",
+    "turns":[
+      {"speaker":"Alex","text":"Hi, I'm Alex. Let's plan the compatibility work."},
+      {"speaker":"Maya","text":"Hi, I'm Maya. What do we need?"},
+      {"speaker":"Alex","text":"I'll prepare the compatibility matrix by January twelfth, twenty twenty-seven."},
+      {"speaker":"Maya","text":"Agreed. Please prepare that matrix for that date."},
+      {"speaker":"Maya","text":"I'll test the installer as well."},
+      {"speaker":"Alex","text":"Agreed, please test the installer."},
+      {"speaker":"Maya","text":"Actually, cancel my installer test task. The installer is being replaced."},
+      {"speaker":"Alex","text":"Agreed. The installer test task is cancelled."},
+      {"speaker":"Maya","text":"We also need to review the support notes."},
+      {"speaker":"Alex","text":"Agreed. The support notes review is a confirmed task. Nobody has taken ownership, and we have not agreed a deadline."},
+      {"speaker":"Alex","text":"We could redraw the toolbar icons."},
+      {"speaker":"Maya","text":"That is only a suggestion. We are not approving the new icons."}
+    ],
+    "expected":[
+      {"key":"matrix","task":"Prepare compatibility matrix","status":"confirmed","owner":"Alex","deadlineOriginal":"January twelfth, twenty twenty-seven","deadlineNormalized":"2027-01-12","evidenceTurns":[2,3],"reason":"Alex commits and Maya explicitly agrees to the named date."},
+      {"key":"installer","task":"Test installer","status":"cancelled","owner":"Maya","deadlineOriginal":null,"deadlineNormalized":null,"evidenceTurns":[4,5,6,7],"reason":"The accepted task is explicitly cancelled and the cancellation is acknowledged."},
+      {"key":"notes","task":"Review support notes","status":"confirmed","owner":null,"deadlineOriginal":null,"deadlineNormalized":null,"evidenceTurns":[8,9],"reason":"The review is explicitly confirmed with no agreed owner or deadline."},
+      {"key":"icons","task":"Redraw toolbar icons","status":"proposed_not_accepted","owner":null,"deadlineOriginal":null,"deadlineNormalized":null,"evidenceTurns":[10,11],"reason":"The suggestion is explicitly left unapproved."}
+    ],
+    "clarifications":["Assign an owner and agree a deadline for reviewing support notes."]
+  }]
+}

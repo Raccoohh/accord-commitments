@@ -1,0 +1,65 @@
+{
+  "caseId": "G",
+  "source": "Independent expectations from fixtures/fresh-final.json; frozen before analysis and expanded without content changes.",
+  "items": [
+    {
+      "key": "matrix",
+      "task": "Prepare compatibility matrix",
+      "status": "confirmed",
+      "owner": "Alex",
+      "deadlineOriginal": "January twelfth, twenty twenty-seven",
+      "deadlineNormalized": "2027-01-12",
+      "evidenceTurns": [
+        2,
+        3
+      ],
+      "reason": "Alex commits and Maya explicitly agrees to the named date."
+    },
+    {
+      "key": "installer",
+      "task": "Test installer",
+      "status": "cancelled",
+      "owner": "Maya",
+      "deadlineOriginal": null,
+      "deadlineNormalized": null,
+      "evidenceTurns": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "reason": "The accepted task is explicitly cancelled and the cancellation is acknowledged."
+    },
+    {
+      "key": "notes",
+      "task": "Review support notes",
+      "status": "confirmed",
+      "owner": null,
+      "deadlineOriginal": null,
+      "deadlineNormalized": null,
+      "evidenceTurns": [
+        8,
+        9
+      ],
+      "reason": "The review is explicitly confirmed with no agreed owner or deadline."
+    },
+    {
+      "key": "icons",
+      "task": "Redraw toolbar icons",
+      "status": "proposed_not_accepted",
+      "owner": null,
+      "deadlineOriginal": null,
+      "deadlineNormalized": null,
+      "evidenceTurns": [
+        10,
+        11
+      ],
+      "reason": "The suggestion is explicitly left unapproved."
+    }
+  ],
+  "clarifications": [
+    "Assign an owner and agree a deadline for reviewing support notes."
+  ],
+  "outcome": "complete",
+  "reason": null
+}

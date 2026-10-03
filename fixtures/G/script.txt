@@ -1,0 +1,26 @@
+G: Compatibility review and a cancelled installer check
+SYNTHETIC FICTIONAL DIALOGUE
+
+Alex: Hi, I'm Alex. Let's plan the compatibility work.
+
+Maya: Hi, I'm Maya. What do we need?
+
+Alex: I'll prepare the compatibility matrix by January twelfth, twenty twenty-seven.
+
+Maya: Agreed. Please prepare that matrix for that date.
+
+Maya: I'll test the installer as well.
+
+Alex: Agreed, please test the installer.
+
+Maya: Actually, cancel my installer test task. The installer is being replaced.
+
+Alex: Agreed. The installer test task is cancelled.
+
+Maya: We also need to review the support notes.
+
+Alex: Agreed. The support notes review is a confirmed task. Nobody has taken ownership, and we have not agreed a deadline.
+
+Alex: We could redraw the toolbar icons.
+
+Maya: That is only a suggestion. We are not approving the new icons.
