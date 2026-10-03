@@ -1,19 +1,12 @@
-# Listening checklist — human review pending
+# Listening checklist — completed by user confirmation
 
-No acoustic listening verification is claimed. The assistant reviewed transcript text and browser playback state; neither proves that the words and voices were heard correctly. Synthesis manifests provide generation boundaries, not a listening audit.
+On **3 October 2026**, the project user reported listening to all recordings. After the assistant asked about discrepancies in quoted words, speaker voices and excerpt boundaries, the user replied that none were noticed. See the [confirmation record](../reports/human-listening-review.json) for the original statements and scope. This is a user-reported audit, not independent listening by the assistant or measured per-excerpt alignment.
 
-Open the [saved-result listening page](../reports/listening-review.html) in a browser from the project folder. It loads all seven original WAVs and every unique cited excerpt from the actual saved results. [Its mechanical check](../reports/listening-review-check.json) confirms loading and seek/stop, not hearing. Checkboxes are temporary notes and do not save a review certificate.
+| Case | User-reported listening outcome |
+| --- | --- |
+| A, B, C, E, F, G | Heard; no discrepancies reported in the displayed evidence |
+| D | User observed eight seconds of silence; confirmed as the intended negative test |
 
-| File | Full recording versus frozen script | Distinct voices and introductions | Every evidence excerpt checked by ear | Reviewer / date |
-| --- | --- | --- | --- | --- |
-| [A](../fixtures/audio/A.wav) | Pending | Pending | Pending | — |
-| [B](../fixtures/audio/B.wav) | Pending | Pending | Pending | — |
-| [C](../fixtures/audio/C.wav) | Pending | Pending | Pending | — |
-| [D](../fixtures/audio/D.wav) | PCM samples verified as zero | Not applicable | Not applicable | Automated byte check |
-| [E](../fixtures/audio/E.wav) | Pending | Pending | Pending | — |
-| [F](../fixtures/audio/F.wav) | Pending | Pending | Pending | — |
-| [G](../fixtures/audio/G.wav) | Pending | Pending | Pending | — |
+The [saved-result listening page](../reports/listening-review.html) retains all original audio and displayed excerpts for rechecking. Its checkboxes are temporary notes. The [automated playback check](../reports/listening-review-check.json) verifies loading and seek/stop only; it does not establish hearing.
 
-Compare each recording with its fixtures/<case>/script.txt. In the app, use **Play evidence** for every quoted fragment. Check that the full quote is audible, the named speaker is correct, and any acceptance, later change or cancellation has sufficient context. Listen especially to A/B's changed deadline and cancelled announcement, C's refusal to own the task, E's ownership transfer, and F's refused later date.
-
-Record truncation, incorrect ASR words, voice confusion and missing context, then retest affected excerpts. Keep failed observations. Do not mark listening complete solely because a transcript matches a script or an audio element reports playback.
+The 21 matched displayed items are marked listened in the evaluation. The missing F inactive proposal has no displayed evidence and remains unscored for listening. User confirmation does not erase the documented F script/transcript difference, missing proposal, incomplete histories or imperfect evidence-role labels. These remain in the [quality report](QUALITY-REPORT.md).

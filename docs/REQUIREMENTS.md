@@ -21,12 +21,12 @@ Done means implemented and checked to the stated scope. Partial identifies missi
 | Accurate structured change history | Partial | Final states and original quotes are reviewed; model-generated histories can omit transfers or misstate earlier status; see [quality report](QUALITY-REPORT.md) |
 | Cancelled and unapproved work excluded from active list | Done on synthetic set | A/B cancellation and proposals; E/F suggestions |
 | No invented owner/date; no upload/system-date normalization | Done to tested scope | Null handling, self-introduction grounding, explicit-year parser and C |
-| Reliable voice/name mapping | Partial | Actual ASR text grounds names; acoustic voice check remains pending |
+| Reliable voice/name mapping | Partial | Actual ASR text grounds names; user reported no voice discrepancies in the synthetic set; broader reliability is untested |
 | Unclear agreement not promoted; transcript is untrusted data | Partial | Prompts and conservative validators tested; no broad adversarial/noisy-speech evaluation |
 | Spoken questions separate from generated clarifications | Done to tested scope | Verbatim question filter, separate source values and UI sections |
 | Structured model output checked against schema | Done | Compact schema plus strict final schema; 40 passing tests |
 | Segment IDs, exact quote text, speaker and time bounds | Done for structure | Authoritative ASR segments supply quotes/timestamps; [validation code](../src/validate.mjs) |
-| Sufficient multi-fragment evidence for changes/cancellation | Partial | Main task chains reviewed in final results; evidence roles and some open-question context remain imperfect; acoustic review pending |
+| Sufficient multi-fragment evidence for changes/cancellation | Partial | Main task chains reviewed in final results; evidence roles and some open-question context remain imperfect; user-reported acoustic review complete |
 | Original-audio evidence playback and transcript | Done for mechanics | Real browser playback records for A/B/C/E/F/G; [listening checklist](LISTENING-CHECKLIST.md) remains separate |
 | Bounded calls, timeouts and error handling | Done | One speech call and two fixed local LLM calls, no automatic retries, ten-minute timeout per call; D skips models |
 | Actual privacy and retention explanation | Done | Local processing, loopback services, 30-minute in-memory results; [architecture](ARCHITECTURE.md) |
@@ -49,7 +49,7 @@ Done means implemented and checked to the stated scope. Partial identifies missi
 | English delivery notes and artifact links | Done | [Delivery notes](DELIVERY-NOTES.md) |
 | No extra accounts/task integrations or employer sending | Done | Local prototype and evaluation artifacts only |
 
-The local demo and reproducible package are available. Submission still needs the human listening audit, review of the disclosed semantic limitations, and optional public repository/hosting and video steps. Do not represent those unfinished steps as completed.
+The local demo and reproducible package are available. The user confirmed the human listening audit without reported discrepancies on 3 October 2026. Disclosed semantic limitations remain, as do optional public repository/hosting and video steps. Do not represent those unfinished steps as completed.
 
 
 

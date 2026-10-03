@@ -1,0 +1,23 @@
+{
+  "status": "completed_user_reported",
+  "date": "2026-10-03",
+  "reviewer": "Project user; confirmation in this conversation",
+  "cases": [
+    "A",
+    "B",
+    "C",
+    "D",
+    "E",
+    "F",
+    "G"
+  ],
+  "userStatements": [
+    "я прослухав все але case D там 8 секунд тиші так повинно бути?",
+    "ні, не помітив"
+  ],
+  "confirmationContext": "The assistant explained that D intentionally contains eight seconds of silence, then asked whether words, speaker voices or excerpt boundaries differed from the shown evidence. The user reported no discrepancies.",
+  "reportedDiscrepancies": [],
+  "caseD": "Intentional eight-second silence; user observed it and was informed this is expected.",
+  "scope": "User-reported listening of all recordings and displayed evidence. No independent acoustic verification by the assistant or per-excerpt measurements are claimed.",
+  "limitations": "Does not erase the missing inactive proposal in F, textual ASR/script differences, incomplete histories or imperfect evidence-role labels."
+}

@@ -18,6 +18,6 @@ try{
   await page.waitForFunction(end=>{const a=document.querySelector('#audio-A');return a.paused&&a.currentTime>=end-.3;},end,{timeout:25000});
   assert.deepEqual(errors,[]);
   await page.screenshot({path:'reports/listening-review.png'});
-  await writeFile('reports/listening-review-check.json',JSON.stringify({audioFilesLoaded:7,excerptPlaybackAndStop:true,browserErrors:errors,acousticListening:'not performed'},null,2)+'\n');
+  await writeFile('reports/listening-review-check.json',JSON.stringify({audioFilesLoaded:7,excerptPlaybackAndStop:true,browserErrors:errors,acousticListening:'not performed by this automated check; see human-listening-review.json for user confirmation'},null,2)+'\n');
   console.log('Saved review: seven real audio files load; excerpt play/stop works; no JS errors. No acoustic listening claim.');
 }finally{await browser.close();}

@@ -2,11 +2,11 @@
 
 An audio-first local browser prototype that extracts final accepted project tasks, owners, deadlines and open questions, with timestamped quotes and original-audio playback.
 
-**Current status: working local audio pipeline; human listening review remains pending.** The active pipeline uses faster-whisper, pyannote Community-1 and Ollama Qwen2.5 7B on this computer. Real browser results, field-level evaluation and remaining limitations are in the quality report. No paid API calls or automatic cloud fallback are used. Historical OpenAI attempts failed due to exhausted credit and are preserved in reports. There are no hardcoded demo answers in the app. Offline UI mocks exist only in a clearly labelled test file.
+**Current status: working local audio pipeline; human listening review completed by user confirmation on 3 October 2026.** The active pipeline uses faster-whisper, pyannote Community-1 and Ollama Qwen2.5 7B on this computer. Real browser results, field-level evaluation and remaining limitations are in the quality report. No paid API calls or automatic cloud fallback are used. Historical OpenAI attempts failed due to exhausted credit and are preserved in reports. There are no hardcoded demo answers in the app. Offline UI mocks exist only in a clearly labelled test file.
 
 Submission deadline: **5 October 2026**. [Delivery notes](docs/DELIVERY-NOTES.md) · [Quality report](docs/QUALITY-REPORT.md) · [Requirement checklist](docs/REQUIREMENTS.md).
 
-Final synthetic checks found all **11 accepted tasks**, with **0 extra active tasks and 0 missed accepted tasks**. One inactive proposal in F is omitted, and generated histories/role labels remain imperfect. These are small synthetic tests, not a general accuracy guarantee. The [saved-result listening page](reports/listening-review.html) provides all original audio and selected excerpts for the required human audit; open the HTML in a browser from the project folder.
+Final synthetic checks found all **11 accepted tasks**, with **0 extra active tasks and 0 missed accepted tasks**. One inactive proposal in F is omitted, and generated histories/role labels remain imperfect. These are small synthetic tests, not a general accuracy guarantee. The [saved-result listening page](reports/listening-review.html) provides all original audio and selected excerpts for the human audit, now recorded in [the user confirmation](reports/human-listening-review.json); open the HTML in a browser from the project folder.
 
 ## Run locally
 
@@ -114,7 +114,7 @@ logs/         Ignored operational metrics; no audio or transcript
 
 ## Limits and data handling
 
-Segment timestamps are estimates, not manually verified word alignment. The model can mishear speech, confuse speakers or misinterpret agreement even when quotes structurally match. Overlap, more than two speakers, noise, accents, non-English speech and more than three minutes are outside this MVP's tested scope. Validation covers only a small synthetic set; see the quality report for actual outcomes and the pending listening audit. Relative deadlines without calendar context stay unresolved as dates. Exact digital silence detection does not cover every form of unintelligible audio.
+Segment timestamps are estimates, not manually verified word alignment. The model can mishear speech, confuse speakers or misinterpret agreement even when quotes structurally match. Overlap, more than two speakers, noise, accents, non-English speech and more than three minutes are outside this MVP's tested scope. Validation covers only a small synthetic set; see the quality report for actual outcomes and the user-reported listening audit. Relative deadlines without calendar context stay unresolved as dates. Exact digital silence detection does not cover every form of unintelligible audio.
 
 Original audio remains in the browser; converted audio is held in server/Python memory and processed on this computer. The transcript is sent only to local Ollama. Results stay in memory until cleared or for 30 minutes after completion. Local logs persist model IDs, usage, timings, retries and cost assumptions, without audio or transcript. Test scripts intentionally save fictional evaluation outputs. See [architecture/privacy](docs/ARCHITECTURE.md).
 

@@ -1,31 +1,31 @@
 {
-  "reviewer": "Codex assistant: transcript/evidence text review against frozen labels; no acoustic listening",
+  "reviewer": "Codex assistant: transcript/evidence text review against frozen labels. Acoustic listening: project user, confirmed 2026-10-03; see ../human-listening-review.json.",
   "A": {
     "matches": {
       "dark_mode": {
         "actualId": "task_1",
         "evidenceSupportsFinalState": true,
-        "listened": false
+        "listened": true
       },
       "wireframes": {
         "actualId": "task_2",
         "evidenceSupportsFinalState": true,
-        "listened": false
+        "listened": true
       },
       "announcement": {
         "actualId": "task_3",
         "evidenceSupportsFinalState": true,
-        "listened": false
+        "listened": true
       },
       "audit": {
         "actualId": "task_4",
         "evidenceSupportsFinalState": true,
-        "listened": false
+        "listened": true
       },
       "analytics": {
         "actualId": "question_1",
         "evidenceSupportsFinalState": true,
-        "listened": false
+        "listened": true
       }
     },
     "notes": [
@@ -39,27 +39,27 @@
       "dark_mode": {
         "actualId": "task_1",
         "evidenceSupportsFinalState": true,
-        "listened": false
+        "listened": true
       },
       "wireframes": {
         "actualId": "task_2",
         "evidenceSupportsFinalState": true,
-        "listened": false
+        "listened": true
       },
       "announcement": {
         "actualId": "task_3",
         "evidenceSupportsFinalState": true,
-        "listened": false
+        "listened": true
       },
       "audit": {
         "actualId": "task_4",
         "evidenceSupportsFinalState": true,
-        "listened": false
+        "listened": true
       },
       "analytics": {
         "actualId": "question_1",
         "evidenceSupportsFinalState": true,
-        "listened": false
+        "listened": true
       }
     },
     "notes": [
@@ -74,7 +74,7 @@
         "actualId": "task_1",
         "deadlineMeaningCorrect": true,
         "evidenceSupportsFinalState": true,
-        "listened": false
+        "listened": true
       }
     },
     "notes": [
@@ -86,17 +86,17 @@
       "rollback": {
         "actualId": "task_1",
         "evidenceSupportsFinalState": true,
-        "listened": false
+        "listened": true
       },
       "restore": {
         "actualId": "task_2",
         "evidenceSupportsFinalState": true,
-        "listened": false
+        "listened": true
       },
       "backups": {
         "actualId": "task_3",
         "evidenceSupportsFinalState": true,
-        "listened": false
+        "listened": true
       }
     },
     "notes": [
@@ -110,12 +110,12 @@
       "migration": {
         "actualId": "task_1",
         "evidenceSupportsFinalState": true,
-        "listened": false
+        "listened": true
       },
       "roles": {
         "actualId": "task_2",
         "evidenceSupportsFinalState": true,
-        "listened": false
+        "listened": true
       },
       "exports": {
         "actualId": null,
@@ -125,7 +125,7 @@
       "region": {
         "actualId": "question_1",
         "evidenceSupportsFinalState": true,
-        "listened": false
+        "listened": true
       }
     },
     "notes": [
@@ -141,22 +141,22 @@
       "matrix": {
         "actualId": "task_1",
         "evidenceSupportsFinalState": true,
-        "listened": false
+        "listened": true
       },
       "installer": {
         "actualId": "task_2",
         "evidenceSupportsFinalState": true,
-        "listened": false
+        "listened": true
       },
       "notes": {
         "actualId": "task_3",
         "evidenceSupportsFinalState": true,
-        "listened": false
+        "listened": true
       },
       "icons": {
         "actualId": "task_4",
         "evidenceSupportsFinalState": true,
-        "listened": false
+        "listened": true
       }
     },
     "notes": [
@@ -166,5 +166,10 @@
       "Several context quotes are labelled identity by the model. Their actual text supports the final state; role-label correctness is not claimed.",
       "G was evaluated after final semantic fixes and its results did not inform runtime changes."
     ]
+  },
+  "listeningReview": {
+    "status": "completed_user_reported",
+    "date": "2026-10-03",
+    "source": "reports/human-listening-review.json"
   }
 }

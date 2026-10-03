@@ -21,7 +21,7 @@ const summary=evaluation.summary;
 const notes=evaluation.cases.filter(c=>c.reviewNotes?.length).map(c=>`### ${c.id}\n\n${c.reviewNotes.map(n=>'- '+n).join('\n')}`).join('\n\n');
 const content=`# Quality report
 
-Evaluated on **3 October 2026**. The application performs real local audio analysis with no paid API fallback. All results below come from actual audio uploads through Microsoft Edge. Expected labels were frozen independently before analysis. Human acoustic review remains pending; semantic review here means the assistant compared actual transcript text, evidence chains and output fields against those labels.
+Evaluated on **3 October 2026**. The application performs real local audio analysis with no paid API fallback. All results below come from actual audio uploads through Microsoft Edge. Expected labels were frozen independently before analysis. Human acoustic review was reported complete by the project user on 3 October 2026, with no discrepancies noticed; see [the confirmation record](../reports/human-listening-review.json). Semantic review here means the assistant compared actual transcript text, evidence chains and output fields against those labels.
 
 ## Final synthetic evaluation
 
@@ -29,7 +29,7 @@ Evaluated on **3 October 2026**. The application performs real local audio analy
 | --- | ---: | ---: | ---: | --- |
 ${scoreRows.join('\n')}
 
-Task detection across speech cases: **TP ${summary.TP}, FP ${summary.FP}, FN ${summary.FN}**. D is a negative silence case and does not establish positive-task accuracy. Across ${summary.expectedItems} expected items, status matched ${summary.statusCorrect}, owner ${summary.ownerCorrect}, and deadline ${summary.deadlineCorrect}. Evidence had structural matches for ${summary.evidenceStructural} items and text-reviewed final-state support for ${summary.evidenceSemantic}. Acoustic listening completed: **${summary.listened}**. Task detection and final-field counts do not score history completeness or role-label correctness; those are disclosed below.
+Task detection across speech cases: **TP ${summary.TP}, FP ${summary.FP}, FN ${summary.FN}**. D is a negative silence case and does not establish positive-task accuracy. Across ${summary.expectedItems} expected items, status matched ${summary.statusCorrect}, owner ${summary.ownerCorrect}, and deadline ${summary.deadlineCorrect}. Evidence had structural matches for ${summary.evidenceStructural} items and text-reviewed final-state support for ${summary.evidenceSemantic}. Displayed items covered by user-reported acoustic listening: **${summary.listened}**. The missing F proposal has no displayed item to score; D was heard as intentional silence. Task detection and final-field counts do not score history completeness or role-label correctness; those are disclosed below.
 
 [Complete field table](../reports/expected-vs-actual.md) · [Machine-readable counts](../reports/evaluation.json) · [Review mapping and notes](../reports/live/review-mapping.json).
 
@@ -53,7 +53,7 @@ Pinned runtime: faster-whisper medium.en CPU INT8, pyannote Community-1 CPU, and
 
 - **40 unit/contract tests passed**: [output](../reports/unit-tests.txt). Provider responses are mocked only in isolated tests.
 - **5 HTTP checks** and **10 offline browser checks**: [HTTP](../reports/server-checks.json), [browser](../reports/offline-browser/checks.json). Offline UI mock results are labelled and are not speech-accuracy evidence.
-- The real browser harness saved actual outputs, screenshots and original-audio seek/stop state for speech cases. These establish mechanics, not hearing. [Listening checklist](LISTENING-CHECKLIST.md) is still pending.
+- The real browser harness saved actual outputs, screenshots and original-audio seek/stop state for speech cases. These establish mechanics, not hearing. The separate [listening checklist](LISTENING-CHECKLIST.md) records the user's completed review.
 - A–D labels were frozen in 32b67be. E and F became regression cases after their failures informed general fixes. F's first complete semantic result is preserved separately in local-regression-v9. Independent G's script and labels were frozen with the final semantic fix in 99f1bc2; its newly generated audio was committed in 370411b before any G analysis. No runtime change was based on G's content. Earlier interrupted and operationally failed F attempts remain disclosed in the failure log.
 - Only audio enters the app. Models receive ASR segments, never fixture scripts, filenames or expected labels. There is no canned-answer branch.
 
@@ -61,7 +61,7 @@ Pinned runtime: faster-whisper medium.en CPU INT8, pyannote Community-1 CPU, and
 
 ${notes}
 
-Quotes match ASR text structurally; they can still contain misheard words or incorrect speaker alignment. Evidence-role labels, explanations and structured change histories are model interpretations, not independently verified facts. No acoustic listening is claimed. Natural speech, accents, noise, overlapping speakers, larger groups, non-English recordings, longer meetings and adversarial speech were not semantically validated.
+Quotes match ASR text structurally; they can still contain misheard words or incorrect speaker alignment. Evidence-role labels, explanations and structured change histories are model interpretations, not independently verified facts. The user reported no audible discrepancies; the assistant did not independently listen or measure each boundary. This report does not convert that confirmation into a guarantee of perfect transcription. Natural speech, accents, noise, overlapping speakers, larger groups, non-English recordings, longer meetings and adversarial speech were not semantically validated.
 
 ## Retained failures and corrections
 
@@ -73,7 +73,7 @@ A later B run exposed dependence on evidence-role labels for cancellation, follo
 
 F's first completed extraction missed an accepted access-role task and omitted an inactive exports proposal. Its ASR merged adjacent same-speaker topics and misheard “don't approve” as “don't prove.” A further evidence-consistency guard recognizes unconditional self-commitment followed by another speaker's agreement, while excluding conditional or contradicted commitments. F was then rerun as a regression test; G is the new independent post-fix recording. The original failure is preserved, not replaced by a passing claim.
 
-No public URL, GitHub publication or finished video is claimed. The runnable local package and [2:50 recording script](VIDEO-SCRIPT.md) are the permitted handoff fallback. Human listening and review of the disclosed limitations remain before submission.
+No public URL, GitHub publication or finished video is claimed. The runnable local package and [2:50 recording script](VIDEO-SCRIPT.md) are the permitted handoff fallback. Human listening is recorded as complete by user confirmation. The disclosed semantic limitations remain part of the handoff.
 `;
 await writeFile('docs/QUALITY-REPORT.md',content);
 console.log(JSON.stringify({summary,abFinalFieldsPass:comparison.finalFieldsPass}));

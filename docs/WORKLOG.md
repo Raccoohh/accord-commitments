@@ -36,3 +36,8 @@ The earlier cloud-only status above is a historical checkpoint. The user explici
 
 Approximate combined work windows through this checkpoint: **3 hours 17 minutes**, including model/download waits. Long Codex-limit pauses above are excluded. Several endpoints are approximate, initial inspection was not timed, and final commit/archive housekeeping follows this checkpoint. This is not an exact focused-labor total or a claim that every submission requirement is finished. Human listening remains pending.
 
+
+## User listening confirmation — 3 October 2026
+
+The user reported listening to all cases and, after clarification that D intentionally contains eight seconds of silence, reported no discrepancies. Updated the review provenance, checklist, evaluation and delivery package. The preceding pending status is a historical checkpoint. This reporting-only follow-up does not rerun inference or change runtime behavior; its work window began at approximately 17:05 Kyiv.
+Follow-up reporting checkpoint: approximately 17:05–17:07 Kyiv (about two minutes), plus final packaging immediately afterward. No model calls.

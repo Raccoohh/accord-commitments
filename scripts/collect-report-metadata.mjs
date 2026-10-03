@@ -9,9 +9,10 @@ const versions={node:process.version,playwright:pkg.version,browser:await browse
 await browser.close();
 await writeFile('reports/tool-versions.json',JSON.stringify(versions,null,2)+'\n');
 const fixtures=[];
+let listening=null;try{listening=JSON.parse(await readFile('reports/human-listening-review.json','utf8'));}catch(e){if(e.code!=='ENOENT')throw e;}
 for(const id of ['A','B','C','D','E','F','G']){
   const bytes=await readFile(`fixtures/audio/${id}.wav`),info=readWav(bytes);
-  fixtures.push({id,durationSeconds:info.duration,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex'),peak:info.peak,synthetic:true,acousticReview:'pending'});
+  fixtures.push({id,durationSeconds:info.duration,bytes:bytes.length,sha256:createHash('sha256').update(bytes).digest('hex'),peak:info.peak,synthetic:true,acousticReview:listening?.cases?.includes(id)?listening.status:'pending'});
 }
 const gold=JSON.parse(await readFile('fixtures/cases.json','utf8')).cases;
 const a=gold.find(x=>x.id==='A'),b=gold.find(x=>x.id==='B'),bTurns=structuredClone(a.turns);bTurns[b.replaceTurn.index].text=b.replaceTurn.text;

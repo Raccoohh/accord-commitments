@@ -2,7 +2,7 @@
 
 **Accord — Recorded conversation → final commitments**
 
-Deadline: 5 October 2026. This package contains a working local browser prototype, real local audio-analysis results and a reproducible evaluation. No paid API calls are needed. Human acoustic review remains pending; model interpretation and history limitations are disclosed in the quality report. No public demo, GitHub push or completed video is claimed.
+Deadline: 5 October 2026. This package contains a working local browser prototype, real local audio-analysis results and a reproducible evaluation. No paid API calls are needed. The user reported completing acoustic review on 3 October 2026 with no discrepancies noticed; model interpretation and history limitations are disclosed in the quality report. No public demo, GitHub push or completed video is claimed.
 
 - [Run instructions](../README.md), [one-time local setup](LOCAL-SETUP.md)
 - [Local demo](http://127.0.0.1:3000) — only while the local server runs; not public

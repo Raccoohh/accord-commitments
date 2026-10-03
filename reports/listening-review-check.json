@@ -2,5 +2,5 @@
   "audioFilesLoaded": 7,
   "excerptPlaybackAndStop": true,
   "browserErrors": [],
-  "acousticListening": "not performed"
+  "acousticListening": "not performed by this automated check; see human-listening-review.json for user confirmation"
 }

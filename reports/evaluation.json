@@ -1,6 +1,6 @@
 {
   "sourceDirectory": "reports/live",
-  "reviewBasis": "Assistant review of actual transcript and frozen expected labels; no acoustic listening audit. Owner names compare case-insensitively after NFC/trim; spelling differences are not normalized.",
+  "reviewBasis": "Assistant review of actual transcript and frozen expected labels. Listening flags reflect the separately recorded human reviewer confirmation when present; see review-mapping.json. Owner names compare case-insensitively after NFC/trim; spelling differences are not normalized.",
   "warning": "Task detection TP/FP/FN are separate from field accuracy. These synthetic examples do not establish general accuracy. See review notes for history and evidence limitations.",
   "summary": {
     "TP": 11,
@@ -12,7 +12,7 @@
     "deadlineCorrect": 21,
     "evidenceStructural": 21,
     "evidenceSemantic": 21,
-    "listened": 0
+    "listened": 21
   },
   "cases": [
     {
@@ -30,7 +30,7 @@
           "deadlineCorrect": true,
           "evidenceStructural": true,
           "evidenceSemantic": true,
-          "listened": false
+          "listened": true
         },
         {
           "key": "wireframes",
@@ -40,7 +40,7 @@
           "deadlineCorrect": true,
           "evidenceStructural": true,
           "evidenceSemantic": true,
-          "listened": false
+          "listened": true
         },
         {
           "key": "announcement",
@@ -50,7 +50,7 @@
           "deadlineCorrect": true,
           "evidenceStructural": true,
           "evidenceSemantic": true,
-          "listened": false
+          "listened": true
         },
         {
           "key": "audit",
@@ -60,7 +60,7 @@
           "deadlineCorrect": true,
           "evidenceStructural": true,
           "evidenceSemantic": true,
-          "listened": false
+          "listened": true
         },
         {
           "key": "analytics",
@@ -70,7 +70,7 @@
           "deadlineCorrect": true,
           "evidenceStructural": true,
           "evidenceSemantic": true,
-          "listened": false
+          "listened": true
         }
       ],
       "unmatchedActual": [],
@@ -95,7 +95,7 @@
           "deadlineCorrect": true,
           "evidenceStructural": true,
           "evidenceSemantic": true,
-          "listened": false
+          "listened": true
         },
         {
           "key": "wireframes",
@@ -105,7 +105,7 @@
           "deadlineCorrect": true,
           "evidenceStructural": true,
           "evidenceSemantic": true,
-          "listened": false
+          "listened": true
         },
         {
           "key": "announcement",
@@ -115,7 +115,7 @@
           "deadlineCorrect": true,
           "evidenceStructural": true,
           "evidenceSemantic": true,
-          "listened": false
+          "listened": true
         },
         {
           "key": "audit",
@@ -125,7 +125,7 @@
           "deadlineCorrect": true,
           "evidenceStructural": true,
           "evidenceSemantic": true,
-          "listened": false
+          "listened": true
         },
         {
           "key": "analytics",
@@ -135,7 +135,7 @@
           "deadlineCorrect": true,
           "evidenceStructural": true,
           "evidenceSemantic": true,
-          "listened": false
+          "listened": true
         }
       ],
       "unmatchedActual": [],
@@ -160,7 +160,7 @@
           "deadlineCorrect": true,
           "evidenceStructural": true,
           "evidenceSemantic": true,
-          "listened": false
+          "listened": true
         }
       ],
       "unmatchedActual": [],
@@ -191,7 +191,7 @@
           "deadlineCorrect": true,
           "evidenceStructural": true,
           "evidenceSemantic": true,
-          "listened": false
+          "listened": true
         },
         {
           "key": "restore",
@@ -201,7 +201,7 @@
           "deadlineCorrect": true,
           "evidenceStructural": true,
           "evidenceSemantic": true,
-          "listened": false
+          "listened": true
         },
         {
           "key": "backups",
@@ -211,7 +211,7 @@
           "deadlineCorrect": true,
           "evidenceStructural": true,
           "evidenceSemantic": true,
-          "listened": false
+          "listened": true
         }
       ],
       "unmatchedActual": [],
@@ -236,7 +236,7 @@
           "deadlineCorrect": true,
           "evidenceStructural": true,
           "evidenceSemantic": true,
-          "listened": false
+          "listened": true
         },
         {
           "key": "roles",
@@ -246,7 +246,7 @@
           "deadlineCorrect": true,
           "evidenceStructural": true,
           "evidenceSemantic": true,
-          "listened": false
+          "listened": true
         },
         {
           "key": "exports",
@@ -266,7 +266,7 @@
           "deadlineCorrect": true,
           "evidenceStructural": true,
           "evidenceSemantic": true,
-          "listened": false
+          "listened": true
         }
       ],
       "unmatchedActual": [],
@@ -293,7 +293,7 @@
           "deadlineCorrect": true,
           "evidenceStructural": true,
           "evidenceSemantic": true,
-          "listened": false
+          "listened": true
         },
         {
           "key": "installer",
@@ -303,7 +303,7 @@
           "deadlineCorrect": true,
           "evidenceStructural": true,
           "evidenceSemantic": true,
-          "listened": false
+          "listened": true
         },
         {
           "key": "notes",
@@ -313,7 +313,7 @@
           "deadlineCorrect": true,
           "evidenceStructural": true,
           "evidenceSemantic": true,
-          "listened": false
+          "listened": true
         },
         {
           "key": "icons",
@@ -323,7 +323,7 @@
           "deadlineCorrect": true,
           "evidenceStructural": true,
           "evidenceSemantic": true,
-          "listened": false
+          "listened": true
         }
       ],
       "unmatchedActual": [],

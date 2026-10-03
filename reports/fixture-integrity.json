@@ -7,7 +7,7 @@
       "sha256": "90e608bfb8463c8ce03eaa06e23c800c375de1ef81515d01c50fe02a6c6f5def",
       "peak": 0.946044921875,
       "synthetic": true,
-      "acousticReview": "pending"
+      "acousticReview": "completed_user_reported"
     },
     {
       "id": "B",
@@ -16,7 +16,7 @@
       "sha256": "baa9551345aad7265878abd25aa7ec28c273359eae0fea3f561301dba0e81c3d",
       "peak": 0.946044921875,
       "synthetic": true,
-      "acousticReview": "pending"
+      "acousticReview": "completed_user_reported"
     },
     {
       "id": "C",
@@ -25,7 +25,7 @@
       "sha256": "d63b89f3992204c846607080877393527f5e0c116224c4f593a566cbd031c91c",
       "peak": 0.946044921875,
       "synthetic": true,
-      "acousticReview": "pending"
+      "acousticReview": "completed_user_reported"
     },
     {
       "id": "D",
@@ -34,7 +34,7 @@
       "sha256": "190415015d40eef0cd797e1b59ffe00846b01873050b12d44b3a216de3faa2a9",
       "peak": 0,
       "synthetic": true,
-      "acousticReview": "pending"
+      "acousticReview": "completed_user_reported"
     },
     {
       "id": "E",
@@ -43,7 +43,7 @@
       "sha256": "1684a4e530c229b1f029e35032c9dd297e78f228a188bdcab978f18add7cc8a0",
       "peak": 0.946044921875,
       "synthetic": true,
-      "acousticReview": "pending"
+      "acousticReview": "completed_user_reported"
     },
     {
       "id": "F",
@@ -52,7 +52,7 @@
       "sha256": "4a3706cbdcf2440e35ae1687b16570f0e71d2a2268879e9fbcdb7da8b152906b",
       "peak": 0.946044921875,
       "synthetic": true,
-      "acousticReview": "pending"
+      "acousticReview": "completed_user_reported"
     },
     {
       "id": "G",
@@ -61,7 +61,7 @@
       "sha256": "ac15d25ded06b7a017d4aac6da779a5e80f2032df5f3ce1c724b7d5d0f1e508c",
       "peak": 0.946044921875,
       "synthetic": true,
-      "acousticReview": "pending"
+      "acousticReview": "completed_user_reported"
     }
   ],
   "controlledDifference": {
@@ -71,5 +71,6 @@
     "expectedField": "wireframes.deadline",
     "actualOutputInvariance": "See ab-comparison.json for final fields and history separately."
   },
-  "note": "Byte integrity, duration and controlled script difference only; not a listening audit."
+  "note": "Byte integrity, duration and controlled script difference only; not a listening audit.",
+  "listeningReviewSource": "reports/human-listening-review.json"
 }
