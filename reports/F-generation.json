@@ -2,8 +2,8 @@
   "caseId": "F",
   "scriptFrozenCommit": "9faa729",
   "audioFirstCommit": "1c042f8",
-  "runtimeFixCommit": "f638d1b",
-  "regeneratedAt": "2026-10-03T08:48:45.5454610Z",
+  "runtimeFixCommit": "d7b4a33",
+  "regeneratedAt": "2026-10-03T13:33:09.7283005Z",
   "sha256": "4a3706cbdcf2440e35ae1687b16570f0e71d2a2268879e9fbcdb7da8b152906b",
-  "note": "Re-synthesized after final runtime fixes and before first completed analysis. No F model output has informed any runtime change. Deterministic SAPI synthesis reproduced the earlier bytes; expected labels were unchanged."
+  "note": "Re-synthesized after the JSON-channel repair and all semantic fixes, before the first successful complete F analysis. Earlier attempts were interrupted or failed parsing ASR diagnostics; no F extraction output informed code changes. Deterministic SAPI reproduced the same bytes; labels were unchanged."
 }
