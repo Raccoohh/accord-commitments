@@ -1,0 +1,305 @@
+{
+  "caseId": "C",
+  "error": null,
+  "job": {
+    "id": "7c0081cd-d4c4-43bd-8a9a-04739ed758d7",
+    "status": "done",
+    "createdAt": 1791016178438,
+    "metrics": {
+      "id": "7c0081cd-d4c4-43bd-8a9a-04739ed758d7",
+      "startedAt": "2026-10-03T08:29:38.438Z",
+      "provider": "local",
+      "models": {
+        "asr": "Systran/faster-whisper-medium.en",
+        "diarization": "pyannote/speaker-diarization-community-1",
+        "extraction": "qwen2.5:7b"
+      },
+      "audioSeconds": 32.69,
+      "uploadMs": 1,
+      "stages": {
+        "validationMs": 8,
+        "transcriptionMs": 31024,
+        "extractionMs": 16478,
+        "evidenceValidationMs": 0
+      },
+      "calls": [
+        {
+          "stage": "asr_and_diarization",
+          "provider": "local",
+          "model": "Systran/faster-whisper-medium.en",
+          "diarizationModel": "pyannote/speaker-diarization-community-1",
+          "attempt": 1,
+          "usage": null,
+          "status": 200,
+          "localMetadata": {
+            "timings": {
+              "asrLoadMs": 3082,
+              "asrMs": 10480,
+              "diarizationLoadMs": 997,
+              "diarizationMs": 9694
+            },
+            "models": [
+              "Systran/faster-whisper-medium.en",
+              "pyannote/speaker-diarization-community-1"
+            ],
+            "revisions": [
+              "a29b04bd15381511a9af671baec01072039215e3",
+              "3533c8cf8e369892e6b79ff1bf80f7b0286a54ee"
+            ],
+            "device": "cpu",
+            "computeType": "int8 ASR",
+            "language": "en",
+            "audioSeconds": 32.69,
+            "timingPrecision": "ASR word estimates grouped by diarized speaker; not manually aligned"
+          },
+          "ms": 31024
+        },
+        {
+          "stage": "decision_reading",
+          "provider": "local",
+          "model": "qwen2.5:7b",
+          "contract": "plan-then-compact-v1",
+          "thinking": false,
+          "attempt": 1,
+          "usage": {
+            "input_tokens": 297,
+            "output_tokens": 58,
+            "loadDurationNs": 3146000,
+            "promptEvalDurationNs": 252978000,
+            "evalDurationNs": 2309095000
+          },
+          "status": 200,
+          "ms": 2598
+        },
+        {
+          "stage": "extraction",
+          "provider": "local",
+          "model": "qwen2.5:7b",
+          "contract": "plan-then-compact-v1",
+          "thinking": false,
+          "attempt": 1,
+          "usage": {
+            "input_tokens": 1416,
+            "output_tokens": 314,
+            "loadDurationNs": 2080000,
+            "promptEvalDurationNs": 214459000,
+            "evalDurationNs": 13629076000
+          },
+          "status": 200,
+          "ms": 13880
+        }
+      ],
+      "retries": 0,
+      "outcome": "complete",
+      "processingMs": 47510,
+      "totalServerMs": 47511,
+      "cost": {
+        "currency": "USD",
+        "totalVariableOperationUsd": 0,
+        "costPerAudioMinute": 0,
+        "apiChargesUsd": 0,
+        "basis": "Local inference: no metered API calls. Electricity, hardware and local compute costs are not measured and are excluded.",
+        "unknownChargesPossible": false,
+        "localComputeCostUsd": null,
+        "hosting": "Local Windows computer",
+        "ttsApiCost": 0,
+        "paidIntermediaries": 0
+      }
+    },
+    "result": {
+      "outcome": "complete",
+      "message": "Final task states are shown below. Review the evidence before relying on a decision.",
+      "speakers": [
+        {
+          "speakerId": "SPEAKER_00",
+          "name": "Alex",
+          "confidence": "supported",
+          "evidence": [
+            {
+              "segmentId": "s0",
+              "role": "identity",
+              "quote": "Hi, I'm Alex.",
+              "speakerId": "SPEAKER_00",
+              "start": 0,
+              "end": 1.38,
+              "validation": "transcript_match"
+            }
+          ]
+        },
+        {
+          "speakerId": "SPEAKER_01",
+          "name": "Maya",
+          "confidence": "supported",
+          "evidence": [
+            {
+              "segmentId": "s2",
+              "role": "identity",
+              "quote": "I'm Maya.",
+              "speakerId": "SPEAKER_01",
+              "start": 5.6,
+              "end": 6,
+              "validation": "transcript_match"
+            }
+          ]
+        }
+      ],
+      "items": [
+        {
+          "id": "task_1",
+          "task": "Run usability test",
+          "status": "confirmed",
+          "source": "commitment",
+          "reason": "Confirmed for next Friday, but owner is unassigned.",
+          "owner": null,
+          "ownerSpeakerId": null,
+          "deadlineOriginal": "next Friday",
+          "deadlineNormalized": null,
+          "dateContextQuote": null,
+          "uncertainties": [
+            "missing_date_context",
+            "owner_unassigned"
+          ],
+          "evidence": [
+            {
+              "segmentId": "s3",
+              "role": "proposal",
+              "quote": "I think we should run the usability test by next Friday.",
+              "speakerId": "SPEAKER_01",
+              "start": 6.92,
+              "end": 10.02,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s5",
+              "role": "acceptance",
+              "quote": "The usability test is confirmed for next Friday.",
+              "speakerId": "SPEAKER_00",
+              "start": 12.66,
+              "end": 15.28,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s6",
+              "role": "proposal",
+              "quote": "Could you own it?",
+              "speakerId": "SPEAKER_00",
+              "start": 16.24,
+              "end": 17,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s7",
+              "role": "change",
+              "quote": "I can't commit to owning it. We need to ask someone else, but nobody has accepted responsibility yet.",
+              "speakerId": "SPEAKER_01",
+              "start": 18.08,
+              "end": 24.92,
+              "validation": "transcript_match"
+            },
+            {
+              "segmentId": "s9",
+              "role": "context",
+              "quote": "The test and deadline are agreed, but the owner is still unassigned.",
+              "speakerId": "SPEAKER_00",
+              "start": 27.68,
+              "end": 31.5,
+              "validation": "transcript_match"
+            }
+          ],
+          "history": []
+        }
+      ],
+      "warnings": [],
+      "clarifications": [
+        {
+          "itemId": "task_1",
+          "text": "Who will own: Run usability test?",
+          "source": "system_clarification"
+        },
+        {
+          "itemId": "task_1",
+          "text": "Which calendar date does “next Friday” refer to for: Run usability test?",
+          "source": "system_clarification"
+        }
+      ],
+      "segments": [
+        {
+          "id": "s0",
+          "speakerId": "SPEAKER_00",
+          "text": "Hi, I'm Alex.",
+          "start": 0,
+          "end": 1.38
+        },
+        {
+          "id": "s1",
+          "speakerId": "SPEAKER_00",
+          "text": "Let's discuss the usability test.",
+          "start": 2.3,
+          "end": 4.26
+        },
+        {
+          "id": "s2",
+          "speakerId": "SPEAKER_01",
+          "text": "I'm Maya.",
+          "start": 5.6,
+          "end": 6
+        },
+        {
+          "id": "s3",
+          "speakerId": "SPEAKER_01",
+          "text": "I think we should run the usability test by next Friday.",
+          "start": 6.92,
+          "end": 10.02
+        },
+        {
+          "id": "s4",
+          "speakerId": "SPEAKER_00",
+          "text": "Agreed.",
+          "start": 11.04,
+          "end": 11.72
+        },
+        {
+          "id": "s5",
+          "speakerId": "SPEAKER_00",
+          "text": "The usability test is confirmed for next Friday.",
+          "start": 12.66,
+          "end": 15.28
+        },
+        {
+          "id": "s6",
+          "speakerId": "SPEAKER_00",
+          "text": "Could you own it?",
+          "start": 16.24,
+          "end": 17
+        },
+        {
+          "id": "s7",
+          "speakerId": "SPEAKER_01",
+          "text": "I can't commit to owning it. We need to ask someone else, but nobody has accepted responsibility yet.",
+          "start": 18.08,
+          "end": 24.92
+        },
+        {
+          "id": "s8",
+          "speakerId": "SPEAKER_00",
+          "text": "Understood.",
+          "start": 26.28,
+          "end": 26.8
+        },
+        {
+          "id": "s9",
+          "speakerId": "SPEAKER_00",
+          "text": "The test and deadline are agreed, but the owner is still unassigned.",
+          "start": 27.68,
+          "end": 31.5
+        }
+      ],
+      "timingPrecision": "segment"
+    },
+    "completedAt": 1791016225948
+  },
+  "clientMetrics": {
+    "preparationMs": 48,
+    "uploadToUsefulResultMs": 47976
+  }
+}

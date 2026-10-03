@@ -1,0 +1,111 @@
+{
+  "caseId": "E",
+  "error": "Local analysis cited a nonexistent transcript segment.",
+  "job": {
+    "id": "8e04f735-f095-4188-a2d4-cfb388e5bd1e",
+    "status": "error",
+    "createdAt": 1791016230195,
+    "metrics": {
+      "id": "8e04f735-f095-4188-a2d4-cfb388e5bd1e",
+      "startedAt": "2026-10-03T08:30:30.195Z",
+      "provider": "local",
+      "models": {
+        "asr": "Systran/faster-whisper-medium.en",
+        "diarization": "pyannote/speaker-diarization-community-1",
+        "extraction": "qwen2.5:7b"
+      },
+      "audioSeconds": 56.36,
+      "uploadMs": 2,
+      "stages": {
+        "validationMs": 6,
+        "transcriptionMs": 43147
+      },
+      "calls": [
+        {
+          "stage": "asr_and_diarization",
+          "provider": "local",
+          "model": "Systran/faster-whisper-medium.en",
+          "diarizationModel": "pyannote/speaker-diarization-community-1",
+          "attempt": 1,
+          "usage": null,
+          "status": 200,
+          "localMetadata": {
+            "timings": {
+              "asrLoadMs": 2616,
+              "asrMs": 13884,
+              "diarizationLoadMs": 950,
+              "diarizationMs": 19054
+            },
+            "models": [
+              "Systran/faster-whisper-medium.en",
+              "pyannote/speaker-diarization-community-1"
+            ],
+            "revisions": [
+              "a29b04bd15381511a9af671baec01072039215e3",
+              "3533c8cf8e369892e6b79ff1bf80f7b0286a54ee"
+            ],
+            "device": "cpu",
+            "computeType": "int8 ASR",
+            "language": "en",
+            "audioSeconds": 56.36,
+            "timingPrecision": "ASR word estimates grouped by diarized speaker; not manually aligned"
+          },
+          "ms": 43147
+        },
+        {
+          "stage": "decision_reading",
+          "provider": "local",
+          "model": "qwen2.5:7b",
+          "contract": "plan-then-compact-v1",
+          "thinking": false,
+          "attempt": 1,
+          "usage": {
+            "input_tokens": 398,
+            "output_tokens": 188,
+            "loadDurationNs": 3183600,
+            "promptEvalDurationNs": 44395000,
+            "evalDurationNs": 7691793000
+          },
+          "status": 200,
+          "ms": 7771
+        },
+        {
+          "stage": "extraction",
+          "provider": "local",
+          "model": "qwen2.5:7b",
+          "contract": "plan-then-compact-v1",
+          "thinking": false,
+          "attempt": 1,
+          "usage": {
+            "input_tokens": 1658,
+            "output_tokens": 842,
+            "loadDurationNs": 2075900,
+            "promptEvalDurationNs": 360387000,
+            "evalDurationNs": 38074669000
+          },
+          "status": 200,
+          "ms": 38472
+        }
+      ],
+      "retries": 0,
+      "outcome": "error",
+      "errorCode": "validation_or_internal",
+      "processingMs": 89395,
+      "totalServerMs": 89397,
+      "cost": {
+        "currency": "USD",
+        "totalVariableOperationUsd": 0,
+        "costPerAudioMinute": 0,
+        "apiChargesUsd": 0,
+        "basis": "Local inference: no metered API calls. Electricity, hardware and local compute costs are not measured and are excluded.",
+        "unknownChargesPossible": false,
+        "localComputeCostUsd": null,
+        "hosting": "Local Windows computer",
+        "ttsApiCost": 0,
+        "paidIntermediaries": 0
+      }
+    },
+    "error": "Local analysis cited a nonexistent transcript segment.",
+    "completedAt": 1791016319591
+  }
+}

@@ -55,6 +55,15 @@ test('verbatim requests are not unanswered participant questions and unchanged v
   r.tasks[0].changes=[{field:'owner',previousValue:'Sam',replacementValue:'Sam',evidence:[]}];
   const actual=expandLocalExtraction(r,s);assert.equal(actual.items.length,1);assert.deepEqual(actual.items[0].history,[]);
 });
+
+test('open questions retain the following real response and unapproved tasks cannot claim earlier acceptance in status history',()=>{
+  const r=record(),s=[...segments,{id:'question',speakerId:'P',start:5,end:7,text:'Which vendor should we use?'},{id:'reply',speakerId:'Q',start:8,end:10,text:'We have not decided yet.'}];
+  r.openQuestions=[{question:s[2].text,segmentIds:['question']}];
+  r.tasks[0].status='proposed_not_accepted';r.tasks[0].changes=[{field:'status',previousValue:'confirmed',replacementValue:'proposed_not_accepted',evidence:[]}];
+  const result=expandLocalExtraction(r,s);
+  assert.deepEqual(result.items[0].history,[]);
+  assert.deepEqual(result.items[1].evidence.map(e=>[e.segmentId,e.role]),[['question','question'],['reply','context']]);
+});
 test('inferred questions cannot be presented as participant quotes',()=>{
   const r=record();r.openQuestions=[{question:'Who will do this?',segmentIds:['work']}];
   assert.equal(expandLocalExtraction(r,segments).items.filter(i=>i.source==='participant_question').length,0);

@@ -10,6 +10,9 @@ test('local extraction only addresses loopback Ollama and preserves schema/data 
     const payload=JSON.parse(options.body);assert.equal(payload.model,'qwen2.5:7b');assert.equal(payload.stream,false);assert.ok(payload.messages[1].content.endsWith('[s0] unknown: "Example input"'));
     if(!payload.format)return new Response(JSON.stringify({message:{content:'No tasks.'},prompt_eval_count:2,eval_count:1,done_reason:'stop'}));
     assert.equal(payload.format.additionalProperties,false);
+    assert.deepEqual(payload.format.properties.tasks.items.properties.evidence.items.properties.segmentId.enum,['s0']);
+    assert.deepEqual(payload.format.properties.speakers.items.properties.introductionSegmentId.enum,['s0',null]);
+    assert.deepEqual(payload.format.properties.openQuestions.items.properties.segmentIds.items.enum,['s0']);
     // Ollama's decoding grammar alone does not tell the model what fields mean.
     assert.ok(payload.messages[0].content.includes(JSON.stringify(payload.format)));
     return new Response(JSON.stringify({message:{content:JSON.stringify({speakers:[],tasks:[],openQuestions:[],warnings:[],recordingStatus:'readable'})},prompt_eval_count:2,eval_count:1,done_reason:'stop'}));

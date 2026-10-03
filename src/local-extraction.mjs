@@ -98,9 +98,13 @@ export function expandLocalExtraction(raw,segments){
     return {id:`task_${index+1}`,task:actionTitle(t.task),status:t.status,source:'commitment',reason:t.reason,
       owner,ownerSpeakerId:speaker?speaker.speakerId:null,
       deadlineOriginal:deadline,deadlineNormalized:date,dateContextQuote:date?evidence.find(e=>e.quote.includes(deadline))?.quote??null:null,
-      uncertainties:[],evidence,history:t.changes.filter(c=>c.previousValue.trim().toLowerCase()!==c.replacementValue.trim().toLowerCase()).map(c=>({...c,evidence:refsWithContext(c.evidence)}))};
+      uncertainties:[],evidence,history:t.changes.filter(c=>c.previousValue.trim().toLowerCase()!==c.replacementValue.trim().toLowerCase()&&!(t.status==='proposed_not_accepted'&&c.field==='status'&&c.previousValue==='confirmed')).map(c=>({...c,evidence:refsWithContext(c.evidence)}))};
   });
-  items.push(...questions.map((q,i)=>({id:`question_${i+1}`,task:q.question,status:'unresolved',source:'participant_question',reason:'This question remains unanswered in the conversation.',owner:null,ownerSpeakerId:null,deadlineOriginal:null,deadlineNormalized:null,dateContextQuote:null,uncertainties:[],evidence:q.segmentIds.map(segmentId=>quote({segmentId,role:'question'})),history:[]})));
+  items.push(...questions.map((q,i)=>{
+    const refs=new Map(q.segmentIds.map(segmentId=>[segmentId,{segmentId,role:'question'}]));
+    for(const id of q.segmentIds){const next=segments[segments.findIndex(s=>s.id===id)+1];if(next&&!refs.has(next.id))refs.set(next.id,{segmentId:next.id,role:'context'});}
+    return {id:`question_${i+1}`,task:q.question,status:'unresolved',source:'participant_question',reason:'This question remains unanswered in the conversation.',owner:null,ownerSpeakerId:null,deadlineOriginal:null,deadlineNormalized:null,dateContextQuote:null,uncertainties:[],evidence:[...refs.values()].map(quote),history:[]};
+  }));
   const outcome=raw.recordingStatus==='unclear'?(items.length?'partial':'unusable'):'complete';
   return {outcome,message:outcome==='unusable'?'No reliable conversation could be established. Please upload a clearer recording.':'Final task states are shown below. Review the evidence before relying on a decision.',speakers,items,warnings:raw.warnings};
 }

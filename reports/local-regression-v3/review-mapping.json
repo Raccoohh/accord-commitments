@@ -1,0 +1,27 @@
+{
+  "reviewer": "Codex assistant: transcript/evidence text review against frozen labels; no acoustic listening",
+  "A": {
+    "matches": {
+      "dark_mode": {"actualId":"task_1","evidenceSupportsFinalState":true,"listened":false},
+      "wireframes": {"actualId":"task_2","evidenceSupportsFinalState":true,"listened":false},
+      "announcement": {"actualId":"task_3","evidenceSupportsFinalState":true,"listened":false},
+      "audit": {"actualId":"task_4","evidenceSupportsFinalState":true,"listened":false},
+      "analytics": {"actualId":"question_1","evidenceSupportsFinalState":false,"listened":false}
+    },
+    "notes": ["All final states, owners and deadlines match frozen expectations.","The open question is quoted, but its following still-undecided reply is omitted from selected evidence. It is present in the full transcript.","Structured change history is empty despite the accepted deadline replacement; the complete four-fragment chain is present in main task evidence."]
+  },
+  "B": {
+    "matches": {
+      "dark_mode": {"actualId":"task_1","evidenceSupportsFinalState":true,"listened":false},
+      "wireframes": {"actualId":"task_2","evidenceSupportsFinalState":true,"listened":false},
+      "announcement": {"actualId":"task_3","evidenceSupportsFinalState":true,"listened":false},
+      "audit": {"actualId":"task_4","evidenceSupportsFinalState":true,"listened":false},
+      "analytics": {"actualId":"question_1","evidenceSupportsFinalState":false,"listened":false}
+    },
+    "notes": ["All final states, owners and deadlines match frozen expectations.","The open question's still-undecided reply is omitted from selected evidence, though present in the full transcript.","Dark mode's model-generated history incorrectly says confirmed to proposed_not_accepted. It was never approved. Final status and active-list exclusion are correct; history accuracy fails.","A/B final fields are invariant except the intended date; full semantic output invariance fails because histories differ and B includes the incorrect prior status."]
+  },
+  "C": {
+    "matches": {"usability":{"actualId":"task_1","deadlineMeaningCorrect":true,"evidenceSupportsFinalState":true,"listened":false}},
+    "notes": ["Confirmed task, null owner, verbatim next Friday and null normalized date are correct. Evidence includes explicit ownership refusal and confirmation that the owner is unassigned. No fabricated participant question remains."]
+  }
+}
