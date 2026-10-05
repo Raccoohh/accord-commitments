@@ -1,4 +1,4 @@
-param([string]$Python = 'python')
+param([string]$Python = 'python', [string]$NodePath = '')
 $ErrorActionPreference = 'Stop'
 $taskRoot = Split-Path $PSScriptRoot -Parent
 Set-Location -LiteralPath $taskRoot
@@ -18,11 +18,11 @@ if (-not (Test-Path '.runtime/ollama/ollama.exe')) {
   if ($LASTEXITCODE -ne 0) { throw 'Ollama download failed.' }
   Expand-Archive -LiteralPath '.runtime/downloads/ollama-windows-amd64.zip' -DestinationPath '.runtime/ollama' -Force
 }
-& "$PSScriptRoot/start-local.ps1"
-node scripts/pull-local-model.mjs
+. "$PSScriptRoot/start-local.ps1" -NodePath $NodePath -SetupMode
+& $taskNode scripts/pull-local-model.mjs
 if ($LASTEXITCODE -ne 0) { throw 'Local language model download failed.' }
-node --env-file=.env.local scripts/local-asr-check.mjs A
+& $taskNode --env-file=.env.local scripts/local-asr-check.mjs A
 if ($LASTEXITCODE -ne 0) { throw 'Speech initialization failed. Check HF_TOKEN and model access.' }
-node scripts/record-local-models.mjs
+& $taskNode scripts/record-local-models.mjs
 if ($LASTEXITCODE -ne 0) { throw 'Model manifest creation failed.' }
 Write-Output 'Local models ready. Open http://127.0.0.1:3000.'

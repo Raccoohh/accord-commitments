@@ -45,3 +45,7 @@ Follow-up reporting checkpoint: approximately 17:05–17:07 Kyiv (about two minu
 ## Launcher repair — 5 October 2026
 
 The user's ordinary PowerShell session could not resolve Node after a reboot. Added Node 24 discovery (including the existing per-user Codex runtime), an explicit NodePath override, and an app readiness check. Verified startup from System32 in Windows PowerShell with Node removed from PATH, repeat startup and rejection of a nonexistent override. See reports/launcher-check.json. No inference or paid API calls were made; acoustic results are unchanged. This brief follow-up was not separately timed. Rebuilt the delivery archives.
+
+## GitHub preparation — 5 October 2026
+
+The full employer email clarified that evaluator demo access, a repository and an actual video of at most three minutes are required; earlier documentation incorrectly described archives/scripts as permitted substitutes. Corrected that interpretation before publication. Preparing a private repository, preserving independent fixture history and retained failures. Also repaired first-time setup so it can start services before model downloads and use the discovered Node executable without PATH changes. This follow-up is not separately timed. No paid API requests.

@@ -21,6 +21,8 @@ Before setup, accept the pyannote model conditions in your Hugging Face account 
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/setup-local.ps1 -Python 'C:\path\to\python.exe'
 ```
 
+Setup starts local services before downloading models; its internal `-SetupMode` does not require model readiness yet. Both scripts accept `-NodePath` when Node is outside the discovered locations.
+
 For subsequent starts:
 
 ```powershell

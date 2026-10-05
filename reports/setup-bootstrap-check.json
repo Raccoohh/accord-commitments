@@ -1,0 +1,7 @@
+{
+  "date": "2026-10-05",
+  "setupModeWithModelsNotReady": true,
+  "testBasis": "Mocked health ready=false for setup mode; real ready=true for normal start. No model downloads or inference.",
+  "normalStartReady": true,
+  "freshInstallExecuted": false
+}

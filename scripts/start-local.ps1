@@ -1,4 +1,4 @@
-param([string]$NodePath = '')
+param([string]$NodePath = '', [switch]$SetupMode)
 $ErrorActionPreference = 'Stop'
 $taskRoot = Split-Path $PSScriptRoot -Parent
 Set-Location -LiteralPath $taskRoot
@@ -63,9 +63,10 @@ $taskAppReady = $false
 for ($taskAttempt=0; $taskAttempt -lt 30; $taskAttempt++) {
   try {
     $taskHealth = Invoke-RestMethod 'http://127.0.0.1:3000/api/health' -TimeoutSec 1
-    if ($taskHealth.ready -and $taskHealth.provider -eq 'local') { $taskAppReady=$true; break }
+    if ($taskHealth.provider -eq 'local' -and ($SetupMode -or $taskHealth.ready)) { $taskAppReady=$true; break }
   } catch { }
   Start-Sleep -Milliseconds 500
 }
 if (-not $taskAppReady) { throw 'Local app is not ready. See .runtime/logs/app.err.log and check local model setup.' }
-Write-Output 'Local workspace: http://127.0.0.1:3000'
+if ($SetupMode) { Write-Output 'Local services started. Complete model setup before using the app.' }
+else { Write-Output 'Local workspace: http://127.0.0.1:3000' }

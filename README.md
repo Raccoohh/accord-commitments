@@ -8,6 +8,12 @@ Submission deadline: **5 October 2026**. [Delivery notes](docs/DELIVERY-NOTES.md
 
 Final synthetic checks found all **11 accepted tasks**, with **0 extra active tasks and 0 missed accepted tasks**. One inactive proposal in F is omitted, and generated histories/role labels remain imperfect. These are small synthetic tests, not a general accuracy guarantee. The [saved-result listening page](reports/listening-review.html) provides all original audio and selected excerpts for the human audit, now recorded in [the user confirmation](reports/human-listening-review.json); open the HTML in a browser from the project folder.
 
+## Reviewer access
+
+Repository: [Raccoohh/accord-commitments](https://github.com/Raccoohh/accord-commitments) (private; evaluator access must be granted). Public demo access and the final video link are pending. The employer requires a working browser demo, a repository with setup instructions and an actual video up to three minutes; an archive or script is not a substitute.
+
+The tested setup is Windows with Python 3.12 and Node 24. Model weights are downloaded separately and are excluded from Git. Start with the [delivery notes](docs/DELIVERY-NOTES.md) and [measured quality report](docs/QUALITY-REPORT.md).
+
 ## Run locally
 
 Requires Node.js 24 (developed on **24.19.0**), Python 3.12, the local speech dependencies and portable Ollama. There are no runtime npm packages or frontend build steps. A modern browser with Web Audio is required; Edge was tested. Follow [local model setup](docs/LOCAL-SETUP.md) once before starting.

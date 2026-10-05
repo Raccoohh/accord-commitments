@@ -1,6 +1,6 @@
 # Demonstration recording script — not a completed video
 
-Target length: **2 minutes 50 seconds**. This is the brief's permitted script fallback. The application processes real audio locally. Complete the [listening checklist](LISTENING-CHECKLIST.md) before recording; show any remaining discrepancy honestly. No API credit is needed.
+Target length: **2 minutes 50 seconds**. This is recording guidance. The employer requires an actual walkthrough video up to three minutes; the script alone does not satisfy that requirement. The application processes real audio locally. Complete the [listening checklist](LISTENING-CHECKLIST.md) before recording; show any remaining discrepancy honestly. No API credit is needed.
 
 Start the app using the README command. Prepare A, B and C in separate tabs and run their actual analyses. Record A's upload and processing separately; use an explicitly labelled cut to omit the measured wait. Keep computer audio enabled for evidence playback. Hide terminals, account details, env files and unrelated windows. Never use labelled offline mock screenshots as analysis results.
 
