@@ -42,7 +42,7 @@ Done means implemented and checked to the stated scope. Partial identifies missi
 | Separate TTS/hosting/compute costs; no invented zero compute cost | Done | API charges $0; hardware/electricity unmeasured, localComputeCostUsd null; no paid TTS/hosting |
 | Runnable browser demo | Done locally | [Local URL](http://127.0.0.1:3000), launcher and [setup](LOCAL-SETUP.md) |
 | Public evaluator URL | Pending evaluator access | Requires suitable inference host or explicitly approved access to this machine; localhost is not public |
-| GitHub repository | Private repository; reviewer access pending | [Raccoohh/accord-commitments](https://github.com/Raccoohh/accord-commitments); setup instructions and fixture history included |
+| GitHub repository | Published publicly; anonymous access verified | [Raccoohh/accord-commitments](https://github.com/Raccoohh/accord-commitments); setup instructions and fixture history included |
 | README, env example, pinned dependencies and model revisions | Done | [README](../README.md), local/requirements.lock.txt, local/models.json |
 | Actual outputs, failures, AI/reuse disclosure | Done | [Quality report](QUALITY-REPORT.md), [local failure log](LOCAL-QUALITY.md), [AI/reuse](AI-AND-REUSE.md) |
 | Video up to 3 minutes | Final video pending | [Exact 2:50 recording script](VIDEO-SCRIPT.md); user reported a 4:34 recording; needs editing to at most 3:00 and an accessible delivery link |

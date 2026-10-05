@@ -10,7 +10,7 @@ Final synthetic checks found all **11 accepted tasks**, with **0 extra active ta
 
 ## Reviewer access
 
-Repository: [Raccoohh/accord-commitments](https://github.com/Raccoohh/accord-commitments) (private; evaluator access must be granted). Public demo access and the final video link are pending. The employer requires a working browser demo, a repository with setup instructions and an actual video up to three minutes; an archive or script is not a substitute.
+Repository: [Raccoohh/accord-commitments](https://github.com/Raccoohh/accord-commitments) (public; no GitHub invitation required). Public demo access and the final video link are pending. The employer requires a working browser demo, a repository with setup instructions and an actual video up to three minutes; an archive or script is not a substitute.
 
 The tested setup is Windows with Python 3.12 and Node 24. Model weights are downloaded separately and are excluded from Git. Start with the [delivery notes](docs/DELIVERY-NOTES.md) and [measured quality report](docs/QUALITY-REPORT.md).
 
