@@ -32,7 +32,7 @@ Done means implemented and checked to the stated scope. Partial identifies missi
 | Actual privacy and retention explanation | Done | Local processing, loopback services, 30-minute in-memory results; [architecture](ARCHITECTURE.md) |
 | Freeze A–D independent scripts and expectations before analysis | Done | Commit 32b67be; [frozen source](../fixtures/cases.json) |
 | Two synthetic voices, WAVs, scripts, expected/actual files | Done | Windows David/Zira; A–G audio and provenance; [fixture integrity](../reports/fixture-integrity.json) |
-| Listen to recordings and every evidence excerpt | Not done | Human acoustic review required; no hearing claim from browser state or ASR text |
+| Listen to recordings and every evidence excerpt | User-reported complete | User confirmed listening on 3 October 2026 with no discrepancies noticed; no independent assistant hearing claim |
 | Real browser end-to-end checks | Done | Actual uploads, outputs, screenshots, client/server measurements and playback under reports/live |
 | TP/FP/FN separate from field/evidence accuracy | Done | [Counts](../reports/evaluation.json), [comparison](../reports/expected-vs-actual.md); assistant text review, not acoustic certification |
 | Controlled A/B difference | Partial | Final-field comparison and any history differences are separately documented in quality report |
@@ -41,7 +41,7 @@ Done means implemented and checked to the stated scope. Partial identifies missi
 | Duration, stage times, models, usage, retries and cost/minute | Done | Every final JSON contains metrics; speech subtimings and both LLM token counts; [costs](COSTS.md) |
 | Separate TTS/hosting/compute costs; no invented zero compute cost | Done | API charges $0; hardware/electricity unmeasured, localComputeCostUsd null; no paid TTS/hosting |
 | Runnable browser demo | Done locally | [Local URL](http://127.0.0.1:3000), launcher and [setup](LOCAL-SETUP.md) |
-| Public evaluator URL | Temporary protected tunnel; availability limited | [Current demo](https://715ac629d4ca9a.lhr.life); [access and lifetime limits](REVIEWER-DEMO.md); host must remain running |
+| Public evaluator URL | Protected ngrok dev domain; restart verified; host availability required | [Current demo](https://unread-sleek-renewably.ngrok-free.dev); [access and lifetime limits](REVIEWER-DEMO.md); host must remain running |
 | GitHub repository | Published publicly; anonymous access verified | [Raccoohh/accord-commitments](https://github.com/Raccoohh/accord-commitments); setup instructions and fixture history included |
 | README, env example, pinned dependencies and model revisions | Done | [README](../README.md), local/requirements.lock.txt, local/models.json |
 | Actual outputs, failures, AI/reuse disclosure | Done | [Quality report](QUALITY-REPORT.md), [local failure log](LOCAL-QUALITY.md), [AI/reuse](AI-AND-REUSE.md) |
@@ -49,7 +49,7 @@ Done means implemented and checked to the stated scope. Partial identifies missi
 | English delivery notes and artifact links | Done | [Delivery notes](DELIVERY-NOTES.md) |
 | No extra accounts/task integrations or employer sending | Done | Local prototype and evaluation artifacts only |
 
-The local demo and reproducible package are available. The user confirmed the human listening audit without reported discrepancies on 3 October 2026. Disclosed semantic limitations remain, as do reliable availability of the temporary demo and the final video delivery link. Do not represent those unfinished steps as completed.
+The local demo and reproducible package are available. The user confirmed the human listening audit without reported discrepancies on 3 October 2026. Disclosed semantic limitations remain, as do continuous availability of the host-based demo and the final video delivery link. Do not represent those unfinished steps as completed.
 
 
 

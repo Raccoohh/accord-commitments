@@ -1,0 +1,15 @@
+{
+  "checkedAt": "2026-10-05T22:30:44.350Z",
+  "ngrokVersion": "3.39.11",
+  "signature": "Valid: ngrok, Inc.",
+  "sha256": "d339bcbd0713233337e860163f5249eea679cf26750a5700510dbc241d201748",
+  "powershellSyntax": "passed",
+  "isolatedNgrokConfig": "passed, no endpoint opened",
+  "missingTokenPreservesExistingDemo": true,
+  "gatewayChecksPassed": 12,
+  "publicNgrokConnection": "passed: anonymous 401, authenticated ready 200",
+  "reconnectAndStableUrlCheck": "full gateway/tunnel restart passed; assigned URL unchanged",
+  "initialSandboxTest": "loopback EACCES; rerun with loopback access passed",
+  "browserCheck": "real D/C upload, playback, clear and session isolation passed",
+  "limitation": "Transient network reconnection and Windows reboot were not simulated; host and free-plan quota availability still apply."
+}

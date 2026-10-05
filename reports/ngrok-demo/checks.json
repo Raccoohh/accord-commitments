@@ -1,0 +1,18 @@
+{
+  "checkedAt": "2026-10-05T22:30:44.350Z",
+  "url": "https://unread-sleek-renewably.ngrok-free.dev",
+  "checks": [
+    "Anonymous API access rejected",
+    "Free-tier provider notice can be dismissed by the reviewer",
+    "Password-authenticated HTTPS page loads",
+    "Fictional sample downloads",
+    "D: real browser upload and analysis completed through public HTTPS",
+    "D: result inaccessible to another browser session",
+    "C: real browser upload and analysis completed through public HTTPS",
+    "Original audio evidence plays",
+    "C: result inaccessible to another browser session"
+  ],
+  "browserErrors": [],
+  "credentialsRecorded": false,
+  "limitation": "Host computer, internet and tunnel must remain running; provider quotas apply. An account-assigned domain does not guarantee uptime."
+}

@@ -35,3 +35,7 @@ The development assistant's subscription cost is separate from runtime operation
 ## Temporary reviewer access (5 October 2026)
 
 The current localhost.run tunnel uses its free tier; no hosting purchase or metered model intermediary was added. Host computer, electricity and internet costs remain unmeasured. Tunnel transport changes the end-to-end time, so local processing time is not a promise of remote user latency. Free-domain lifetime and speed limits are documented in REVIEWER-DEMO.md.
+
+## Account-assigned reviewer address (6 October 2026)
+
+Reviewer ingress now uses the free ngrok account-assigned dev domain. No paid plan or model API was enabled. Free-tier quotas and a browser notice apply; hardware, electricity and internet remain unmeasured. Restart verification is saved in `reports/ngrok-restart.json`; ngrok end-to-end measurements are kept separately in `reports/ngrok-demo/`, rather than replacing the original A–G benchmark.

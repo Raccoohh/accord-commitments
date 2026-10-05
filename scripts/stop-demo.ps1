@@ -11,6 +11,7 @@ foreach ($taskRole in @('tunnel','gateway','awake')) {
   $taskExpected = switch ($taskRole) { 'tunnel' { $taskState.tunnelPath }; 'gateway' { Join-Path $taskRoot 'src\demo-gateway.mjs' }; 'awake' { Join-Path $taskRoot 'scripts\demo-keep-awake.ps1' } }
   if (-not $taskExpected) { throw 'Missing managed process identity; refusing to stop it.' }
   if (-not $taskProcess.CommandLine -or -not $taskProcess.CommandLine.Contains($taskExpected)) { throw "Process identity changed for $taskRole; refusing to stop it." }
+  if ($taskRole -eq 'tunnel' -and $taskState.provider -eq 'ngrok' -and (-not $taskProcess.CommandLine.Contains('http://127.0.0.1:3100') -or -not $taskProcess.CommandLine.Contains((Join-Path $taskRoot '.runtime\demo\ngrok.yml')))) { throw 'ngrok process does not belong to this demo; refusing to stop it.' }
   if ($taskRole -eq 'tunnel' -and $taskState.provider -eq 'localhost' -and (-not $taskProcess.CommandLine.Contains('80:127.0.0.1:3100') -or -not $taskProcess.CommandLine.Contains((Join-Path $taskRoot '.runtime\demo\known_hosts')))) { throw 'SSH process does not belong to this demo; refusing to stop it.' }
   Stop-Process -Id $taskId
 }
