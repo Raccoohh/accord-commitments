@@ -1,0 +1,11 @@
+{
+  "date": "2026-10-05",
+  "shell": "Windows PowerShell 5.1",
+  "nodeAbsentFromPath": true,
+  "startupFromSystem32Passed": true,
+  "repeatStartPassed": true,
+  "invalidExplicitNodePathRejected": true,
+  "ready": true,
+  "provider": "local",
+  "inferenceRerun": false
+}

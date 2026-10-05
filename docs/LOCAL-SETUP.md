@@ -27,7 +27,7 @@ For subsequent starts:
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start-local.ps1
 ```
 
-The launch script starts hidden project processes: app on `127.0.0.1:3000`, Ollama on `127.0.0.1:11435`, and model storage in `.runtime/ollama-models`. It does not install a Windows service or change the persistent system PATH. Restart an existing app process after code edits; the launcher intentionally does not terminate an unknown process on the same port.
+The launch script starts hidden project processes: app on `127.0.0.1:3000`, Ollama on `127.0.0.1:11435`, and model storage in `.runtime/ollama-models`. It does not install a Windows service or change the persistent system PATH. It discovers Node 24 on PATH, in `.runtime/node/node.exe`, in the standard Windows installation folder or in the current user's Codex runtime; `-NodePath 'C:\path\to\node.exe'` explicitly selects another installation. It checks the version before starting services and waits for local app readiness before printing the URL. Restart an existing app process after code edits; the launcher intentionally does not terminate an unknown process on the same port.
 
 On this Windows build, native CUDA DLL loading failed from the Cyrillic workspace path. The launcher creates a project-specific `accord-ollama-<hash>` junction under the user's temporary folder pointing to the existing portable runtime, and adds its CUDA directory to the child process PATH. No model files are moved or duplicated. GPU discovery was verified through this ASCII alias; the original process had silently used CPU. The alias is recreated if the temporary folder is cleaned. A different target at the same alias is rejected.
 

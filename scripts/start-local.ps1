@@ -1,6 +1,31 @@
+param([string]$NodePath = '')
 $ErrorActionPreference = 'Stop'
 $taskRoot = Split-Path $PSScriptRoot -Parent
 Set-Location -LiteralPath $taskRoot
+# Desktop terminals do not inherit Codex's bundled Node entry in PATH.
+$taskNodeCandidates = @()
+if ($NodePath) {
+  $taskNodeCandidates += $NodePath
+} else {
+  $taskNodeCommand = Get-Command node.exe -CommandType Application -ErrorAction SilentlyContinue
+  if ($taskNodeCommand) { $taskNodeCandidates += $taskNodeCommand.Source }
+  $taskNodeCandidates += Join-Path $taskRoot '.runtime/node/node.exe'
+  if ($env:ProgramFiles) { $taskNodeCandidates += Join-Path $env:ProgramFiles 'nodejs/node.exe' }
+  if ($env:USERPROFILE) { $taskNodeCandidates += Join-Path $env:USERPROFILE '.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node.exe' }
+}
+$taskNode = $null
+foreach ($taskCandidate in $taskNodeCandidates) {
+  if (-not (Test-Path -LiteralPath $taskCandidate -PathType Leaf)) { continue }
+  try {
+    $taskVersion = & $taskCandidate --version 2>$null
+    if ($LASTEXITCODE -eq 0 -and $taskVersion -match '^v24\.') {
+      $taskNode = (Resolve-Path -LiteralPath $taskCandidate).Path
+      break
+    }
+  } catch { continue }
+}
+if (-not $taskNode) { throw 'Node.js 24 was not found. Install Node 24 or run this script with -NodePath "C:\path\to\node.exe".' }
+Write-Output "Using Node.js: $taskNode"
 $taskOllama = Join-Path $taskRoot '.runtime/ollama/ollama.exe'
 if (-not (Test-Path -LiteralPath $taskOllama)) { throw 'Portable Ollama is missing. Complete local setup first.' }
 # Native GPU DLL loading fails with non-ASCII paths on this tested Windows build.
@@ -33,5 +58,14 @@ for ($taskAttempt=0; $taskAttempt -lt 30; $taskAttempt++) {
 }
 if (-not $taskReady) { throw 'Local Ollama did not start. See .runtime/logs/ollama.err.log.' }
 try { Invoke-RestMethod 'http://127.0.0.1:3000/api/health' -TimeoutSec 2 | Out-Null; Write-Output 'An app server is already running on port 3000.' }
-catch { Start-Process -FilePath (Get-Command node).Source -ArgumentList '--env-file-if-exists=.env.local','src/server.mjs' -WorkingDirectory $taskRoot -WindowStyle Hidden -RedirectStandardOutput '.runtime/logs/app.out.log' -RedirectStandardError '.runtime/logs/app.err.log' | Out-Null }
+catch { Start-Process -FilePath $taskNode -ArgumentList '--env-file-if-exists=.env.local','src/server.mjs' -WorkingDirectory $taskRoot -WindowStyle Hidden -RedirectStandardOutput '.runtime/logs/app.out.log' -RedirectStandardError '.runtime/logs/app.err.log' | Out-Null }
+$taskAppReady = $false
+for ($taskAttempt=0; $taskAttempt -lt 30; $taskAttempt++) {
+  try {
+    $taskHealth = Invoke-RestMethod 'http://127.0.0.1:3000/api/health' -TimeoutSec 1
+    if ($taskHealth.ready -and $taskHealth.provider -eq 'local') { $taskAppReady=$true; break }
+  } catch { }
+  Start-Sleep -Milliseconds 500
+}
+if (-not $taskAppReady) { throw 'Local app is not ready. See .runtime/logs/app.err.log and check local model setup.' }
 Write-Output 'Local workspace: http://127.0.0.1:3000'

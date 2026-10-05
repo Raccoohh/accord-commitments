@@ -41,3 +41,7 @@ Approximate combined work windows through this checkpoint: **3 hours 17 minutes*
 
 The user reported listening to all cases and, after clarification that D intentionally contains eight seconds of silence, reported no discrepancies. Updated the review provenance, checklist, evaluation and delivery package. The preceding pending status is a historical checkpoint. This reporting-only follow-up does not rerun inference or change runtime behavior; its work window began at approximately 17:05 Kyiv.
 Follow-up reporting checkpoint: approximately 17:05–17:07 Kyiv (about two minutes), plus final packaging immediately afterward. No model calls.
+
+## Launcher repair — 5 October 2026
+
+The user's ordinary PowerShell session could not resolve Node after a reboot. Added Node 24 discovery (including the existing per-user Codex runtime), an explicit NodePath override, and an app readiness check. Verified startup from System32 in Windows PowerShell with Node removed from PATH, repeat startup and rejection of a nonexistent override. See reports/launcher-check.json. No inference or paid API calls were made; acoustic results are unchanged. This brief follow-up was not separately timed. Rebuilt the delivery archives.

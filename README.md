@@ -18,7 +18,7 @@ From the project folder:
 powershell -NoProfile -ExecutionPolicy Bypass -File scripts/start-local.ps1
 ```
 
-Open [http://127.0.0.1:3000](http://127.0.0.1:3000). The launcher starts hidden local processes. If `node` is not on your PATH, use the Node executable supplied by your development environment or install Node 24 from [nodejs.org](https://nodejs.org/).
+Open [http://127.0.0.1:3000](http://127.0.0.1:3000). The launcher starts hidden local processes and waits for readiness. It finds Node 24 on PATH, in `.runtime/node/node.exe`, in the standard Windows installation folder, or in the current user's Codex runtime. You can also pass `-NodePath 'C:\path\to\node.exe'`. If none is available, install Node 24 from [nodejs.org](https://nodejs.org/).
 
 The current workspace already has a securely configured `.env.local`. Do not overwrite it. For a fresh checkout only:
 
