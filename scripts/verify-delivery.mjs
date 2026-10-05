@@ -4,6 +4,7 @@ import {resolve,dirname} from 'node:path';
 const gitArgs=['-c','safe.directory='+process.cwd().replaceAll('\\','/')];
 const files=execFileSync('git',[...gitArgs,'ls-files','-z'],{encoding:'utf8'}).split('\0').filter(Boolean);
 const secrets=[process.env.OPENAI_API_KEY,process.env.HF_TOKEN].filter(Boolean);
+try{const demo=JSON.parse((await readFile('.runtime/demo/config.json','utf8')).replace(/^\uFEFF/,''));if(demo.password)secrets.push(demo.password);}catch(e){if(e.code!=='ENOENT')throw e;}
 if(!secrets.length)throw Error('Cannot perform exact secret scan without configured environment.');
 const patterns=secrets.flatMap(secret=>[Buffer.from(secret),Buffer.from(secret,'utf16le')]);
 const leaked=[];for(const file of files){const data=await readFile(file);if(patterns.some(pattern=>data.includes(pattern)))leaked.push(file);}

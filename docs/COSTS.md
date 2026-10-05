@@ -31,3 +31,7 @@ Every request has a call record. Automatic retries are disabled: exactly one att
 Historical cloud observations: two transcription attempts were rejected before a usable result. The diagnostic returned `credit_balance_exhausted`. No successful cloud speech-pipeline cost or latency was measured. D (digital silence) is detected locally without provider requests; its API variable cost is $0, with local compute excluded. See `reports/access-diagnostic.json`, `reports/initial/` and `reports/offline-browser/D.actual.json`.
 
 The development assistant's subscription cost is separate from runtime operation cost. No purchases, paid TTS, public hosting, or subscriptions were initiated.
+
+## Temporary reviewer access (5 October 2026)
+
+The current localhost.run tunnel uses its free tier; no hosting purchase or metered model intermediary was added. Host computer, electricity and internet costs remain unmeasured. Tunnel transport changes the end-to-end time, so local processing time is not a promise of remote user latency. Free-domain lifetime and speed limits are documented in REVIEWER-DEMO.md.

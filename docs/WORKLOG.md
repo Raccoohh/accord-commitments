@@ -49,3 +49,7 @@ The user's ordinary PowerShell session could not resolve Node after a reboot. Ad
 ## GitHub preparation — 5 October 2026
 
 The full employer email clarified that evaluator demo access, a repository and an actual video of at most three minutes are required; earlier documentation incorrectly described archives/scripts as permitted substitutes. Corrected that interpretation before publication. Preparing a private repository, preserving independent fixture history and retained failures. Also repaired first-time setup so it can start services before model downloads and use the discovered Node executable without PATH changes. This follow-up is not separately timed. No paid API requests.
+
+## Reviewer access — 5 October 2026
+
+The user authorized a free demo on this computer and agreed to keep it powered and online. Added an authenticated loopback gateway, per-browser result isolation, sample downloads and temporary awake/start/stop helpers. Cloudflare quick-tunnel setup failed with connection timeouts; localhost.run provided a temporary HTTPS endpoint. A long Codex-limit pause occurred between approximately 16:20 and 20:27 Kyiv; it is excluded from focused work. Resumed availability checks afterward. The free domain is explicitly not presented as a stable multi-day hosting solution. Gateway HTTP checks and real public browser runs are reported separately from the original semantic benchmark. No paid API calls. This follow-up was not independently timed; no exact focused-hours completion claim is made.

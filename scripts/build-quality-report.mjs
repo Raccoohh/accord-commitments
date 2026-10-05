@@ -51,7 +51,8 @@ Pinned runtime: faster-whisper medium.en CPU INT8, pyannote Community-1 CPU, and
 
 ## Verification and provenance
 
-- **40 unit/contract tests passed**: [output](../reports/unit-tests.txt). Provider responses are mocked only in isolated tests.
+- Public tunnel smoke check: real D/C browser uploads, original-audio playback, session isolation and result clearing passed; see [external checks](../reports/public-demo/checks.json). This is separate from the original A–G semantic benchmark.
+- **52 unit/contract/gateway checks passed**: [output](../reports/unit-tests.txt). Provider responses are mocked only in isolated tests.
 - **5 HTTP checks** and **10 offline browser checks**: [HTTP](../reports/server-checks.json), [browser](../reports/offline-browser/checks.json). Offline UI mock results are labelled and are not speech-accuracy evidence.
 - The real browser harness saved actual outputs, screenshots and original-audio seek/stop state for speech cases. These establish mechanics, not hearing. The separate [listening checklist](LISTENING-CHECKLIST.md) records the user's completed review.
 - A–D labels were frozen in 32b67be. E and F became regression cases after their failures informed general fixes. F's first complete semantic result is preserved separately in local-regression-v9. Independent G's script and labels were frozen with the final semantic fix in 99f1bc2; its newly generated audio was committed in 370411b before any G analysis. No runtime change was based on G's content. Earlier interrupted and operationally failed F attempts remain disclosed in the failure log.
@@ -73,7 +74,7 @@ A later B run exposed dependence on evidence-role labels for cancellation, follo
 
 F's first completed extraction missed an accepted access-role task and omitted an inactive exports proposal. Its ASR merged adjacent same-speaker topics and misheard “don't approve” as “don't prove.” A further evidence-consistency guard recognizes unconditional self-commitment followed by another speaker's agreement, while excluding conditional or contradicted commitments. F was then rerun as a regression test; G is the new independent post-fix recording. The original failure is preserved, not replaced by a passing claim.
 
-The repository is [Raccoohh/accord-commitments](https://github.com/Raccoohh/accord-commitments), public and readable without signing in. Evaluator demo access is still being arranged. The user reported a 4:34 video; it must be shortened to at most 3:00 and shared. The local archive and [2:50 recording script](VIDEO-SCRIPT.md) support preparation but do not replace the employer-required demo, repository and video. Human listening is recorded as complete by user confirmation. The disclosed semantic limitations remain part of the handoff.
+The repository is [Raccoohh/accord-commitments](https://github.com/Raccoohh/accord-commitments), public and readable without signing in. Temporary password-protected demo: [https://715ac629d4ca9a.lhr.life](https://715ac629d4ca9a.lhr.life); read [availability limits](REVIEWER-DEMO.md). The user supplied a revised 2:20 video; final editing and its delivery link remain pending. The local archive and [2:50 recording script](VIDEO-SCRIPT.md) support preparation but do not replace the employer-required demo, repository and video. Human listening is recorded as complete by user confirmation. The disclosed semantic limitations remain part of the handoff.
 `;
 await writeFile('docs/QUALITY-REPORT.md',content);
 console.log(JSON.stringify({summary,abFinalFieldsPass:comparison.finalFieldsPass}));

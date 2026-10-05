@@ -1,0 +1,17 @@
+{
+  "checkedAt": "2026-10-05T17:36:48.089Z",
+  "url": "https://715ac629d4ca9a.lhr.life",
+  "checks": [
+    "Anonymous API access rejected",
+    "Password-authenticated HTTPS page loads",
+    "Fictional sample downloads",
+    "D: real browser upload and analysis completed through public HTTPS",
+    "D: result inaccessible to another browser session",
+    "C: real browser upload and analysis completed through public HTTPS",
+    "Original audio evidence plays",
+    "C: result inaccessible to another browser session"
+  ],
+  "browserErrors": [],
+  "credentialsRecorded": false,
+  "limitation": "Temporary tunnel, availability requires the host computer and tunnel to remain running."
+}

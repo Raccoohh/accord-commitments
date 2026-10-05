@@ -24,4 +24,4 @@ Security and privacy: Hugging Face token only in ignored `.env.local`; no browse
 
 The old OpenAI adapter remains for isolated mocked contract tests and historical comparison. It is not reachable from the active application pipeline.
 
-The server is a local prototype, not a public multi-user service. Public hosting requires a deliberate deployment setup, server-side secret configuration, access/spend protection and an accessible URL. No calendar, accounts, payments, task sending or team workspace was added.
+The inference server remains a local prototype. An optional loopback gateway exposes only allowlisted app routes and fictional audio samples through a public tunnel. It requires a separately generated password, checks origins, caps upload bytes, and restricts each job to its browser session. The tunnel provider terminates HTTPS, so uploaded audio passes through that provider. This temporary demo is not a production multi-user service; see REVIEWER-DEMO.md. No calendar, accounts, payments, task sending or team workspace was added.

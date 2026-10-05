@@ -1,0 +1,56 @@
+{
+  "caseId": "D",
+  "publicOrigin": "https://715ac629d4ca9a.lhr.life",
+  "job": {
+    "id": "8d0a1654-f06f-42fc-9532-b40ff26cb167",
+    "status": "done",
+    "createdAt": 1791221731548,
+    "metrics": {
+      "id": "8d0a1654-f06f-42fc-9532-b40ff26cb167",
+      "startedAt": "2026-10-05T17:35:31.548Z",
+      "provider": "local",
+      "models": {
+        "asr": "Systran/faster-whisper-medium.en",
+        "diarization": "pyannote/speaker-diarization-community-1",
+        "extraction": "qwen2.5:7b"
+      },
+      "audioSeconds": 8,
+      "uploadMs": 1,
+      "stages": {
+        "validationMs": 1
+      },
+      "calls": [],
+      "retries": 0,
+      "outcome": "unusable",
+      "processingMs": 1,
+      "totalServerMs": 2,
+      "cost": {
+        "currency": "USD",
+        "totalVariableOperationUsd": 0,
+        "costPerAudioMinute": 0,
+        "apiChargesUsd": 0,
+        "basis": "Local inference: no metered API calls. Electricity, hardware and local compute costs are not measured and are excluded.",
+        "unknownChargesPossible": false,
+        "localComputeCostUsd": null,
+        "hosting": "Local Windows computer",
+        "ttsApiCost": 0,
+        "paidIntermediaries": 0
+      }
+    },
+    "result": {
+      "outcome": "unusable",
+      "message": "No audible speech was detected. Please upload a new recording with two clearly audible speakers.",
+      "items": [],
+      "speakers": [],
+      "segments": [],
+      "warnings": [],
+      "clarifications": [],
+      "timingPrecision": "segment"
+    },
+    "completedAt": 1791221731549
+  },
+  "clientMetrics": {
+    "preparationMs": 49,
+    "uploadToUsefulResultMs": 2483
+  }
+}

@@ -24,7 +24,7 @@ Done means implemented and checked to the stated scope. Partial identifies missi
 | Reliable voice/name mapping | Partial | Actual ASR text grounds names; user reported no voice discrepancies in the synthetic set; broader reliability is untested |
 | Unclear agreement not promoted; transcript is untrusted data | Partial | Prompts and conservative validators tested; no broad adversarial/noisy-speech evaluation |
 | Spoken questions separate from generated clarifications | Done to tested scope | Verbatim question filter, separate source values and UI sections |
-| Structured model output checked against schema | Done | Compact schema plus strict final schema; 40 passing tests |
+| Structured model output checked against schema | Done | Compact schema plus strict final schema; 52 passing unit/contract/gateway checks |
 | Segment IDs, exact quote text, speaker and time bounds | Done for structure | Authoritative ASR segments supply quotes/timestamps; [validation code](../src/validate.mjs) |
 | Sufficient multi-fragment evidence for changes/cancellation | Partial | Main task chains reviewed in final results; evidence roles and some open-question context remain imperfect; user-reported acoustic review complete |
 | Original-audio evidence playback and transcript | Done for mechanics | Real browser playback records for A/B/C/E/F/G; [listening checklist](LISTENING-CHECKLIST.md) remains separate |
@@ -41,15 +41,15 @@ Done means implemented and checked to the stated scope. Partial identifies missi
 | Duration, stage times, models, usage, retries and cost/minute | Done | Every final JSON contains metrics; speech subtimings and both LLM token counts; [costs](COSTS.md) |
 | Separate TTS/hosting/compute costs; no invented zero compute cost | Done | API charges $0; hardware/electricity unmeasured, localComputeCostUsd null; no paid TTS/hosting |
 | Runnable browser demo | Done locally | [Local URL](http://127.0.0.1:3000), launcher and [setup](LOCAL-SETUP.md) |
-| Public evaluator URL | Pending evaluator access | Requires suitable inference host or explicitly approved access to this machine; localhost is not public |
+| Public evaluator URL | Temporary protected tunnel; availability limited | [Current demo](https://715ac629d4ca9a.lhr.life); [access and lifetime limits](REVIEWER-DEMO.md); host must remain running |
 | GitHub repository | Published publicly; anonymous access verified | [Raccoohh/accord-commitments](https://github.com/Raccoohh/accord-commitments); setup instructions and fixture history included |
 | README, env example, pinned dependencies and model revisions | Done | [README](../README.md), local/requirements.lock.txt, local/models.json |
 | Actual outputs, failures, AI/reuse disclosure | Done | [Quality report](QUALITY-REPORT.md), [local failure log](LOCAL-QUALITY.md), [AI/reuse](AI-AND-REUSE.md) |
-| Video up to 3 minutes | Final video pending | [Exact 2:50 recording script](VIDEO-SCRIPT.md); user reported a 4:34 recording; needs editing to at most 3:00 and an accessible delivery link |
+| Video up to 3 minutes | Final video pending | [Exact 2:50 recording script](VIDEO-SCRIPT.md); a revised 2:20 recording was reviewed locally; final edits and an accessible video link remain pending |
 | English delivery notes and artifact links | Done | [Delivery notes](DELIVERY-NOTES.md) |
 | No extra accounts/task integrations or employer sending | Done | Local prototype and evaluation artifacts only |
 
-The local demo and reproducible package are available. The user confirmed the human listening audit without reported discrepancies on 3 October 2026. Disclosed semantic limitations remain, as do required evaluator demo access, repository publication/access and a video of at most three minutes. Do not represent those unfinished steps as completed.
+The local demo and reproducible package are available. The user confirmed the human listening audit without reported discrepancies on 3 October 2026. Disclosed semantic limitations remain, as do reliable availability of the temporary demo and the final video delivery link. Do not represent those unfinished steps as completed.
 
 
 
