@@ -2,6 +2,10 @@
 
 Submission deadline: 2026-10-05 (provided by the user). Target: at most eight focused hours.
 
+## Total time reported for submission
+
+On 6 October 2026, the author reported spending approximately **6 hours 30 minutes in total** on the assignment. Use this estimate in the submission notes. It is the author's retrospective estimate, not an independently measured stopwatch total. The earlier 3-hour-17-minute figure below covers only the recorded work windows at that checkpoint and must not be presented as the total assignment time. Historical checkpoints and their timing limitations are retained below.
+
 | Start (Europe/Kyiv) | End | Activity | Timing basis |
 | --- | --- | --- | --- |
 | Before 2026-10-02 19:05 | 19:05 | Read brief; discover tools, runtime, voices and credential presence | Initial inspection not timed; excluded from measured total, not claimed as zero |

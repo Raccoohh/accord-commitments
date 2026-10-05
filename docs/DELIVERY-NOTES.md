@@ -2,6 +2,8 @@
 
 **Accord — Recorded conversation → final commitments**
 
+**Time spent:** approximately **6 hours 30 minutes**, as estimated by the author on 6 October 2026 for the assignment as a whole. This is a retrospective estimate; the [work log](WORKLOG.md) preserves the partial recorded windows and their limitations.
+
 Deadline: 5 October 2026. This package contains a working local browser prototype, real local audio-analysis results and a reproducible evaluation. No paid API calls are needed. The user reported completing acoustic review on 3 October 2026 with no discrepancies noticed; model interpretation and history limitations are disclosed in the quality report. Account-assigned reviewer demo: [https://unread-sleek-renewably.ngrok-free.dev](https://unread-sleek-renewably.ngrok-free.dev), protected by credentials supplied privately. See [demo availability limits](REVIEWER-DEMO.md). The final video link remains pending. The repository is public and accessible without a GitHub invitation.
 
 - [Run instructions](../README.md), [one-time local setup](LOCAL-SETUP.md)

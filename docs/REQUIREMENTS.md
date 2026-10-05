@@ -8,7 +8,7 @@ Done means implemented and checked to the stated scope. Partial identifies missi
 | Inspect environment/tools/access first; no purchases | Done | [Plan](PLAN.md), [work log](WORKLOG.md); existing hardware and local installs |
 | English UI, recordings and delivery materials | Done | [UI](../public/index.html), [fixtures](../fixtures/README.md) |
 | Plan, risks and readiness criteria | Done | [Plan](PLAN.md) |
-| Eight-hour target and factual time log | Partial | [Work log](WORKLOG.md); measured work windows exclude long limit pauses; initial inspection was untimed |
+| Eight-hour target and factual time log | Author-reported estimate within target | Approximately 6 hours 30 minutes total, reported by the author on 6 October 2026; [work log](WORKLOG.md) retains partial recorded windows. Not an independently measured total. |
 | Secure credentials and no paid calls after user constraint | Done | Ignored server-only HF_TOKEN; active runtime is local; [delivery scan](../reports/delivery-verification.json) |
 | English, two speakers, introductions, no overlap, up to 3 minutes | Done for tested scope | Guided input; actual byte/duration checks; two-speaker ASR/diarization; synthetic A–G |
 | Upload and drag-and-drop; size/type/language/duration limits | Done | [Browser checks](../reports/offline-browser/checks.json) |
